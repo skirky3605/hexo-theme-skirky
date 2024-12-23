@@ -10,10 +10,12 @@
   <!-- 文章内容 -->
   <div class="article-content">
     <h1 style="text-align: center;">{{ post.title }}</h1>
+    {% if not is_page %}
     <p class="date">
       <span>发布日期：</span>
       <time title="{{ full_date(post.date) }}" datetime="{{ moment(post.date).format() }}">{{ date(post.date) }}</time>
     </p>
+    {% endif %}
     {{ post.content }}
   </div>
 </div>
