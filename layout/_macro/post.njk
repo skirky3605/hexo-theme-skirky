@@ -1,0 +1,20 @@
+{% if is_index %}
+{{ html_url(post.path, post.title or __('post.untitled'), {class: 'random-link', itemprop: 'url'}) }}
+{% else %}
+<div class="background"></div>
+<div class="content-wrapper">
+  <!-- 左上角关于按钮 -->
+  <div class="about-btn">
+    <a href="/">关于我</a>
+  </div>
+  <!-- 文章内容 -->
+  <div class="article-content">
+    <h1 style="text-align: center;">{{ post.title }}</h1>
+    <p class="date">
+      <span>发布日期：</span>
+      <time title="{{ full_date(post.date) }}" datetime="{{ moment(post.date).format() }}">{{ date(post.date) }}</time>
+    </p>
+    {{ post.content }}
+  </div>
+</div>
+{% endif %}

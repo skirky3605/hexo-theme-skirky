@@ -1,0 +1,60 @@
+@require hexo-config('highlight.dark.file');
+
+$code-inline {
+  background: var(--highlight-background);
+  color: var(--highlight-foreground);
+}
+
+$code-block {
+  @extend $code-inline;
+  margin: 0 auto 20px;
+}
+
+pre,
+code {
+  font-family: $code-font-family;
+}
+
+figure.highlight {
+  @extend $code-block;
+  overflow: auto;
+  position: relative;
+
+  pre {
+    border: 0;
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  table {
+    border: 0;
+    margin: 0;
+    width: auto;
+  }
+
+  td {
+    border: 0;
+    padding: 0;
+  }
+
+  .gutter {
+    disable-user-select();
+
+    pre {
+      background: var(--highlight-gutter-background);
+      color: var(--highlight-gutter-foreground);
+      padding-left: 10px;
+      padding-right: 10px;
+      text-align: right;
+    }
+  }
+
+  .code pre {
+    padding-left: 10px;
+    width: 100%;
+  }
+
+  .marked {
+    background: rgba(0, 0, 0, .3);
+  }
+}

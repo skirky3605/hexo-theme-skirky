@@ -1,0 +1,8 @@
+{
+  "name": "hexo-theme-skirky",
+  "version": "0.0.1",
+  "devDependencies": {
+    "@adobe/css-tools": "^4.0.0",
+    "hexo": "^7.0.0"
+  }
+}

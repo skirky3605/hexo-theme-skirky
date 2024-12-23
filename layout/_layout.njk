@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang }}">
+
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <link href="/css/main.css" rel="stylesheet">
+  {% block style %}{% endblock %}
+  <script src="/js/config.js"></script>
+  <script src="/js/utils.js"></script>
+  <script src="/js/boot.js"></script>
+  {% block script %}{% endblock %}
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div>
+    {% block content %}{% endblock %}
+  </div>
+</body>
+
+</html>
