@@ -1,0 +1,28 @@
+$page-number-basic {
+  display: inline-block;
+  margin: -1px 10px 0;
+  padding: 0 10px;
+
+  +mobile() {
+    margin: 0 5px;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 32px 0 0;
+
+  .prev,
+  .next,
+  .page-number {
+    @extend $page-number-basic;
+    border-bottom: 0;
+  }
+
+  .space {
+    @extend $page-number-basic;
+    margin: 0;
+    padding: 0;
+  }
+}

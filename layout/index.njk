@@ -2,147 +2,73 @@
 
 {% block title %}{{ config.title }}{% if config.subtitle %} - {{ config.subtitle }}{% endif %}{% endblock %}
 
-{% block style %}
-<style>
-  body {
-    display: flex;
-    overflow: hidden;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-
-  body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #1b1b1b, #ff6b6b);
-    background-size: 400% 400%;
-    animation: gradientAnimation 10s ease infinite;
-    z-index: -1;
-  }
-
-  .about-content p {
-    color: #ddd;
-  }
-
-  .avatar {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-    object-fit: cover;
-  }
-
-  .card {
-    max-width: 600px;
-    padding: 20px;
-    background-color: #333;
-    color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    background: rgba(0, 0, 0, .5);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-  }
-
-  /* 文章列表样式 */
-  .articles {
-    padding: 20px;
-    border-radius: 10px;
-  }
-
-  .articles h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-
-  .articles ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .articles li {
-    margin-bottom: 15px;
-    /* 调整文章之间的间距为 15px */
-  }
-
-  .articles a.random-link {
-    display: block;
-    padding: 15px 20px;
-    text-decoration: none;
-    color: #fff;
-    background: linear-gradient(135deg, #007bff, #ff6b6b);
-    /* 初始渐变色 */
-    border-radius: 5px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  }
-
-  .articles a:hover {
-    transform: scale(1.05);
-  }
-</style>
+{% block head %}
+<script>
+  (() => {
+    // 生成随机颜色，确保两种颜色的差异明显
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color1, color2;
+      do {
+        color1 = '#';
+        color2 = '#';
+        for (let i = 0; i < 6; i++) {
+          color1 += letters[Math.floor(Math.random() * 16)];
+          color2 += letters[Math.floor(Math.random() * 16)];
+        }
+      } while (Math.abs(parseInt(color1, 16) - parseInt(color2, 16)) < 0x333333); // 确保两种颜色的差异明显
+      return { color1, color2 };
+    }
+    // 应用随机渐变颜色
+    function applyRandomGradient() {
+      const links = document.querySelectorAll('.articles a.random-link');
+      links.forEach(link => {
+        const { color1: randomColor1, color2: randomColor2 } = getRandomColor();
+        const gradient = `linear-gradient(135deg, ${randomColor1}, ${randomColor2})`;
+        link.style.background = gradient;
+      });
+    }
+    // 页面加载完毕后生成并应用随机渐变颜色
+    window.addEventListener('DOMContentLoaded', applyRandomGradient);
+    // 当窗口大小改变时重新生成并应用随机渐变颜色（可选）
+    window.addEventListener('resize', applyRandomGradient);
+  })();
+</script>
 {% endblock %}
 
-{% block content %}
-<div class="card">
-  <h1>{{ config.title }}</h1>
-  <img src="{{ url_for(theme.avatar.url) }}" alt="{{ config.author }}" class="avatar">
-  {% if config.subtitle %}
-  <p>———— {{ config.subtitle }} ————</p>
-  {% endif %}
-  {% if config.description %}
-  <p>{{ config.description }}</p>
-  {% endif %}
-  <script>
-    (() => {
-      // 生成随机颜色，确保两种颜色的差异明显
-      function getRandomColor() {
-        const letters = '0123456789ABCDEF';
-        let color1, color2;
-        do {
-          color1 = '#';
-          color2 = '#';
-          for (let i = 0; i < 6; i++) {
-            color1 += letters[Math.floor(Math.random() * 16)];
-            color2 += letters[Math.floor(Math.random() * 16)];
-          }
-        } while (Math.abs(parseInt(color1, 16) - parseInt(color2, 16)) < 0x333333); // 确保两种颜色的差异明显
-        return { color1, color2 };
-      }
-      // 应用随机渐变颜色
-      function applyRandomGradient() {
-        const links = document.querySelectorAll('.articles a.random-link');
-        links.forEach(link => {
-          const { color1: randomColor1, color2: randomColor2 } = getRandomColor();
-          const gradient = `linear-gradient(135deg, ${randomColor1}, ${randomColor2})`;
-          link.style.background = gradient;
-        });
-      }
-      // 页面加载完毕后生成并应用随机渐变颜色
-      window.addEventListener('DOMContentLoaded', () => {
-        applyRandomGradient();
-      });
-      // 当窗口大小改变时重新生成并应用随机渐变颜色（可选）
-      window.addEventListener('resize', () => {
-        applyRandomGradient();
-      });
-    })();
-  </script>
-  <!-- 文章列表 -->
-  <div class="articles">
-    <div style="display: flex; flex-direction: column; row-gap: 8px;">
-      <h2>我的文章</h2>
-      {%- for post in page.posts.toArray() %}
-      {{ partial('_macro/post.njk', { post: post, is_index: true }) }}
-      {%- endfor %}
+{% block header %}
+{% if not page.prev %}
+<div class="index-hover">
+  <div class="index-card">
+    <h1>{{ config.title }}</h1>
+    {% if theme.avatar.url %}
+    <div class="avatar-container">
+      <img class="avatar" src="{{ url_for(theme.avatar.url) }}" alt="{{ config.author }}">
+    </div>
+    {% endif %}
+    {% if config.subtitle %}
+    <p>———— {{ config.subtitle }} ————</p>
+    {% endif %}
+    {% if config.description %}
+    <p>{{ config.description }}</p>
+    {% endif %}
+    <!-- 文章列表 -->
+    <div class="articles">
+      <h2 class="title">我的文章</h2>
+      {% for post in page.posts.toArray() %}
+      {{ partial('_macro/post.njk', { post: post, is_card: true }) }}
+      {% endfor %}
     </div>
   </div>
 </div>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div>
+  {% for post in page.posts.toArray() %}
+  {{ partial('_macro/post.njk', { post: post, is_index: true}) }}
+  {% endfor %}
+</div>
+{% include '_partials/pagination.njk' %}
 {% endblock %}

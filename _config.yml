@@ -3,8 +3,30 @@ avatar:
   # Replace the default image and set the url here.
   url: #/images/avatar.gif
 
+favicon:
+  small: #/images/favicon-16x16.png
+  medium: #/images/favicon-32x32.png
+  apple_touch_icon: #/images/apple-touch-icon.png
+  safari_pinned_tab: #/images/logo.svg
+
+# Browser header panel color.
+theme_color:
+  light: "#F3F3F3"
+  dark: "#202020"
+
+footer:
+  # Specify the year when the site was setup. If not defined, current year will be used.
+  #since: 2021
+
+  #github: https://github.com/yourname
+
 # Code Highlight theme
 codeblock:
   theme:
     light: default
     dark: stackoverflow-dark
+
+# Assets
+css: css
+js: js
+images: images

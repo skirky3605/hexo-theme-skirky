@@ -1,8 +1,17 @@
-@require hexo-config('highlight.dark.file');
+@require hexo-config('highlight.light.file');
+
++dark() {
+  @require hexo-config('highlight.dark.file');
+}
 
 $code-inline {
-  background: var(--highlight-background);
-  color: var(--highlight-foreground);
+  background: $highlight-background;
+  color: $highlight-foreground;
+
+  +dark() {
+    background: $highlight-background-dark;
+    color: $highlight-foreground-dark;
+  }
 }
 
 $code-block {
@@ -12,6 +21,7 @@ $code-block {
 
 pre,
 code {
+  font-size: 0.875em;
   font-family: $code-font-family;
 }
 
@@ -41,11 +51,16 @@ figure.highlight {
     disable-user-select();
 
     pre {
-      background: var(--highlight-gutter-background);
-      color: var(--highlight-gutter-foreground);
+      background: $highlight-gutter-background;
+      color: $highlight-gutter-foreground;
       padding-left: 10px;
       padding-right: 10px;
       text-align: right;
+
+      +dark() {
+        background: $highlight-gutter-background-dark;
+        color: $highlight-gutter-foreground-dark;
+      }
     }
   }
 

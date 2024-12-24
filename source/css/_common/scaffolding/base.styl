@@ -1,0 +1,226 @@
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+html {
+  font-family: $body-font;
+}
+
+body {
+  margin: 0;
+  font-family: $body-font;
+  color: $text-fill-color-primary;
+  background-color: $solid-background-fill-color-base;
+  background: linear-gradient(45deg, #ff9a9a, #a8e6cf, $solid-background-fill-color-base, #ff9a9a);
+  background-size: 400% 400%;
+  background-position: 0%;
+  animation: gradientAnimation 10s ease infinite;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  +dark() {
+    color: $text-fill-color-primary-dark;
+    background-color: $solid-background-fill-color-base-dark;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, $solid-background-fill-color-base-dark, #ff6b6b);
+    background-size: 400% 400%;
+    background-position: 0%;
+    animation: gradientAnimation 10s ease infinite;
+  }
+}
+
+.main {
+  margin: 4px;
+  padding: 12px;
+  background: alpha($solid-background-fill-color-base, 0.5);
+  border: 1px solid $control-stroke-color-default;
+  border-radius: $overlay-corner-radius;
+
+  +dark() {
+    background: alpha($solid-background-fill-color-base-dark, 0.8);
+  }
+
+  +desktop-large() {
+    padding: 32px 80px;
+  }
+
+  +tablet-desktop() {
+    padding: 32px 56px;
+  }
+}
+
+.footer {
+  background: $card-background-fill-color-default;
+  color: $text-fill-color-primary;
+  align-items: center;
+  padding: 10px 10px;
+
+  a {
+    color: $text-fill-color-primary;
+    text-decoration: none;
+
+    &:focus {
+      outline: 1px dashed;
+      outline-offset: 3px;
+    }
+  }
+
+  +dark() {
+    background: $card-background-fill-color-default-dark;
+    color: $text-fill-color-primary-dark;
+
+    a {
+      color: $text-fill-color-primary-dark;
+    }
+  }
+
+  display: flex;
+  z-index: 10;
+  flex-direction: row;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+a {
+  color: $accent-text-fill-color-primary;
+  text-decoration: none;
+
+  +dark() {
+    color: $accent-text-fill-color-primary-dark;
+
+    &:hover {
+      color: $accent-text-fill-color-secondary-dark;
+    }
+
+    &:active {
+      color: $accent-text-fill-color-tertiary-dark;
+    }
+
+    &:not([href]):not([class]),
+    &:not([href]):not([class]):hover {
+      color: $accent-text-fill-color-disabled-dark;
+    }
+  }
+
+  &:hover {
+    color: $accent-text-fill-color-secondary;
+  }
+
+  &:active {
+    color: $accent-text-fill-color-tertiary;
+  }
+
+  &:not([href]):not([class]),
+  &:not([href]):not([class]):hover {
+    color: $accent-text-fill-color-disabled;
+  }
+}
+
+embed,
+iframe,
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+.index-hover {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .index-card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    max-width: 600px;
+    padding: 20px;
+    background: alpha($solid-background-fill-color-base, 0.5);
+    border: 1px solid $control-stroke-color-default;
+    border-radius: $overlay-corner-radius;
+    overflow: hidden;
+
+    +dark() {
+      background: alpha($solid-background-fill-color-base-dark, 0.8);
+      border: 1px solid $control-stroke-color-default-dark;
+    }
+
+    .avatar-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+
+      .avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+
+    .articles {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+      padding: 20px;
+
+      .title {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+    }
+  }
+}
+
+.post-content {
+  overflow-wrap: break-word;
+}
+
+a.post-title-link {
+  color: $text-fill-color-primary;
+
+  +dark() {
+    color: $text-fill-color-primary-dark;
+  }
+}
+
+a.random-link {
+  display: block;
+  padding: 15px 20px;
+  text-decoration: none;
+  text-align: center;
+  color: $text-fill-color-primary-dark;
+  border-radius: $control-corner-radius;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  /* 初始渐变色 */
+  background: linear-gradient(135deg, #007bff, #ff6b6b);
+  /* 添加过渡效果 */
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+}

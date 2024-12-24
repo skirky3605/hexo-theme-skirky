@@ -2,19 +2,23 @@
 <html lang="{{ page.lang }}">
 
 <head>
+  {{ partial('_partials/head/head.njk') }}
+  {% include '_partials/head/head-unique.njk' %}
   <title>{% block title %}{% endblock %}</title>
-  <link href="/css/main.css" rel="stylesheet">
-  {% block style %}{% endblock %}
-  <script src="/js/config.js"></script>
-  <script src="/js/utils.js"></script>
-  <script src="/js/boot.js"></script>
-  {% block script %}{% endblock %}
+  {% block head %}{% endblock %}
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div>
-    {% block content %}{% endblock %}
-  </div>
+  <header class="header" itemtype="http://schema.org/WPHeader">
+    {% block header %}{% endblock %}
+    <div style="display: flex; margin: 0 4px;">
+      <div style="height: 48px; padding: 0 12px; display: flex; justify-content: center; align-items: center;">
+        <a href="/">主页</a>
+      </div>
+    </div>
+  </header>
+  <main class="main">{% block content %}{% endblock %}</main>
+  <footer class="footer">{% include '_partials/footer.njk' %}</footer>
 </body>
 
 </html>
