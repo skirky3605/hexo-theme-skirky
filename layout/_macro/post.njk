@@ -16,7 +16,14 @@
       <time title="{{ full_date(post.date) }}" datetime="{{ moment(post.date).format() }}">{{ date(post.date) }}</time>
     </p>
     {% endif %}
+    {% if is_index and post.excerpt %}
+    {{ post.excerpt }}
+    <p style="text-align: center;">
+      <a href="{{ url_for(post.path) }}" class="read-more">阅读全文</a>
+    </p>
+    {% else %}
     {{ post.content }}
+    {% endif %}
   </article>
 </div>
 {% endif %}

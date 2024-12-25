@@ -1,17 +1,3 @@
-@keyframes gradientAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
@@ -24,36 +10,63 @@ html {
 
 body {
   margin: 0;
+  height: 100%;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
   font-family: $body-font;
   color: $text-fill-color-primary;
-  background-color: $solid-background-fill-color-base;
-  background: linear-gradient(45deg, #ff9a9a, #a8e6cf, $solid-background-fill-color-base, #ff9a9a);
-  background-size: 400% 400%;
-  background-position: 0%;
-  animation: gradientAnimation 10s ease infinite;
+  background: alpha($solid-background-fill-color-base, 0.5);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   +dark() {
     color: $text-fill-color-primary-dark;
-    background-color: $solid-background-fill-color-base-dark;
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, $solid-background-fill-color-base-dark, #ff6b6b);
+    background: $solid-background-fill-color-base-dark;
+  }
+
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
     background-size: 400% 400%;
+    background-image: linear-gradient(45deg, #ff9a9a, #a8e6cf, $solid-background-fill-color-base, #ff9a9a);
     background-position: 0%;
-    animation: gradientAnimation 10s ease infinite;
+    animation: gradient-animation 10s ease infinite;
+
+    +dark() {
+      background-image: linear-gradient(45deg, #ff6b6b, #4ecdc4, $solid-background-fill-color-base-dark, #ff6b6b);
+    }
+
+    .background-hover {
+      width: 100%;
+      height: 100%;
+      background: alpha($solid-background-fill-color-base, 0.5);
+
+      +dark() {
+        background: alpha($solid-background-fill-color-base-dark, 0.8);
+      }
+    }
+  }
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: $card-background-fill-color-default;
+  backdrop-filter: blur(40px);
+
+  +dark() {
+    background: $card-background-fill-color-default-dark;
   }
 }
 
 .main {
-  margin: 4px;
-  padding: 12px;
-  background: alpha($solid-background-fill-color-base, 0.5);
-  border: 1px solid $control-stroke-color-default;
-  border-radius: $overlay-corner-radius;
-
-  +dark() {
-    background: alpha($solid-background-fill-color-base-dark, 0.8);
-  }
+  padding: 16px;
 
   +desktop-large() {
     padding: 32px 80px;
@@ -64,41 +77,62 @@ body {
   }
 }
 
-.footer {
-  background: $card-background-fill-color-default;
-  color: $text-fill-color-primary;
-  align-items: center;
-  padding: 10px 10px;
+.footer-container {
+  height: 40px;
 
-  a {
-    color: $text-fill-color-primary;
-    text-decoration: none;
-
-    &:focus {
-      outline: 1px dashed;
-      outline-offset: 3px;
-    }
-  }
-
-  +dark() {
-    background: $card-background-fill-color-default-dark;
-    color: $text-fill-color-primary-dark;
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: $card-background-fill-color-default;
+    align-items: center;
+    padding: 10px 10px;
+    backdrop-filter: blur(40px);
 
     a {
-      color: $text-fill-color-primary-dark;
-    }
-  }
+      color: $text-fill-color-primary;
+      text-decoration: none;
 
-  display: flex;
-  z-index: 10;
-  flex-direction: row;
-  font-weight: normal;
-  font-size: 12px;
+      &:focus {
+        outline: 1px dashed;
+        outline-offset: 3px;
+      }
+    }
+
+    +dark() {
+      background: $card-background-fill-color-default-dark;
+      color: $text-fill-color-primary-dark;
+
+      a {
+        color: $text-fill-color-primary-dark;
+      }
+    }
+
+    display: flex;
+    z-index: 10;
+    flex-direction: row;
+    font-weight: normal;
+    font-size: 12px;
+  }
 }
 
 a {
   color: $accent-text-fill-color-primary;
   text-decoration: none;
+
+  &:hover {
+    color: $accent-text-fill-color-secondary;
+  }
+
+  &:active {
+    color: $accent-text-fill-color-tertiary;
+  }
+
+  &:not([href]):not([class]),
+  &:not([href]):not([class]):hover {
+    color: $accent-text-fill-color-disabled;
+  }
 
   +dark() {
     color: $accent-text-fill-color-primary-dark;
@@ -115,19 +149,6 @@ a {
     &:not([href]):not([class]):hover {
       color: $accent-text-fill-color-disabled-dark;
     }
-  }
-
-  &:hover {
-    color: $accent-text-fill-color-secondary;
-  }
-
-  &:active {
-    color: $accent-text-fill-color-tertiary;
-  }
-
-  &:not([href]):not([class]),
-  &:not([href]):not([class]):hover {
-    color: $accent-text-fill-color-disabled;
   }
 }
 
@@ -152,13 +173,13 @@ video {
     text-align: center;
     max-width: 600px;
     padding: 20px;
-    background: alpha($solid-background-fill-color-base, 0.5);
+    background: $card-background-fill-color-default;
     border: 1px solid $control-stroke-color-default;
     border-radius: $overlay-corner-radius;
     overflow: hidden;
 
     +dark() {
-      background: alpha($solid-background-fill-color-base-dark, 0.8);
+      background: $card-background-fill-color-default-dark;
       border: 1px solid $control-stroke-color-default-dark;
     }
 
@@ -202,8 +223,34 @@ video {
 a.post-title-link {
   color: $text-fill-color-primary;
 
+  &:hover {
+    color: $text-fill-color-secondary;
+  }
+
+  &:active {
+    color: $text-fill-color-tertiary;
+  }
+
+  &:not([href]):not([class]),
+  &:not([href]):not([class]):hover {
+    color: $text-fill-color-disabled;
+  }
+
   +dark() {
     color: $text-fill-color-primary-dark;
+
+    &:hover {
+      color: $text-fill-color-secondary-dark;
+    }
+
+    &:active {
+      color: $text-fill-color-tertiary-dark;
+    }
+
+    &:not([href]):not([class]),
+    &:not([href]):not([class]):hover {
+      color: $text-fill-color-disabled-dark;
+    }
   }
 }
 

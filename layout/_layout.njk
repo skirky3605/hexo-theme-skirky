@@ -9,16 +9,30 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
+  <div class="background">
+    <div class="background-hover"></div>
+  </div>
+  {% block cover %}{% endblock %}
   <header class="header" itemtype="http://schema.org/WPHeader">
-    {% block header %}{% endblock %}
-    <div style="display: flex; margin: 0 4px;">
+    <div class="navbar" style="display: flex; margin: 0 4px;">
       <div style="height: 48px; padding: 0 12px; display: flex; justify-content: center; align-items: center;">
-        <a href="/">主页</a>
+        <a href="/">首页</a>
+      </div>
+      <div style="height: 48px; padding: 0 12px; display: flex; justify-content: center; align-items: center;">
+        <a href="/tags">标签</a>
+      </div>
+      <div style="height: 48px; padding: 0 12px; display: flex; justify-content: center; align-items: center;">
+        <a href="/categories">分类</a>
+      </div>
+      <div style="height: 48px; padding: 0 12px; display: flex; justify-content: center; align-items: center;">
+        <a href="/archives">归档</a>
       </div>
     </div>
   </header>
   <main class="main">{% block content %}{% endblock %}</main>
-  <footer class="footer">{% include '_partials/footer.njk' %}</footer>
+  <div class="footer-container">
+    <footer class="footer" itemtype="http://schema.org/WPFooter">{% include '_partials/footer.njk' %}</footer>
+  </div>
 </body>
 
 </html>
