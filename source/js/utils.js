@@ -44,5 +44,27 @@ Skirky.utils = {
         });
       }
     });
+  },
+  applyRandomGradient() {
+    // 生成随机颜色，确保两种颜色的差异明显
+    function getRandomColor() {
+      const letters = "0123456789ABCDEF";
+      let color1, color2;
+      do {
+        color1 = '#';
+        color2 = '#';
+        for (let i = 0; i < 6; i++) {
+          color1 += letters[Math.floor(Math.random() * 16)];
+          color2 += letters[Math.floor(Math.random() * 16)];
+        }
+      } while (Math.abs(parseInt(color1, 16) - parseInt(color2, 16)) < 0x333333); // 确保两种颜色的差异明显
+      return { color1, color2 };
+    }
+    const links = document.querySelectorAll("a.random-link");
+    links.forEach(link => {
+      const { color1: randomColor1, color2: randomColor2 } = getRandomColor();
+      const gradient = `linear-gradient(135deg, ${randomColor1}, ${randomColor2})`;
+      link.style.background = gradient;
+    });
   }
 };

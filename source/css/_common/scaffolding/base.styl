@@ -52,15 +52,21 @@ body {
   }
 }
 
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background: $card-background-fill-color-default;
-  backdrop-filter: blur(40px);
+.header-container {
+  height: 48px;
 
-  +dark() {
-    background: $card-background-fill-color-default-dark;
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: $card-background-fill-color-default;
+    backdrop-filter: blur(40px);
+
+    +dark() {
+      background: $card-background-fill-color-default-dark;
+    }
   }
 }
 

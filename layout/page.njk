@@ -2,6 +2,8 @@
 
 {% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
+{% block class %}page posts-expand{% endblock %}
+
 {% block content %}
 {{ partial('_macro/post.njk', { post: page, is_page: true }) }}
 {% endblock %}

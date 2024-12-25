@@ -2,33 +2,34 @@
 <html lang="{{ page.lang }}">
 
 <head>
+  <title>{% block title %}{% endblock %}</title>
   {{ partial('_partials/head/head.njk') }}
   {% include '_partials/head/head-unique.njk' %}
-  <title>{% block title %}{% endblock %}</title>
-  {% block head %}{% endblock %}
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="background">
     <div class="background-hover"></div>
   </div>
-  {% block cover %}{% endblock %}
-  <header class="header" itemtype="http://schema.org/WPHeader">
-    <div class="navbar" style="display: flex; margin: 0 4px;">
-      <div style="height: 48px; padding: 0 12px; display: flex; justify-content: center; align-items: center;">
-        <a href="/">首页</a>
+  <div class="cover">{% block cover %}{% endblock %}</div>
+  <div class="header-container">
+    <header class="header" itemtype="http://schema.org/WPHeader">
+      <div class="navbar" style="display: flex; margin: 0 4px;">
+        <div style="height: 48px; padding: 0 12px; display: flex; justify-content: center; align-items: center;">
+          <a href="/">首页</a>
+        </div>
+        <div style="height: 48px; padding: 0 12px; display: flex; justify-content: center; align-items: center;">
+          <a href="/tags">标签</a>
+        </div>
+        <div style="height: 48px; padding: 0 12px; display: flex; justify-content: center; align-items: center;">
+          <a href="/categories">分类</a>
+        </div>
+        <div style="height: 48px; padding: 0 12px; display: flex; justify-content: center; align-items: center;">
+          <a href="/archives">归档</a>
+        </div>
       </div>
-      <div style="height: 48px; padding: 0 12px; display: flex; justify-content: center; align-items: center;">
-        <a href="/tags">标签</a>
-      </div>
-      <div style="height: 48px; padding: 0 12px; display: flex; justify-content: center; align-items: center;">
-        <a href="/categories">分类</a>
-      </div>
-      <div style="height: 48px; padding: 0 12px; display: flex; justify-content: center; align-items: center;">
-        <a href="/archives">归档</a>
-      </div>
-    </div>
-  </header>
+    </header>
+  </div>
   <main class="main {% block class %}{% endblock %}">{% block content %}{% endblock %}</main>
   <div class="footer-container">
     <footer class="footer" itemtype="http://schema.org/WPFooter">{% include '_partials/footer.njk' %}</footer>
