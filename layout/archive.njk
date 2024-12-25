@@ -1,0 +1,18 @@
+{% extends '_layout.njk' %}
+{% import '_macro/post-collapse.njk' as post_template with context %}
+
+{% block title %}归档 | {{ config.title }}{% endblock %}
+
+{% block class %}archive posts-collapse{% endblock %}
+
+{% block content %}
+<div class="post-block">
+  <div class="post-content">
+    <div class="collection-title">
+      <span class="collection-header">共计 {{ site.posts.length }} 篇文章</span>
+    </div>
+    {{ post_template.render(page.posts) }}
+  </div>
+</div>
+{% include '_partials/pagination.njk' %}
+{% endblock %}

@@ -11,13 +11,12 @@ html {
 body {
   margin: 0;
   height: 100%;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: $body-text-block-font-size;
+  line-height: $body-text-block-font-size + 6;
   font-weight: 400;
   font-family: $body-font;
   color: $text-fill-color-primary;
   background: alpha($solid-background-fill-color-base, 0.5);
-  -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   +dark() {
@@ -113,7 +112,7 @@ body {
     z-index: 10;
     flex-direction: row;
     font-weight: normal;
-    font-size: 12px;
+    font-size: $caption-text-block-font-size;
   }
 }
 
@@ -158,100 +157,6 @@ img,
 video {
   display: block;
   max-width: 100%;
-}
-
-.index-hover {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .index-card {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    max-width: 600px;
-    padding: 20px;
-    background: $card-background-fill-color-default;
-    border: 1px solid $control-stroke-color-default;
-    border-radius: $overlay-corner-radius;
-    overflow: hidden;
-
-    +dark() {
-      background: $card-background-fill-color-default-dark;
-      border: 1px solid $control-stroke-color-default-dark;
-    }
-
-    .avatar-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 20px;
-
-      .avatar {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-    }
-
-    .articles {
-      display: flex;
-      flex-direction: column;
-      row-gap: 8px;
-      padding: 20px;
-
-      .title {
-        font-size: 24px;
-        margin-bottom: 10px;
-      }
-
-      ul {
-        list-style: none;
-        padding: 0;
-      }
-    }
-  }
-}
-
-.post-content {
-  overflow-wrap: break-word;
-}
-
-a.post-title-link {
-  color: $text-fill-color-primary;
-
-  &:hover {
-    color: $text-fill-color-secondary;
-  }
-
-  &:active {
-    color: $text-fill-color-tertiary;
-  }
-
-  &:not([href]):not([class]),
-  &:not([href]):not([class]):hover {
-    color: $text-fill-color-disabled;
-  }
-
-  +dark() {
-    color: $text-fill-color-primary-dark;
-
-    &:hover {
-      color: $text-fill-color-secondary-dark;
-    }
-
-    &:active {
-      color: $text-fill-color-tertiary-dark;
-    }
-
-    &:not([href]):not([class]),
-    &:not([href]):not([class]):hover {
-      color: $text-fill-color-disabled-dark;
-    }
-  }
 }
 
 a.random-link {

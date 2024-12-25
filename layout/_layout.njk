@@ -29,7 +29,7 @@
       </div>
     </div>
   </header>
-  <main class="main">{% block content %}{% endblock %}</main>
+  <main class="main {% block class %}{% endblock %}">{% block content %}{% endblock %}</main>
   <div class="footer-container">
     <footer class="footer" itemtype="http://schema.org/WPFooter">{% include '_partials/footer.njk' %}</footer>
   </div>

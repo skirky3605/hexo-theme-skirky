@@ -1,0 +1,39 @@
+.post-block {
+  .post-content {
+    overflow-wrap: break-word;
+
+    a.post-title-link {
+      color: $text-fill-color-primary;
+
+      &:hover {
+        color: $text-fill-color-secondary;
+      }
+
+      &:active {
+        color: $text-fill-color-tertiary;
+      }
+
+      &:not([href]):not([class]),
+      &:not([href]):not([class]):hover {
+        color: $text-fill-color-disabled;
+      }
+
+      +dark() {
+        color: $text-fill-color-primary-dark;
+
+        &:hover {
+          color: $text-fill-color-secondary-dark;
+        }
+
+        &:active {
+          color: $text-fill-color-tertiary-dark;
+        }
+
+        &:not([href]):not([class]),
+        &:not([href]):not([class]):hover {
+          color: $text-fill-color-disabled-dark;
+        }
+      }
+    }
+  }
+}

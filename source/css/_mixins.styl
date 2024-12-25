@@ -52,13 +52,6 @@ desktop-largest() {
   }
 }
 
-disable-user-select() {
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
 light() {
   @media (prefers-color-scheme: light) {
     {block};
@@ -69,4 +62,42 @@ dark() {
   @media (prefers-color-scheme: dark) {
     {block};
   }
+}
+
+disable-user-select() {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+round-icon($diameter) {
+  border-radius: 50%;
+  content: ' ';
+  height: $diameter;
+  width: $diameter;
+}
+
+badge() {
+  background: $accent-fill-color-default;
+  border-radius: 10px;
+  color: $text-on-accent-fill-color-primary;
+  font-weight: bold;
+  line-height: 1;
+  margin-left: .35em;
+  padding: 0 4px 2px 4px;
+
+  +dark() {
+    background: $accent-fill-color-default-dark;
+    color: $text-on-accent-fill-color-primary-dark;
+  }
+}
+
+soild-linear-gradient($color) {
+  linear-gradient($color, $color)
+}
+
+border-image-border($background, $border, $border-width) {
+  border: $border-width solid transparent;
+  background: padding-box soild-linear-gradient($background), border-box $border;
 }

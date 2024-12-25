@@ -1,3 +1,5 @@
+/** Colors */
+
 $system-accent-color = #4ecdc4
 $system-accent-color-dark1 = #3ac7bd
 $system-accent-color-dark2 = #36b1a9
@@ -5,6 +7,8 @@ $system-accent-color-dark3 = #2d968f
 $system-accent-color-light1 = #52e1d7
 $system-accent-color-light2 = #55f8ec
 $system-accent-color-light3 = #86eae3
+
+/** Light */
 
 $text-fill-color-primary = #000000E4
 $text-fill-color-secondary = #0000009E
@@ -17,11 +21,129 @@ $accent-text-fill-color-secondary = $system-accent-color-dark3
 $accent-text-fill-color-tertiary = $system-accent-color-dark1
 $accent-text-fill-color-disabled = #0000005C
 
-$card-background-fill-color-default = #FFFFFFB3
+$text-on-accent-fill-color-selected-text = #FFFFFF
+
+$text-on-accent-fill-color-primary = #FFFFFF
+$text-on-accent-fill-color-secondary = #FFFFFFB3
+$text-on-accent-fill-color-disabled = #FFFFFF
+
+$control-fill-color-default = #FFFFFFB3
+$control-fill-color-secondary = #F9F9F980
+$control-fill-color-tertiary = #F9F9F94D
+$control-fill-color-disabled = #F9F9F94D
+$control-fill-color-transparent = #FFFFFF00
+$control-fill-color-input-active = #FFFFFF
+
+$control-strong-fill-color-default = #00000072
+$control-strong-fill-color-disabled = #00000051
+
+$control-solid-fill-color-default = #FFFFFF
+
+$subtle-fill-color-transparent = #FFFFFF00
+$subtle-fill-color-secondary = #00000009
+$subtle-fill-color-tertiary = #00000006
+$subtle-fill-color-disabled = #FFFFFF00
+
+$control-alt-fill-color-transparent = #FFFFFF00
+$control-alt-fill-color-secondary = #00000006
+$control-alt-fill-color-tertiary = #0000000F
+$control-alt-fill-color-quarternary = #00000018
+$control-alt-fill-color-disabled = #FFFFFF00
+
+$control-on-image-fill-color-default = #FFFFFFC9
+$control-on-image-fill-color-secondary = #F3F3F3
+$control-on-image-fill-color-tertiary = #EBEBEB
+$control-on-image-fill-color-disabled = #FFFFFF00
+
+$accent-fill-color-default = $system-accent-color-dark1
+$accent-fill-color-secondary = alpha($system-accent-color-dark1, 0.9)
+$accent-fill-color-tertiary = alpha($system-accent-color-dark1, 0.8)
+$accent-fill-color-disabled = #00000037
 
 $control-stroke-color-default = #0000000F
+$control-stroke-color-secondary = #00000029
+$control-stroke-color-on-accent-default = #FFFFFF14
+$control-stroke-color-on-accent-secondary = #00000066
+$control-stroke-color-on-accent-tertiary = #00000037
+$control-stroke-color-on-accent-disabled = #0000000F
+
+$control-stroke-color-for-strong-fill-when-on-image = #FFFFFF59
+
+$card-stroke-color-default = #0000000F
+$card-stroke-color-default-solid = #EBEBEB
+
+$control-strong-stroke-color-default = #00000072
+$control-strong-stroke-color-disabled = #00000037
+
+$surface-stroke-color-default = #75757566
+$surface-stroke-color-flyout = #0000000F
+$surface-stroke-color-inverse = #FFFFFF15
+
+$divider-stroke-color-default = #0000000F
+
+$focus-stroke-color-outer = #000000E4
+$focus-stroke-color-inner = #FFFFFFB3
+
+$card-background-fill-color-default = #FFFFFFB3
+$card-background-fill-color-secondary = #F6F6F680
+
+$smoke-fill-color-default = #0000004D
+
+$layer-fill-color-default = #FFFFFF80
+$layer-fill-color-alt = #FFFFFF
+$layer-on-acrylic-fill-color-default = #FFFFFF40
+$layer-on-accent-acrylic-fill-color-default = #FFFFFF40
+
+$layer-on-mica-base-alt-fill-color-default = #FFFFFFB3
+$layer-on-mica-base-alt-fill-color-secondary = #0000000A
+$layer-on-mica-base-alt-fill-color-tertiary = #F9F9F9
+$layer-on-mica-base-alt-fill-color-transparent = #00000000
 
 $solid-background-fill-color-base = #F3F3F3
+$solid-background-fill-color-secondary = #EEEEEE
+$solid-background-fill-color-tertiary = #F9F9F9
+$solid-background-fill-color-quarternary = #FFFFFF
+$solid-background-fill-color-transparent = #F3F3F300
+$solid-background-fill-color-base-alt = #DADADA
+
+$system-fill-color-success = #0F7B0F
+$system-fill-color-caution = #9D5D00
+$system-fill-color-critical = #C42B1C
+$system-fill-color-neutral = #00000072
+$system-fill-color-solid-neutral = #8A8A8A
+$system-fill-color-attention-background = #F6F6F680
+$system-fill-color-success-background = #DFF6DD
+$system-fill-color-caution-background = #FFF4CE
+$system-fill-color-critical-background = #FDE7E9
+$system-fill-color-neutral-background = #00000006
+$system-fill-color-solid-attention-background = #F7F7F7
+$system-fill-color-solid-neutral-background = #F3F3F3
+
+$control-elevation-border-brush = linear-gradient($control-stroke-color-default 91%, $control-stroke-color-secondary);
+$circle-elevation-border-brush = linear-gradient($control-stroke-color-default 50%, $control-stroke-color-secondary 95%);
+$accent-control-elevation-border-brush = linear-gradient($control-stroke-color-on-accent-default 91%, $control-stroke-color-on-accent-secondary);
+
+control-elevation-border-brush($color) {
+  linear-gradient(blend($control-stroke-color-default, $color)91%, blend($control-stroke-color-secondary, $color))
+}
+circle-elevation-border-brush($color) {
+  linear-gradient(blend($control-stroke-color-default, $color)50%, blend($control-stroke-color-secondary, $color)95%)
+}
+accent-control-elevation-border-brush($color) {
+  linear-gradient(blend($control-stroke-color-on-accent-default, $color)91%, blend($control-stroke-color-on-accent-secondary, $color))
+}
+
+control-elevation-border($background, $border-width) {
+  border-image-border($background, control-elevation-border-brush($background), $border-width)
+}
+circle-elevation-border($background, $border-width) {
+  border-image-border($background, circle-elevation-border-brush($background), $border-width)
+}
+accent-control-elevation-border($background, $border-width) {
+  border-image-border($background, accent-control-elevation-border-brush($background), $border-width)
+}
+
+/** Dark */
 
 $text-fill-color-primary-dark = #FFFFFF
 $text-fill-color-secondary-dark = #FFFFFFC5
@@ -34,19 +156,157 @@ $accent-text-fill-color-secondary-dark = $system-accent-color-light3
 $accent-text-fill-color-tertiary-dark = $system-accent-color-light2
 $accent-text-fill-color-disabled-dark = #FFFFFF5D
 
-$card-background-fill-color-default-dark = #FFFFFF0D
+$text-on-accent-fill-color-selected-text-dark = #FFFFFF
+$text-on-accent-fill-color-primary-dark = #000000
+$text-on-accent-fill-color-secondary-dark = #00000080
+$text-on-accent-fill-color-disabled-dark = #FFFFFF87
+
+$control-fill-color-default-dark = #FFFFFF0F
+$control-fill-color-secondary-dark = #FFFFFF15
+$control-fill-color-tertiary-dark = #FFFFFF08
+$control-fill-color-disabled-dark = #FFFFFF0B
+$control-fill-color-transparent-dark = #FFFFFF00
+$control-fill-color-input-active-dark = #1E1E1EB3
+
+$control-strong-fill-color-default-dark = #FFFFFF8B
+$control-strong-fill-color-disabled-dark = #FFFFFF3F
+
+$control-solid-fill-color-default-dark = #454545
+
+$subtle-fill-color-transparent-dark = #FFFFFF00
+$subtle-fill-color-secondary-dark = #FFFFFF0F
+$subtle-fill-color-tertiary-dark = #FFFFFF0A
+$subtle-fill-color-disabled-dark = #FFFFFF00
+
+$control-alt-fill-color-transparent-dark = #FFFFFF00
+$control-alt-fill-color-secondary-dark = #00000019
+$control-alt-fill-color-tertiary-dark = #FFFFFF0B
+$control-alt-fill-color-quarternary-dark = #FFFFFF12
+$control-alt-fill-color-disabled-dark = #FFFFFF00
+
+$control-on-image-fill-color-default-dark = #1C1C1CB3
+$control-on-image-fill-color-secondary-dark = #1A1A1A
+$control-on-image-fill-color-tertiary-dark = #131313
+$control-on-image-fill-color-disabled-dark = #1E1E1E
+
+$accent-fill-color-default-dark = $system-accent-color-light2
+$accent-fill-color-secondary-dark = alpha($system-accent-color-light2, 0.9)
+$accent-fill-color-tertiary-dark = alpha($system-accent-color-light2, 0.8)
+$accent-fill-color-disabled-dark = #FFFFFF28
 
 $control-stroke-color-default-dark = #FFFFFF12
+$control-stroke-color-secondary-dark = #FFFFFF18
+$control-stroke-color-on-accent-default-dark = #FFFFFF14
+$control-stroke-color-on-accent-secondary-dark = #00000023
+$control-stroke-color-on-accent-tertiary-dark = #00000037
+$control-stroke-color-on-accent-disabled-dark = #00000033
+
+$control-stroke-color-for-strong-fill-when-on-image-dark = #0000006B
+
+$card-stroke-color-default-dark = #00000019
+$card-stroke-color-default-solid-dark = #1C1C1C
+
+$control-strong-stroke-color-default-dark = #FFFFFF8B
+$control-strong-stroke-color-disabled-dark = #FFFFFF28
+
+$surface-stroke-color-default-dark = #75757566
+$surface-stroke-color-flyout-dark = #00000033
+$surface-stroke-color-inverse-dark = #0000000F
+
+$divider-stroke-color-default-dark = #FFFFFF15
+
+$focus-stroke-color-outer-dark = #FFFFFF
+$focus-stroke-color-inner-dark = #000000B3
+
+$card-background-fill-color-default-dark = #FFFFFF0D
+$card-background-fill-color-secondary-dark = #FFFFFF08
+
+$smoke-fill-color-default-dark = #0000004D
+
+$layer-fill-color-default-dark = #3A3A3A4C
+$layer-fill-color-alt-dark = #FFFFFF0D
+
+$layer-on-acrylic-fill-color-default-dark = #FFFFFF09
+$layer-on-accent-acrylic-fill-color-default-dark = #FFFFFF09
+
+$layer-on-mica-base-alt-fill-color-default-dark = #3A3A3A73
+$layer-on-mica-base-alt-fill-color-secondary-dark = #FFFFFF0F
+$layer-on-mica-base-alt-fill-color-tertiary-dark = #2C2C2C
+$layer-on-mica-base-alt-fill-color-transparent-dark = #FFFFFF00
 
 $solid-background-fill-color-base-dark = #202020
+$solid-background-fill-color-secondary-dark = #1C1C1C
+$solid-background-fill-color-tertiary-dark = #282828
+$solid-background-fill-color-quarternary-dark = #2C2C2C
+$solid-background-fill-color-transparent-dark = #20202000
+$solid-background-fill-color-base-alt-dark = #0A0A0A
+
+$system-fill-color-success-dark = #6CCB5F
+$system-fill-color-caution-dark = #FCE100
+$system-fill-color-critical-dark = #FF99A4
+$system-fill-color-neutral-dark = #FFFFFF8B
+$system-fill-color-solid-neutral-dark = #9D9D9D
+$system-fill-color-attention-background-dark = #FFFFFF08
+$system-fill-color-success-background-dark = #393D1B
+$system-fill-color-caution-background-dark = #433519
+$system-fill-color-critical-background-dark = #442726
+$system-fill-color-neutral-background-dark = #FFFFFF08
+$system-fill-color-solid-attention-background-dark = #2E2E2E
+$system-fill-color-solid-neutral-background-dark = #2E2E2E
+
+$control-elevation-border-brush-dark = linear-gradient($control-stroke-color-secondary-dark, $control-stroke-color-default-dark 10%);
+$circle-elevation-border-brush-dark = linear-gradient($control-stroke-color-secondary-dark, $control-stroke-color-default-dark 50%);
+$accent-control-elevation-border-brush-dark = linear-gradient($control-stroke-color-on-accent-default-dark 91%, $control-stroke-color-on-accent-secondary-dark);
+
+control-elevation-border-brush-dark($color) {
+  linear-gradient(blend($control-stroke-color-secondary-dark, $color)0%, blend($control-stroke-color-default-dark, $color)10%)
+}
+circle-elevation-border-brush-dark($color) {
+  linear-gradient(blend($control-stroke-color-secondary-dark, $color)0%, blend($control-stroke-color-default-dark, $color)50%)
+}
+accent-control-elevation-border-brush-dark($color) {
+  linear-gradient(blend($control-stroke-color-on-accent-default-dark, $color)91%, blend($control-stroke-color-on-accent-secondary-dark, $color))
+}
+
+control-elevation-border-dark($background, $border-width) {
+  border-image-border($background, control-elevation-border-brush-dark($background), $border-width)
+}
+circle-elevation-border-dark($background, $border-width) {
+  border-image-border($background, circle-elevation-border-brush-dark($background), $border-width)
+}
+accent-control-elevation-border-dark($background, $border-width) {
+  border-image-border($background, accent-control-elevation-border-brush-dark($background), $border-width)
+}
+
+/** Common */
 
 $control-corner-radius = 4px
 $overlay-corner-radius = 8px
+
+/** Font Size */
+
+$content-control-font-size = 14px
+
+$text-style-large-font-size = 18.14px
+$text-style-extra-large-font-size = 25.5px
+
+$pivot-header-item-font-size = 24px
+
+$caption-text-block-font-size = 12px
+$body-text-block-font-size = 14px
+$subtitle-text-block-font-size = 20px
+$title-text-block-font-size = 28px
+$title-large-text-block-font-size = 40px
+$display-text-block-font-size = 68px
+
+/** Font Family */
 
 $body-font = Segoe UI Variable, Segoe UI, sans-serif;
 $font-family-monospace = "Cascadia Code NF", "Cascadia Code PL", "Cascadia Code", Consolas, "Courier New", "Liberation Mono", SFMono-Regular, Menlo, Monaco, monospace;
 
 $code-font-family = $font-family-monospace;
+
+/** Code Highlight */
 
 $highlight-background = convert(hexo-config('highlight.light.background'));
 $highlight-foreground = convert(hexo-config('highlight.light.foreground'));

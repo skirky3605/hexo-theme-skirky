@@ -1,0 +1,129 @@
+.posts-collapse .post-content {
+  margin-left: 16px;
+  position: relative;
+
+  .collection-title {
+    font-size: $subtitle-text-block-font-size;
+    position: relative;
+
+    &::before {
+      background: $accent-fill-color-default;
+      border: 4px solid $control-solid-fill-color-default;
+      margin-left: -9px;
+      margin-top: -7px;
+      position: absolute;
+      top: 50%;
+      round-icon(10px);
+
+      +dark() {
+        background: $accent-fill-color-default-dark;
+        border-color: $control-solid-fill-color-default-dark;
+      }
+    }
+  }
+
+  .collection-year {
+    font-size: $title-text-block-font-size;
+    font-weight: bold;
+    margin: 60px 0;
+    position: relative;
+
+    .collection-year-count {
+      font-size: $subtitle-text-block-font-size;
+      badge();
+    }
+
+    &::before {
+      background: $accent-fill-color-default;
+      border: 3px solid $control-solid-fill-color-default;
+      margin-left: -7px;
+      margin-top: -7px;
+      position: absolute;
+      top: 50%;
+      round-icon($overlay-corner-radius);
+
+      +dark() {
+        background: $accent-fill-color-default-dark;
+        border-color: $control-solid-fill-color-default-dark;
+      }
+    }
+  }
+
+  .collection-header {
+    display: block;
+    margin-left: 20px;
+
+    small {
+      color: $text-fill-color-secondary;
+      margin-left: 5px;
+
+      +dark() {
+        color: $text-fill-color-secondary-dark;
+      }
+    }
+  }
+
+  .post-header {
+    margin: 30px 2px 0;
+    padding-left: 15px;
+    position: relative;
+    font-size: $text-style-large-font-size;
+
+    &::before {
+      background: $accent-fill-color-default;
+      border: 2px solid $control-solid-fill-color-default;
+      left: -7px;
+      position: absolute;
+      top: $caption-text-block-font-size - 5;
+      round-icon(6px);
+    }
+
+    &:hover::before {
+      background: $accent-text-fill-color-secondary;
+    }
+  
+    &:active::before {
+      background: $accent-text-fill-color-tertiary;
+    }
+  
+    +dark() {
+      &::before {
+        background: $accent-fill-color-default-dark;
+        border-color: $control-solid-fill-color-default-dark;
+      }
+  
+      &:hover::before {
+        background: $accent-text-fill-color-secondary-dark;
+      }
+  
+      &:active::before {
+        background: $accent-text-fill-color-tertiary-dark;
+      }
+    }
+  }
+
+  .post-meta-container {
+    display: inline;
+    font-size: $caption-text-block-font-size;
+    margin-right: 10px;
+  }
+
+  .post-title {
+    display: inline;
+  }
+
+  &::before {
+    background: $control-strong-fill-color-default;
+    content: ' ';
+    height: 100%;
+    margin-left: -2px;
+    position: absolute;
+    top: 1.25em;
+    width: 4px;
+    border-radius: 2px;
+
+    +dark() {
+      background: $control-strong-fill-color-default-dark;
+    }
+  }
+}
