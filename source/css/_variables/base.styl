@@ -119,18 +119,29 @@ $system-fill-color-neutral-background = #00000006
 $system-fill-color-solid-attention-background = #F7F7F7
 $system-fill-color-solid-neutral-background = #F3F3F3
 
+$text-on-accent-fill-color-default = #FFFFFF
+$text-on-accent-a-a-fill-color-primary = #FFFFFF
+$text-on-accent-a-a-fill-color-secondary = #FFFFFFB3
+$text-on-accent-a-a-fill-color-disabled = #FFFFFF
+$control-a-a-fill-color-default = #00000072
+$control-a-a-fill-color-disabled = #00000051
+$accent-a-a-fill-color-disabled = #00000037
+$control-stroke-color-for-a-a-fill-on-image = #FFFFFF59
+$control-a-a-stroke-color-default = #00000072
+$control-a-a-stroke-color-disabled = #00000037
+
 $control-elevation-border-brush = linear-gradient($control-stroke-color-default 91%, $control-stroke-color-secondary);
 $circle-elevation-border-brush = linear-gradient($control-stroke-color-default 50%, $control-stroke-color-secondary 95%);
 $accent-control-elevation-border-brush = linear-gradient($control-stroke-color-on-accent-default 91%, $control-stroke-color-on-accent-secondary);
 
 control-elevation-border-brush($color) {
-  linear-gradient(blend($control-stroke-color-default, $color)91%, blend($control-stroke-color-secondary, $color))
+  linear-gradient(blend($control-stroke-color-default, $color) 91%, blend($control-stroke-color-secondary, $color))
 }
 circle-elevation-border-brush($color) {
-  linear-gradient(blend($control-stroke-color-default, $color)50%, blend($control-stroke-color-secondary, $color)95%)
+  linear-gradient(blend($control-stroke-color-default, $color) 50%, blend($control-stroke-color-secondary, $color) 95%)
 }
 accent-control-elevation-border-brush($color) {
-  linear-gradient(blend($control-stroke-color-on-accent-default, $color)91%, blend($control-stroke-color-on-accent-secondary, $color))
+  linear-gradient(blend($control-stroke-color-on-accent-default, $color) 91%, blend($control-stroke-color-on-accent-secondary, $color))
 }
 
 control-elevation-border($background, $border-width) {
@@ -141,6 +152,23 @@ circle-elevation-border($background, $border-width) {
 }
 accent-control-elevation-border($background, $border-width) {
   border-image-border($background, accent-control-elevation-border-brush($background), $border-width)
+}
+
+$text-control-elevation-border-brush = linear-gradient($control-stroke-color-default 100%, $control-strong-stroke-color-default);
+$text-control-elevation-border-focused-brush = linear-gradient($control-stroke-color-default 97%, $system-accent-color-dark1 97%);
+
+text-control-elevation-border-brush($color) {
+  linear-gradient(blend($color, $control-stroke-color-default) 100%, blend($color, $control-strong-stroke-color-default))
+}
+text-control-elevation-focused-border-brush($color) {
+  linear-gradient(blend($color, $control-stroke-color-default) 97%, blend($color, $system-accent-color-dark1) 97%)
+}
+
+text-control-elevation-border($background, $border-width) {
+  border-image-border($background, text-control-elevation-border-brush($background), $border-width)
+}
+text-control-elevation-border-focused($background, $border-width) {
+  border-image-border($background, text-control-elevation-border-focused-brush($background), $border-width)
 }
 
 /** Dark */
@@ -254,18 +282,29 @@ $system-fill-color-neutral-background-dark = #FFFFFF08
 $system-fill-color-solid-attention-background-dark = #2E2E2E
 $system-fill-color-solid-neutral-background-dark = #2E2E2E
 
+$text-on-accent-fill-color-default = #FFFFFF
+$text-on-accent-a-a-fill-color-primary = #000000
+$text-on-accent-a-a-fill-color-secondary = #00000080
+$text-on-accent-a-a-fill-color-disabled = #FFFFFF87
+$control-a-a-fill-color-default = #FFFFFF8B
+$control-a-a-fill-color-disabled = #FFFFFF3F
+$accent-a-a-fill-color-disabled = #FFFFFF28
+$control-stroke-color-for-a-a-fill-on-image = #0000006B
+$control-a-a-stroke-color-default = #FFFFFF8B
+$control-a-a-stroke-color-disabled = #FFFFFF28
+
 $control-elevation-border-brush-dark = linear-gradient($control-stroke-color-secondary-dark, $control-stroke-color-default-dark 10%);
 $circle-elevation-border-brush-dark = linear-gradient($control-stroke-color-secondary-dark, $control-stroke-color-default-dark 50%);
 $accent-control-elevation-border-brush-dark = linear-gradient($control-stroke-color-on-accent-default-dark 91%, $control-stroke-color-on-accent-secondary-dark);
 
 control-elevation-border-brush-dark($color) {
-  linear-gradient(blend($control-stroke-color-secondary-dark, $color)0%, blend($control-stroke-color-default-dark, $color)10%)
+  linear-gradient(blend($control-stroke-color-secondary-dark, $color), blend($control-stroke-color-default-dark, $color) 10%)
 }
 circle-elevation-border-brush-dark($color) {
-  linear-gradient(blend($control-stroke-color-secondary-dark, $color)0%, blend($control-stroke-color-default-dark, $color)50%)
+  linear-gradient(blend($control-stroke-color-secondary-dark, $color), blend($control-stroke-color-default-dark, $color) 50%)
 }
 accent-control-elevation-border-brush-dark($color) {
-  linear-gradient(blend($control-stroke-color-on-accent-default-dark, $color)91%, blend($control-stroke-color-on-accent-secondary-dark, $color))
+  linear-gradient(blend($control-stroke-color-on-accent-default-dark, $color) 91%, blend($control-stroke-color-on-accent-secondary-dark, $color))
 }
 
 control-elevation-border-dark($background, $border-width) {
@@ -276,6 +315,23 @@ circle-elevation-border-dark($background, $border-width) {
 }
 accent-control-elevation-border-dark($background, $border-width) {
   border-image-border($background, accent-control-elevation-border-brush-dark($background), $border-width)
+}
+
+$text-control-elevation-border-brush-dark = linear-gradient($control-stroke-color-default 8%, $control-strong-stroke-color-default 54%);
+$text-control-elevation-border-focused-brush-dark = linear-gradient($control-stroke-color-default 8%, $system-accent-color-light2);
+
+text-control-elevation-border-brush-dark($color) {
+  linear-gradient(blend($color, $control-stroke-color-default) 8%, blend($color, $control-strong-stroke-color-default) 54%)
+}
+text-control-elevation-border-focused-brush-dark($color) {
+  linear-gradient(blend($color, $control-stroke-color-default) 8%, rgba($system-accent-color-light2, 0.9))
+}
+
+text-control-elevation-border-dark($background, $border-width) {
+  border-image-border($background, text-control-elevation-border-brush-dark($background), $border-width)
+}
+text-control-elevation-border-focused-dark($background, $border-width) {
+  border-image-border($background, text-control-elevation-border-focused-brush-dark($background), $border-width)
 }
 
 /** Common */

@@ -1,0 +1,209 @@
+$accent-button-background = $accent-fill-color-default
+$accent-button-background-pointer-over = $accent-fill-color-secondary
+$accent-button-background-pressed = $accent-fill-color-tertiary
+$accent-button-background-disabled = $accent-fill-color-disabled
+$accent-button-foreground = $text-on-accent-fill-color-primary
+$accent-button-foreground-pointer-over = $text-on-accent-fill-color-primary
+$accent-button-foreground-pressed = $text-on-accent-fill-color-secondary
+$accent-button-foreground-disabled = $text-on-accent-fill-color-disabled
+$accent-button-border-brush = $accent-control-elevation-border-brush
+$accent-button-border-brush-pointer-over = $accent-control-elevation-border-brush
+$accent-button-border-brush-pressed = $control-fill-color-transparent
+$accent-button-border-brush-disabled = $control-fill-color-transparent
+
+accent-button-border-brush($background, $border-width) {
+  accent-control-elevation-border($background, $border-width)
+}
+
+$button-background = $control-fill-color-default
+$button-background-pointer-over = $control-fill-color-secondary
+$button-background-pressed = $control-fill-color-tertiary
+$button-background-disabled = $control-fill-color-disabled
+$button-foreground = $text-fill-color-primary
+$button-foreground-pointer-over = $text-fill-color-primary
+$button-foreground-pressed = $text-fill-color-secondary
+$button-foreground-disabled = $text-fill-color-disabled
+$button-border-brush = $control-elevation-border-brush
+$button-border-brush-pointer-over = $control-elevation-border-brush
+$button-border-brush-pressed = $control-stroke-color-default
+$button-border-brush-disabled = $control-stroke-color-default
+
+button-border($background, $border-width) {
+  border-image-border($background, $button-border-brush, $border-width)
+}
+
+$accent-button-background-dark = $accent-fill-color-default-dark
+$accent-button-background-pointer-over-dark = $accent-fill-color-secondary-dark
+$accent-button-background-pressed-dark = $accent-fill-color-tertiary-dark
+$accent-button-background-disabled-dark = $accent-fill-color-disabled-dark
+$accent-button-foreground-dark = $text-on-accent-fill-color-primary-dark
+$accent-button-foreground-pointer-over-dark = $text-on-accent-fill-color-primary-dark
+$accent-button-foreground-pressed-dark = $text-on-accent-fill-color-secondary-dark
+$accent-button-foreground-disabled-dark = $text-on-accent-fill-color-disabled-dark
+$accent-button-border-brush-dark = $accent-control-elevation-border-brush-dark
+$accent-button-border-brush-pointer-over-dark = $accent-control-elevation-border-brush-dark
+$accent-button-border-brush-pressed-dark = $control-fill-color-transparent-dark
+$accent-button-border-brush-disabled-dark = $control-fill-color-transparent-dark
+
+accent-button-border-brush-dark($background, $border-width) {
+  accent-control-elevation-border-dark($background, $border-width)
+}
+
+$button-background-dark = $control-fill-color-default-dark
+$button-background-pointer-over-dark = $control-fill-color-secondary-dark
+$button-background-pressed-dark = $control-fill-color-tertiary-dark
+$button-background-disabled-dark = $control-fill-color-disabled-dark
+$button-foreground-dark = $text-fill-color-primary-dark
+$button-foreground-pointer-over-dark = $text-fill-color-primary-dark
+$button-foreground-pressed-dark = $text-fill-color-secondary-dark
+$button-foreground-disabled-dark = $text-fill-color-disabled-dark
+$button-border-brush-dark = $control-elevation-border-brush-dark
+$button-border-brush-pointer-over-dark = $control-elevation-border-brush-dark
+$button-border-brush-pressed-dark = $control-stroke-color-default-dark
+$button-border-brush-disabled-dark = $control-stroke-color-default-dark
+
+button-border-dark($background, $border-width) {
+  border-image-border($background, $button-border-brush-dark, $border-width)
+}
+
+$button-border-theme-thickness = 1px
+$button-padding = 5px 11px 6px 11px
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+select {
+  padding: $button-padding;
+  color: $button-foreground;
+  border-radius: $control-corner-radius;
+  button-border($button-background, $button-border-theme-thickness);
+
+  &:not([disabled]):hover {
+    color: $button-foreground-pointer-over;
+    button-border($button-background-pointer-over, $button-border-theme-thickness);
+  }
+
+  &:not([disabled]):active {
+    color: $button-foreground-pressed;
+    background: $button-background-pressed;
+    border: $button-border-theme-thickness solid $button-border-brush-pressed;
+  }
+
+  &:disabled {
+    color: $button-foreground-disabled;
+    background: $button-background-disabled;
+    border: $button-border-theme-thickness solid $button-border-brush-disabled;
+  }
+
+  +dark() {
+    color: $button-foreground-dark;
+    button-border-dark($button-background-dark, $button-border-theme-thickness);
+
+    &:not([disabled]):hover {
+      color: $button-foreground-pointer-over-dark;
+      button-border-dark($button-background-pointer-over-dark, $button-border-theme-thickness);
+    }
+
+    &:not([disabled]):active {
+      color: $button-foreground-pressed-dark;
+      background: $button-background-pressed-dark;
+      border: $button-border-theme-thickness solid $button-border-brush-pressed-dark;
+    }
+
+    &:disabled {
+      color: $button-foreground-disabled-dark;
+      background: $button-background-disabled-dark;
+      border: $button-border-theme-thickness solid $button-border-brush-disabled-dark;
+    }
+  }
+
+  &.accent {
+    color: $accent-button-foreground;
+    accent-button-border-brush($accent-button-background, $button-border-theme-thickness);
+
+    &:not([disabled]):hover {
+      color: $accent-button-foreground-pointer-over;
+      accent-button-border-brush($accent-button-background-pointer-over, $button-border-theme-thickness);
+    }
+
+    &:not([disabled]):active {
+      color: $accent-button-foreground-pressed;
+      background: $accent-button-background-pressed;
+      border: $button-border-theme-thickness solid $accent-button-border-brush-pressed;
+    }
+
+    &:disabled {
+      color: $accent-button-foreground-disabled;
+      background: $accent-button-background-disabled;
+      border: $button-border-theme-thickness solid $accent-button-border-brush-disabled;
+    }
+
+    +dark() {
+      color: $accent-button-foreground-dark;
+      accent-button-border-brush-dark($accent-button-background-dark, $button-border-theme-thickness);
+
+      &:not([disabled]):hover {
+        color: $accent-button-foreground-pointer-over-dark;
+        accent-button-border-brush-dark($accent-button-background-pointer-over-dark, $button-border-theme-thickness);
+      }
+
+      &:not([disabled]):active {
+        color: $accent-button-foreground-pressed-dark;
+        background: $accent-button-background-pressed-dark;
+        border: $button-border-theme-thickness solid $accent-button-border-brush-pressed-dark;
+      }
+
+      &:disabled {
+        color: $accent-button-foreground-disabled-dark;
+        background: $accent-button-background-disabled-dark;
+        border: $button-border-theme-thickness solid $accent-button-border-brush-disabled-dark;
+      }
+    }
+  }
+}
+
+input[type="color"] {
+  color: $button-foreground;
+  border-radius: $control-corner-radius;
+  button-border($button-background, $button-border-theme-thickness);
+
+  &:not([disabled]):hover {
+    color: $button-foreground-pointer-over;
+    button-border($button-background-pointer-over, $button-border-theme-thickness);
+  }
+
+  &:not([disabled]):active {
+    color: $button-foreground-pressed;
+    background: $button-background-pressed;
+    border: $button-border-theme-thickness solid $button-border-brush-pressed;
+  }
+
+  &:disabled {
+    color: $button-foreground-disabled;
+    background: $button-background-disabled;
+    border: $button-border-theme-thickness solid $button-border-brush-disabled;
+  }
+
+  +dark() {
+    color: $button-foreground-dark;
+    button-border($button-background-dark, $button-border-theme-thickness);
+
+    &:not([disabled]):hover {
+      color: $button-foreground-pointer-over-dark;
+      button-border-dark($button-background-pointer-over-dark, $button-border-theme-thickness);
+    }
+
+    &:not([disabled]):active {
+      color: $button-foreground-pressed-dark;
+      background: $button-background-pressed-dark;
+      border: $button-border-theme-thickness solid $button-border-brush-pressed-dark;
+    }
+
+    &:disabled {
+      color: $button-foreground-disabled-dark;
+      background: $button-background-disabled-dark;
+      border: $button-border-theme-thickness solid $button-border-brush-disabled-dark;
+    }
+  }
+}
