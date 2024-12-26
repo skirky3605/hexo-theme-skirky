@@ -12,7 +12,7 @@ body {
   margin: 0;
   height: 100%;
   font-size: $body-text-block-font-size;
-  line-height: $body-text-block-font-size + 6;
+  line-height: 1.429;
   font-weight: 400;
   font-family: $body-font;
   color: $text-fill-color-primary;
@@ -55,7 +55,7 @@ body {
 .header-container {
   height: 48px;
 
-  .header {
+  .header-inner {
     position: fixed;
     top: 0;
     left: 0;
@@ -63,14 +63,23 @@ body {
     z-index: 1;
     background: $card-background-fill-color-default;
     backdrop-filter: blur(40px);
+    padding: 0 4px;
 
     +dark() {
       background: $card-background-fill-color-default-dark;
     }
+
+    a {
+      height: 48px;
+      padding: 0 12px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 
-.main {
+.main-inner {
   padding: 16px;
 
   +desktop-large() {
@@ -85,7 +94,7 @@ body {
 .footer-container {
   height: 40px;
 
-  .footer {
+  .footer-inner {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -94,6 +103,14 @@ body {
     align-items: center;
     padding: 10px 10px;
     backdrop-filter: blur(40px);
+
+    .left {
+      float: left;
+    }
+
+    .right {
+      float: right;
+    }
 
     a {
       color: $text-fill-color-primary;

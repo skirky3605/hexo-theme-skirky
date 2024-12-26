@@ -1,5 +1,5 @@
 {% if theme.footer.copyright !== false %}
-<span class="copyright">
+<span class="copyright left">
   {% set copyright_year = date(null, 'YYYY') %}
   Copyright &copy;
   {% if theme.footer.since and theme.footer.since != copyright_year %}{{ theme.footer.since }} – {% endif %}
@@ -9,7 +9,7 @@
 </span>
 {% if theme.footer.github %}
 <div style="flex-grow: 1;"></div>
-<a href="{{ theme.footer.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+<a class="right" href="{{ theme.footer.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
 {% endif %}
 {% endif %}
 <script src="{{ url_for(theme.js) }}/boot.js"></script>

@@ -1,9 +1,24 @@
 {% extends '_layout.njk' %}
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+{% block title %}{% if page.title %}{{ page.title }} | {% endif %}{{ config.title }}{% endblock %}
 
 {% block class %}page posts-expand{% endblock %}
 
 {% block content %}
-{{ partial('_macro/post.njk', { post: page, is_page: true }) }}
+<div class="post-block" lang="{{ page.lang }}">
+  {% if page.header !== false %}
+  {% include '_partials/page/page-header.njk' %}
+  {% endif %}
+  <div class="post-body{% if page.direction and page.direction.toLowerCase() === 'rtl' %} rtl{% endif %}">
+    {% if page.type === 'tags' %}
+    {% include '_partials/page/tags.njk' %}
+    {% elif page.type === 'categories' %}
+    {%- include '_partials/page/categories.njk' -%}
+    {% elif page.type === 'schedule' %}
+    {% include '_partials/page/schedule.njk' %}
+    {% else %}
+    {{ page.content }}
+    {% endif %}
+  </div>
+</div>
 {% endblock %}

@@ -1,0 +1,21 @@
+{% extends '_layout.njk' %}
+{% import '_macro/post-collapse.njk' as post_template with context %}
+
+{% block title %}分类: {{ page.category }} | {{ config.title }}{% endblock %}
+
+{% block class %}category posts-collapse{% endblock %}
+
+{% block content %}
+<div class="post-block">
+  <div class="post-content">
+    <div class="collection-title">
+      <h1 class="collection-header">
+        {{- page.category }}
+        <small>分类</small>
+      </h1>
+    </div>
+    {{ post_template.render(page.posts) }}
+  </div>
+</div>
+{%- include '_partials/pagination.njk' -%}
+{% endblock %}

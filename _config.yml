@@ -26,6 +26,14 @@ codeblock:
     light: default
     dark: stackoverflow-dark
 
+# TagCloud settings for tags page.
+tagcloud:
+  min: 12 # Minimum font size in px
+  max: 30 # Maximum font size in px
+  amount: 200 # Total amount of tags
+  orderby: name # Order of tags
+  order: 1 # Sort order
+
 # Assets
 css: css
 js: js

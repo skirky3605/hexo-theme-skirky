@@ -14,25 +14,21 @@
   <div class="cover">{% block cover %}{% endblock %}</div>
   <div class="header-container">
     <header class="header" itemtype="http://schema.org/WPHeader">
-      <div class="navbar" style="display: flex; margin: 0 4px;">
-        <div style="height: 48px; padding: 0 12px; display: flex; justify-content: center; align-items: center;">
-          <a href="/">首页</a>
-        </div>
-        <div style="height: 48px; padding: 0 12px; display: flex; justify-content: center; align-items: center;">
-          <a href="/tags">标签</a>
-        </div>
-        <div style="height: 48px; padding: 0 12px; display: flex; justify-content: center; align-items: center;">
-          <a href="/categories">分类</a>
-        </div>
-        <div style="height: 48px; padding: 0 12px; display: flex; justify-content: center; align-items: center;">
-          <a href="/archives">归档</a>
-        </div>
+      <div class="header-inner">
+        <a href="/">首页</a>
+        <a href="/tags">标签</a>
+        <a href="/categories">分类</a>
+        <a href="/archives">归档</a>
       </div>
     </header>
   </div>
-  <main class="main {% block class %}{% endblock %}">{% block content %}{% endblock %}</main>
+  <main class="main {% block class %}{% endblock %}">
+    <div class="main-inner">{% block content %}{% endblock %}</div>
+  </main>
   <div class="footer-container">
-    <footer class="footer" itemtype="http://schema.org/WPFooter">{% include '_partials/footer.njk' %}</footer>
+    <footer class="footer" itemtype="http://schema.org/WPFooter">
+      <div class="footer-inner">{% include '_partials/footer.njk' %}</div>
+    </footer>
   </div>
 </body>
 

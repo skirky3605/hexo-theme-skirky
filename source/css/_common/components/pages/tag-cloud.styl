@@ -1,0 +1,55 @@
+.tag-cloud {
+  text-align: center;
+  line-height: normal;
+
+  a {
+    display: inline-block;
+    margin: 10px;
+  }
+}
+
+for $tag-cloud in (0 .. 10) {
+  tag-cloud-color($color) {
+     mix($color, $text-fill-color-disabled, $tag-cloud * 10);
+  }
+
+  .tag-cloud-{$tag-cloud} {
+    color: tag-cloud-color($text-fill-color-primary);
+    
+    &:hover {
+      color: $text-fill-color-secondary;
+    }
+
+    &:active {
+      color: $text-fill-color-tertiary;
+    }
+
+    &:not([href]):not([class]),
+    &:not([href]):not([class]):hover {
+      color: $text-fill-color-disabled;
+    }
+  }
+
+  +dark() {
+    tag-cloud-color-dark($color) {
+      mix($color, $text-fill-color-disabled-dark, $tag-cloud * 10);
+    }
+
+    .tag-cloud-{$tag-cloud} {
+      color: tag-cloud-color-dark($text-fill-color-primary-dark);
+      
+      &:hover {
+        color: $text-fill-color-secondary-dark;
+      }
+
+      &:active {
+        color: $text-fill-color-tertiary-dark;
+      }
+
+      &:not([href]):not([class]),
+      &:not([href]):not([class]):hover {
+        color: $text-fill-color-disabled-dark;
+      }
+    }
+  }
+}
