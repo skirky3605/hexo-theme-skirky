@@ -1,0 +1,20 @@
+{% macro render(node) %}
+
+{% set itemURL = node.path %}
+<li class="menu-item menu-item-{{ node.name | lower | replace(' ', '-') }}">
+  {% set menuText = node.name %}
+
+  {% if node.type == 'archives' %}
+  {% set menuBadge = '<span class="badge">' + site.posts.length + '</span>' %}
+  {% elseif node.type == 'categories' %}
+  {% set menuBadge = '<span class="badge">' + site.categories.length + '</span>' %}
+  {% elseif node.type == 'tags' %}
+  {% set menuBadge = '<span class="badge">' + site.tags.length + '</span>' %}
+  {% else %}
+  {% set menuBadge = '' %}
+  {% endif %}
+
+  {{ html_url(itemURL, menuText + menuBadge, { rel: 'section' }) }}
+</li>
+
+{% endmacro %}

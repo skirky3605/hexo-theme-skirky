@@ -1,0 +1,85 @@
+.menu {
+  margin: 0;
+}
+
+.main-menu {
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  height: 48px;
+}
+
+.menu-item {
+  display: inline;
+  list-style: none;
+  position: relative;
+
+  a {
+    padding: 0 12px;
+    color: $text-fill-color-primary;
+
+    &:hover {
+      color: $text-fill-color-secondary;
+    }
+
+    &:active {
+      color: $text-fill-color-tertiary;
+    }
+
+    &:not([href]):not([class]),
+    &:not([href]):not([class]):hover {
+      color: $text-fill-color-disabled;
+    }
+
+    &.menu-item-active::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: calc(50% - 8px);
+      width: 16px;
+      height: 3px;
+      border-radius: 2px;
+      background-color: $accent-fill-color-default;
+    }
+
+    .badge {
+      min-width: 14px;
+      height: 14px;
+      position: absolute;
+      top: -4px;
+      right: -2px;
+      text-align: center;
+      border-radius: 8px;
+      padding: 1px;
+      background-color: $accent-fill-color-default;
+      color: $text-on-accent-fill-color-primary;
+      font-size: 9.5px;
+    }
+
+    +dark() {
+      color: $text-fill-color-primary-dark;
+
+      &:hover {
+        color: $text-fill-color-secondary-dark;
+      }
+
+      &:active {
+        color: $text-fill-color-tertiary-dark;
+      }
+
+      &:not([href]):not([class]),
+      &:not([href]):not([class]):hover {
+        color: $text-fill-color-disabled-dark;
+      }
+
+      &.menu-item-active::after {
+        background-color: $accent-fill-color-default-dark;
+      }
+
+      .badge {
+        background-color: $accent-fill-color-default-dark;
+        color: $text-on-accent-fill-color-primary-dark;
+      }
+    }
+  }
+}

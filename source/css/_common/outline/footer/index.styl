@@ -1,0 +1,47 @@
+.footer-container {
+  height: 40px;
+
+  .footer-inner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: $card-background-fill-color-default;
+    align-items: center;
+    padding: 10px 10px;
+    backdrop-filter: blur(40px);
+
+    .left {
+      float: left;
+    }
+
+    .right {
+      float: right;
+    }
+
+    a {
+      color: $text-fill-color-primary;
+      text-decoration: none;
+
+      &:focus {
+        outline: 1px dashed;
+        outline-offset: 3px;
+      }
+    }
+
+    +dark() {
+      background: $card-background-fill-color-default-dark;
+      color: $text-fill-color-primary-dark;
+
+      a {
+        color: $text-fill-color-primary-dark;
+      }
+    }
+
+    display: flex;
+    z-index: 10;
+    flex-direction: row;
+    font-weight: normal;
+    font-size: $caption-text-block-font-size;
+  }
+}

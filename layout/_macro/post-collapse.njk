@@ -24,7 +24,7 @@
     <div class="post-title">
       {% if post.link %}{# Link posts #}
       {% set postText = post.title or post.link %}
-      {{ next_url(post.link, postText, {class: 'post-title-link', itemprop: 'url'}) }}
+      {{ next_url(post.link, postText, { class: 'post-title-link', itemprop: 'url' }) }}
       {% else %}
       <a class="post-title-link" href="{{ url_for(post.path) }}" itemprop="url">
         <span itemprop="name">{{ post.title or __('post.untitled') }}</span>

@@ -3,27 +3,38 @@
 {% else %}
 <div class="post-block">
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="{{ post.lang }}">
-    <h1 style="text-align: center;">
-      {% if is_index %}
-      {{ html_url(post.path, post.title or __('post.untitled'), { class: 'post-title-link', itemprop: 'url' }) }}
+    {% if post.header !== false %}
+    <header class="post-header">
+      <{% if is_index %}h2{% else %}h1{% endif %}
+        class="post-title{% if post.direction and post.direction.toLowerCase() === 'rtl' %} rtl{% endif %}"
+        itemprop="name headline">
+        {% if post.link %}
+        {% set postText = post.title or post.link %}
+        {{ html_url(post.link, postText, { class: 'post-title-link', itemprop: 'url' }) }}
+        {% elif is_index %}
+        {{ html_url(post.path, post.title or __('post.untitled'), { class: 'post-title-link', itemprop: 'url' }) }}
+        {% else %}
+        {{ post.title }}
+        {% endif %}
+      </{% if is_index %}h2{% else %}h1{% endif %}>
+      <p class="date" style="font-size: 12px; text-align: center;">
+        <span>发布日期：</span>
+        <time title="{{ full_date(post.date) }}" datetime="{{ moment(post.date).format() }}">{{ date(post.date)
+          }}</time>
+      </p>
+    </header>
+    {% endif %}
+    <div class="post-body{% if post.direction and post.direction.toLowerCase() === 'rtl' %} rtl{% endif %}"
+      itemprop="articleBody">
+      {% if is_index and post.excerpt %}
+      {{ post.excerpt }}
+      <p style="text-align: center;">
+        <a href="{{ url_for(post.path) }}" class="read-more">阅读全文</a>
+      </p>
       {% else %}
-      {{ post.title }}
+      {{ post.content }}
       {% endif %}
-    </h1>
-    {% if not post.is_page %}
-    <p class="date" style="font-size: 12px; text-align: center;">
-      <span>发布日期：</span>
-      <time title="{{ full_date(post.date) }}" datetime="{{ moment(post.date).format() }}">{{ date(post.date) }}</time>
-    </p>
-    {% endif %}
-    {% if is_index and post.excerpt %}
-    {{ post.excerpt }}
-    <p style="text-align: center;">
-      <a href="{{ url_for(post.path) }}" class="read-more">阅读全文</a>
-    </p>
-    {% else %}
-    {{ post.content }}
-    {% endif %}
+    </div>
   </article>
 </div>
 {% endif %}

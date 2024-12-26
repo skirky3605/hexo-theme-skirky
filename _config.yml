@@ -14,6 +14,16 @@ theme_color:
   light: "#F3F3F3"
   dark: "#202020"
 
+menu:
+  home: / || fa fa-home
+  #about: /about/ || fa fa-user
+  tags: /tags/ || fa fa-tags
+  categories: /categories/ || fa fa-th
+  archives: /archives/ || fa fa-archive
+  #schedule: /schedule/ || fa fa-calendar
+  #sitemap: /sitemap.xml || fa fa-sitemap
+  #commonweal: /404/ || fa fa-heartbeat
+
 footer:
   # Specify the year when the site was setup. If not defined, current year will be used.
   #since: 2021

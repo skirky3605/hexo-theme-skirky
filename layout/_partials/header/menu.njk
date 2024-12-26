@@ -1,0 +1,12 @@
+{% import './menu-item.njk' as menu_item with context %}
+
+{% if theme.menu %}
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    {{ menu_item.render({ type: 'home', name: '主页', path: '/' }) }}
+    {{ menu_item.render({ type: 'tags', name: '标签', path: '/tags/' }) }}
+    {{ menu_item.render({ type: 'categories', name: '分类', path: '/categories/' }) }}
+    {{ menu_item.render({ type: 'archives', name: '归档', path: '/archives/' }) }}
+  </ul>
+</nav>
+{% endif %}

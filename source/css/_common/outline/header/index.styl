@@ -1,0 +1,20 @@
+@import 'menu';
+
+.header-container {
+  height: 48px;
+
+  .header-inner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: $card-background-fill-color-default;
+    backdrop-filter: blur(40px);
+    padding: 0 4px;
+
+    +dark() {
+      background: $card-background-fill-color-default-dark;
+    }
+  }
+}

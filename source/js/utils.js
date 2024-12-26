@@ -5,11 +5,16 @@ HTMLElement.prototype.wrap = function (wrapper) {
 };
 
 (function () {
-  const onPageLoaded = () => document.dispatchEvent(
-    new Event("page:loaded", {
-      bubbles: true
-    })
-  );
+  const onPageLoaded = () => {
+    try {
+      document.dispatchEvent(new Event("page:loaded", { bubbles: true }));
+    }
+    catch {
+      const event = document.createEvent("HTMLEvents");
+      event.initEvent("page:loaded", true, true);
+      document.dispatchEvent(event);
+    }
+  };
 
   if (document.readyState === "loading") {
     document.addEventListener("readystatechange", onPageLoaded, { once: true });
@@ -20,6 +25,9 @@ HTMLElement.prototype.wrap = function (wrapper) {
 })();
 
 Skirky.utils = {
+  /**
+   * @param {Element} element
+   */
   registerCodeblock(element) {
     const inited = !!element;
     let figure;
@@ -28,7 +36,9 @@ Skirky.utils = {
     } else {
       figure = document.querySelectorAll("pre");
     }
-    figure.forEach(element => {
+    var hasList = typeof document.body.classList !== "undefined";
+    for (let i = 0; i < figure.length; i++) {
+      const element = figure[i];
       // Skip pre > .mermaid for folding and copy button
       if (element.querySelector(".mermaid")) return;
       if (!inited) {
@@ -37,13 +47,26 @@ Skirky.utils = {
           // Hljs without line_number and wrap
           span = element.querySelectorAll("code.highlight span");
         }
-        span.forEach(s => {
-          s.classList.forEach(name => {
-            s.classList.replace(name, `hljs-${name}`);
-          });
-        });
+        for (let j = 0; j < span.length; j++) {
+          if (hasList) {
+            const list = span[j].classList;
+            for (let k = 0; k < list.length; k++) {
+              const name = list[k];
+              list.add("hljs-".concat(name));
+              list.remove(name);
+            }
+          }
+          else {
+            var name = '';
+            var list = span[j].className.split(" ");
+            for (var k = 0; k < list.length; k++) {
+              name += "hljs-".concat(list[k]);
+            }
+            span[j].className = name;
+          }
+        }
       }
-    });
+    }
   },
   applyRandomGradient() {
     // 生成随机颜色，确保两种颜色的差异明显
@@ -61,10 +84,11 @@ Skirky.utils = {
       return { color1, color2 };
     }
     const links = document.querySelectorAll("a.random-link");
-    links.forEach(link => {
+    for (let i = 0; i < links.length; i++) {
+      const link = links[i];
       const { color1: randomColor1, color2: randomColor2 } = getRandomColor();
       const gradient = `linear-gradient(135deg, ${randomColor1}, ${randomColor2})`;
       link.style.background = gradient;
-    });
+    }
   }
 };
