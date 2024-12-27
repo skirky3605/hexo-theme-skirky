@@ -6,7 +6,6 @@
   display: flex;
   align-items: center;
   padding: 0 4px;
-  height: 48px;
 }
 
 .menu-item {
@@ -16,6 +15,7 @@
 
   a {
     padding: 0 12px;
+    line-height: 48px;
     color: $text-fill-color-primary;
 
     &:hover {
@@ -34,23 +34,24 @@
     &.menu-item-active::after {
       content: '';
       position: absolute;
-      bottom: -8px;
       left: calc(50% - 8px);
       width: 16px;
       height: 3px;
+      margin-top: 38px;
       border-radius: 2px;
       background-color: $accent-fill-color-default;
     }
 
     .badge {
+      line-height: normal;
       min-width: 14px;
       height: 14px;
       position: absolute;
-      top: -4px;
-      right: -2px;
+      right: -1px;
       text-align: center;
       border-radius: 8px;
       padding: 1px;
+      margin-top: 9px;
       background-color: $accent-fill-color-default;
       color: $text-on-accent-fill-color-primary;
       font-size: 9.5px;

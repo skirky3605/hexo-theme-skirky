@@ -36,7 +36,7 @@ Skirky.utils = {
     } else {
       figure = document.querySelectorAll("pre");
     }
-    var hasList = typeof document.body.classList !== "undefined";
+    const hasList = typeof document.body.classList !== "undefined";
     for (let i = 0; i < figure.length; i++) {
       const element = figure[i];
       // Skip pre > .mermaid for folding and copy button
@@ -65,6 +65,33 @@ Skirky.utils = {
             span[j].className = name;
           }
         }
+      }
+    }
+  },
+  registerActiveMenuItem() {
+    const items = document.querySelectorAll(".menu-item a[href]");
+    const hasList = typeof document.body.classList !== "undefined";
+    for (let i = 0; i < items.length; i++) {
+      const target = items[i];
+      const baseUrl = '/';
+      const pathname = target.pathname[0] === baseUrl ? target.pathname : `/${target.pathname}`;
+      const isSamePath = pathname === location.pathname || pathname === location.pathname.replace("index.html", '');
+      const isSubPath = !target.pathname === baseUrl && location.pathname.startsWith(target.pathname);
+      const isSelect = target.hostname === location.hostname && (isSamePath || isSubPath);
+      if (hasList) {
+        if (isSelect) {
+          if (!target.classList.contains("menu-item-active")) {
+            target.classList.add("menu-item-active");
+          }
+        }
+        else {
+          if (target.classList.contains("menu-item-active")) {
+            target.classList.remove("menu-item-active");
+          }
+        }
+      }
+      else {
+        target.className = isSelect ? "menu-item-active" : '';
       }
     }
   },

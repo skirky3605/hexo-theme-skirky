@@ -12,6 +12,7 @@ Skirky.boot.registerEvents = function () {
 
 Skirky.boot.refresh = function () {
   Skirky.utils.registerCodeblock();
+  Skirky.utils.registerActiveMenuItem();
   Skirky.utils.applyRandomGradient();
 };
 
