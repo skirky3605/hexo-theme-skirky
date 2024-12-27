@@ -25,7 +25,6 @@ body {
   }
 
   .background {
-    position: absolute;
     position: fixed;
     top: 0;
     left: 0;
@@ -71,6 +70,23 @@ body {
 
   +desktop-largest() {
     width: 75%;
+  }
+}
+
+.back-to-top {
+  cursor: pointer;
+  fill: currentColor;
+  position: fixed;
+  right: 16px;
+  bottom: -300px;
+  transition: bottom .2s ease-in-out;
+
+  svg {
+    margin-bottom: -3px;
+  }
+
+  &.back-to-top-on {
+    bottom: 56px;
   }
 }
 

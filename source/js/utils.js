@@ -68,6 +68,33 @@ Skirky.utils = {
       }
     }
   },
+  registerScrollPercent() {
+    const backToTop = document.querySelector(".back-to-top");
+    if (backToTop) {
+      // For init back to top in sidebar if page was scrolled after page refresh.
+      window.addEventListener("scroll", () => {
+        const contentHeight = document.body.scrollHeight - window.innerHeight;
+        const scrollPercent = contentHeight > 0 ? Math.min(100 * (window.scrollY ?? window.pageYOffset) / contentHeight, 100) : 0;
+        const isShow = Math.round(scrollPercent) >= 5;
+        if (typeof backToTop.classList === "undefined") {
+          backToTop.className = "back-to-top accent" + (isShow ? " back-to-top-on" : '');
+        }
+        else {
+          if (isShow) {
+            if (!backToTop.classList.contains("back-to-top-on")) {
+              backToTop.classList.add("back-to-top-on");
+            }
+          }
+          else {
+            if (backToTop.classList.contains("back-to-top-on")) {
+              backToTop.classList.remove("back-to-top-on");
+            }
+          }
+        }
+        backToTop.querySelector("span").innerText = Math.round(scrollPercent) + '%';
+      }, { passive: true });
+    }
+  },
   registerActiveMenuItem() {
     const items = document.querySelectorAll(".menu-item a[href]");
     const hasList = typeof document.body.classList !== "undefined";

@@ -28,6 +28,10 @@
   </div>
   <main class="main">
     <div class="main-inner {% block class %}{% endblock %}">{% block content %}{% endblock %}</div>
+    <button class="back-to-top accent" title="返回顶部" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+      {{ fluent_icon("ArrowUp", 16) }}
+      <span>0%</span>
+    </button>
   </main>
   <div class="footer-container">
     <footer class="footer" itemtype="http://schema.org/WPFooter">
