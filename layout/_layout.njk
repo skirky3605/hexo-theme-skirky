@@ -14,7 +14,16 @@
   <div class="cover">{% block cover %}{% endblock %}</div>
   <div class="header-container">
     <header class="header" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner">{% include '_partials/header/menu.njk' %}</div>
+      <div class="header-inner">
+        <div class="header-left">
+          {% include '_partials/header/menu.njk' %}
+        </div>
+        <div class="header-right">
+          <li class="menu-item menu-item-search">
+            <a title="搜索" href="/search" role="button">{{ fluent_icon("Search") }}</a>
+          </li>
+        </div>
+      </div>
     </header>
   </div>
   <main class="main">
