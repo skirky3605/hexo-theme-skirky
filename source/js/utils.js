@@ -1,9 +1,3 @@
-HTMLElement.prototype.wrap = function (wrapper) {
-  this.parentNode.insertBefore(wrapper, this);
-  this.parentNode.removeChild(this);
-  wrapper.appendChild(this);
-};
-
 (function () {
   const onPageLoaded = () => {
     try {
@@ -52,15 +46,14 @@ Skirky.utils = {
             const list = span[j].classList;
             for (let k = 0; k < list.length; k++) {
               const name = list[k];
-              list.add("hljs-".concat(name));
-              list.remove(name);
+              list.replace(name, `hljs-${name}`);
             }
           }
           else {
-            var name = '';
-            var list = span[j].className.split(" ");
-            for (var k = 0; k < list.length; k++) {
-              name += "hljs-".concat(list[k]);
+            let name = '';
+            const list = span[j].className.split(" ");
+            for (let k = 0; k < list.length; k++) {
+              name += `hljs-${list[k]}`;
             }
             span[j].className = name;
           }
@@ -100,10 +93,9 @@ Skirky.utils = {
     const hasList = typeof document.body.classList !== "undefined";
     for (let i = 0; i < items.length; i++) {
       const target = items[i];
-      const baseUrl = '/';
-      const pathname = target.pathname[0] === baseUrl ? target.pathname : `/${target.pathname}`;
+      const pathname = target.pathname[0] === '/' ? target.pathname : `/${target.pathname}`;
       const isSamePath = pathname === location.pathname || pathname === location.pathname.replace("index.html", '');
-      const isSubPath = !target.pathname === baseUrl && location.pathname.startsWith(target.pathname);
+      const isSubPath = !CONFIG.root.startsWith(target.pathname) && location.pathname.startsWith(target.pathname);
       const isSelect = target.hostname === location.hostname && (isSamePath || isSubPath);
       if (hasList) {
         if (isSelect) {

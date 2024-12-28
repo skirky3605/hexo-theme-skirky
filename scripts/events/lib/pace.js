@@ -3,7 +3,7 @@ const { resolve } = require("./utils");
 
 module.exports = hexo => {
   return {
-    path: "js/third-party/pace.js",
+    path: `${hexo.theme.config.js}/third-party/pace.js`,
     data: () => fs.createReadStream(resolve("pace-js", "pace.js"))
   };
 }

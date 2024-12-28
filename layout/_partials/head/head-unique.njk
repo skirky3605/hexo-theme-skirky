@@ -1,8 +1,9 @@
 {%- set canonical = url | replace(r/index\.html$/, '') %}
 {%- if not config.permalink.endsWith('.html') %}
-  {%- set canonical = canonical | replace(r/\.html$/, '') %}
+{%- set canonical = canonical | replace(r/\.html$/, '') %}
 {%- endif %}
 <link rel="canonical" href="{{ canonical }}">
 {%- if page.noindex %}
 <meta name="robots" content="noindex">
 {%- endif %}
+{{ html_data('page', html_config_unique()) }}

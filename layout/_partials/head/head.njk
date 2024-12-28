@@ -39,11 +39,11 @@
 
 <link rel="stylesheet" href="{{ url_for(theme.css) }}/main.css">
 
-<script>
-  if (typeof globalThis === "undefined") {
-    this.globalThis = this;
-  }
-</script>
+<script src="{{ url_for(theme.js) }}/polyfill.js"></script>
+
+{{ html_data('main', html_config()) }}
+
+{% include 'head-unique.njk' %}
 
 <script src="{{ url_for(theme.js) }}/third-party/pace.js"></script>
 <script src="{{ url_for(theme.js) }}/config.js"></script>

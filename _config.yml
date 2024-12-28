@@ -44,6 +44,14 @@ tagcloud:
   orderby: name # Order of tags
   order: 1 # Sort order
 
+# Local Search
+# Dependencies: https://github.com/next-theme/hexo-generator-searchdb
+local_search:
+  # Show top n results per article, show all results by setting to -1
+  top_n_per_article: 1
+  # Unescape html strings to the readable one.
+  unescape: true
+
 # Assets
 css: css
 js: js

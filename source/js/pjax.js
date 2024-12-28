@@ -3,6 +3,7 @@ if (typeof window.history.replaceState !== "undefined") {
     selectors: [
       'head title',
       'meta[property="og:title"]',
+      'script[type="application/json"]',
       '.cover',
       '.main-inner',
       '.pjax'
