@@ -31,7 +31,12 @@ const icons = new Proxy(variants, {
 
 module.exports = {
   icons,
-  fluentIcon: function(name, size = "size20", variant = "regular") {
-    return icons[variant][size][name];
-  }
+  fluentIcon:
+    /**
+     * @param {string} name
+     * @returns {string}
+     */
+    function (name, size = "size20", variant = "regular") {
+      return icons[variant][size][name];
+    }
 }

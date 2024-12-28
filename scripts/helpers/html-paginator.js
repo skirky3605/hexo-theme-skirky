@@ -1,14 +1,14 @@
 /* global hexo */
 "use strict";
 
-module.exports = function() {
+module.exports = function () {
   const prev = "上一页";
   const next = "下一页";
   let paginator = this.paginator({
     prev_text: "上一页",
     next_text: "下一页",
-    mid_size : 1,
-    escape   : false
+    mid_size: 1,
+    escape: false
   });
   paginator = paginator
     .replace('rel="prev"', `rel="prev" title="${prev}" aria-label="${prev}"`)

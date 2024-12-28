@@ -13,6 +13,18 @@ if (typeof String.prototype.startsWith === "undefined") {
     };
 }
 
+if (typeof String.prototype.endsWith === "undefined") {
+  String.prototype.endsWith =
+    /**
+     * @param {string} searchString
+     * @param {number} position
+     */
+    function (searchString, position = this.length) {
+      const index = this.lastIndexOf(searchString);
+      return index !== -1 && index === position - searchString.length;
+    };
+}
+
 if (typeof DOMTokenList !== "undefined") {
   if (typeof DOMTokenList.prototype.replace === "undefined") {
     DOMTokenList.prototype.replace =

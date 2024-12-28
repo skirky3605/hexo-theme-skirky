@@ -52,7 +52,21 @@ function highlightTheme(name) {
   };
 }
 
+/**
+ * @param {import("@types/hexo")} hexo
+ * @param {string} path
+ * @param {string} name
+ * @param {string} file
+ */
+function renderGeneratorAsync(hexo, path, name, file) {
+  return {
+    path: `${hexo.theme.config.js}/${path}`,
+    data: () => hexo.render.render({ path: resolve(name, file) })
+  };
+}
+
 module.exports = {
   resolve,
-  highlightTheme
+  highlightTheme,
+  renderGeneratorAsync
 };
