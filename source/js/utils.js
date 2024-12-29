@@ -1,4 +1,4 @@
-(function () {
+(() => {
   const onPageLoaded = () => {
     try {
       document.dispatchEvent(new Event("page:loaded", { bubbles: true }));
@@ -19,48 +19,6 @@
 })();
 
 Skirky.utils = {
-  /**
-   * @param {Element} element
-   */
-  registerCodeblock(element) {
-    const inited = !!element;
-    let figure;
-    if (CONFIG.hljswrap) {
-      figure = (inited ? element : document).querySelectorAll("figure.highlight");
-    } else {
-      figure = document.querySelectorAll("pre");
-    }
-    const hasList = typeof document.body.classList !== "undefined";
-    for (let i = 0; i < figure.length; i++) {
-      const element = figure[i];
-      // Skip pre > .mermaid for folding and copy button
-      if (element.querySelector(".mermaid")) return;
-      if (!inited) {
-        let span = element.querySelectorAll(".code .line span");
-        if (span.length === 0) {
-          // Hljs without line_number and wrap
-          span = element.querySelectorAll("code.highlight span");
-        }
-        for (let j = 0; j < span.length; j++) {
-          if (hasList) {
-            const list = span[j].classList;
-            for (let k = 0; k < list.length; k++) {
-              const name = list[k];
-              list.replace(name, `hljs-${name}`);
-            }
-          }
-          else {
-            let name = '';
-            const list = span[j].className.split(" ");
-            for (let k = 0; k < list.length; k++) {
-              name += `hljs-${list[k]}`;
-            }
-            span[j].className = name;
-          }
-        }
-      }
-    }
-  },
   registerScrollPercent() {
     const backToTop = document.querySelector(".back-to-top");
     if (backToTop) {
@@ -69,10 +27,7 @@ Skirky.utils = {
         const contentHeight = document.body.scrollHeight - window.innerHeight;
         const scrollPercent = contentHeight > 0 ? Math.min(100 * (window.scrollY ?? window.pageYOffset) / contentHeight, 100) : 0;
         const isShow = Math.round(scrollPercent) >= 5;
-        if (typeof backToTop.classList === "undefined") {
-          backToTop.className = "back-to-top accent" + (isShow ? " back-to-top-on" : '');
-        }
-        else {
+        if (backToTop.classList) {
           if (isShow) {
             if (!backToTop.classList.contains("back-to-top-on")) {
               backToTop.classList.add("back-to-top-on");
@@ -84,13 +39,16 @@ Skirky.utils = {
             }
           }
         }
+        else {
+          backToTop.className = "back-to-top accent" + (isShow ? " back-to-top-on" : '');
+        }
         backToTop.querySelector("span").innerText = Math.round(scrollPercent) + '%';
       }, { passive: true });
     }
   },
   registerActiveMenuItem() {
     const items = document.querySelectorAll(".menu-item a[href]");
-    const hasList = typeof document.body.classList !== "undefined";
+    const hasList = !!document.body.classList;
     for (let i = 0; i < items.length; i++) {
       const target = items[i];
       const pathname = target.pathname[0] === '/' ? target.pathname : `/${target.pathname}`;

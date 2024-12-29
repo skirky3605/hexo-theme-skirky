@@ -1,4 +1,4 @@
-if (typeof window.history.replaceState !== "undefined") {
+if (!window.history.replaceState) {
   const pjax = new Pjax({
     selectors: [
       'head title',
@@ -14,7 +14,7 @@ if (typeof window.history.replaceState !== "undefined") {
 
   document.addEventListener('pjax:success', () => {
     let elements = document.querySelectorAll('script[data-pjax]');
-    if (typeof elements.forEach === "undefined") {
+    if (!elements.forEach) {
       const array = [];
       for (let i = 0; i < elements.length; i++) {
         array.push(elements[i]);

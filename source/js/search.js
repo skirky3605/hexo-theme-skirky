@@ -18,7 +18,7 @@
       const container = document.querySelector(".search-result-container");
 
       function inputEventFunction() {
-        if (!localSearch.isfetched) return;
+        if (!localSearch.isfetched) { return; }
         const searchText = input.value.trim().toLowerCase();
         const keywords = searchText.split(/[-\s]+/);
         let resultItems = [];
@@ -28,21 +28,21 @@
         }
         if (keywords.length === 1 && keywords[0] === '') {
           container.innerHTML = '';
-        } else if (resultItems.length === 0) {
+        }
+        else if (!resultItems.length) {
           container.innerHTML = '<div class="search-stats">未找到搜索结果</div>';
-        } else {
-          resultItems.sort((left, right) => {
-            if (left.includedCount !== right.includedCount) {
-              return right.includedCount - left.includedCount;
-            } else if (left.hitCount !== right.hitCount) {
-              return right.hitCount - left.hitCount;
-            }
-            return right.id - left.id;
-          });
+        }
+        else {
+          resultItems.sort((left, right) =>
+            left.includedCount !== right.includedCount
+              ? right.includedCount - left.includedCount
+              : left.hitCount !== right.hitCount
+                ? right.hitCount - left.hitCount
+                : right.id - left.id);
 
           container.innerHTML = `<div class="search-stats">找到 ${resultItems.length} 个搜索结果</div>
           <ul class="search-result-list">${resultItems.map(result => result.item).join('')}</ul>`;
-          if (typeof pjax === "object") pjax.refresh(container);
+          if (typeof pjax === "object") { pjax.refresh(container); }
         }
       };
 
@@ -61,7 +61,7 @@
         element.addEventListener("click", () => {
           document.body.classList.add("search-active");
           // Wait for search-popup animation to complete
-          setTimeout(() => input.focus(), 500);
+          setTimeout(input.focus, 500);
           if (!localSearch.isfetched) { localSearch.fetchData(); }
         });
       }
@@ -85,7 +85,7 @@
         if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
           event.preventDefault();
           document.body.classList.add('search-active');
-          setTimeout(() => input.focus(), 500);
+          setTimeout(input.focus, 500);
           if (!localSearch.isfetched) localSearch.fetchData();
         }
       });

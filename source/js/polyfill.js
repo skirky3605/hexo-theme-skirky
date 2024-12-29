@@ -1,8 +1,8 @@
-if (typeof globalThis === "undefined") {
+if (!window.globalThis) {
   window.globalThis = window;
 }
 
-if (typeof String.prototype.startsWith === "undefined") {
+if (!String.prototype.startsWith) {
   String.prototype.startsWith =
     /**
      * @param {string} searchString
@@ -13,7 +13,7 @@ if (typeof String.prototype.startsWith === "undefined") {
     };
 }
 
-if (typeof String.prototype.endsWith === "undefined") {
+if (!String.prototype.endsWith) {
   String.prototype.endsWith =
     /**
      * @param {string} searchString
@@ -26,7 +26,7 @@ if (typeof String.prototype.endsWith === "undefined") {
 }
 
 if (typeof DOMTokenList !== "undefined") {
-  if (typeof DOMTokenList.prototype.replace === "undefined") {
+  if (!DOMTokenList.prototype.replace) {
     DOMTokenList.prototype.replace =
       /**
        * @param {string} token

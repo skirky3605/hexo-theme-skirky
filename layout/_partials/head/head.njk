@@ -6,6 +6,7 @@
 {{- meta_generator() }}
 {%- endif %}
 
+<link rel="preload" href="{{ url_for(theme.css) }}/highlight.css" as="style">
 <link rel="preload" href="{{ url_for(theme.css) }}/main.css" as="style">
 
 {%- if theme.favicon.apple_touch_icon %}
@@ -37,6 +38,7 @@
 <meta name="baidu-site-verification" content="{{ theme.baidu_site_verification }}">
 {%- endif %}
 
+<link rel="stylesheet" href="{{ url_for(theme.css) }}/highlight.css">
 <link rel="stylesheet" href="{{ url_for(theme.css) }}/main.css">
 
 <script src="{{ url_for(theme.js) }}/polyfill.js"></script>

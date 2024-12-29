@@ -1,6 +1,6 @@
 if (!window.Skirky) window.Skirky = {};
 
-(function () {
+(() => {
   const className = "html-config";
 
   /**

@@ -23,7 +23,7 @@ mono_crash.*
 [Rr]eleases/
 x64/
 x86/
-# [Ww][Ii][Nn]32/
+[Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
@@ -31,10 +31,12 @@ bld/
 [Oo]bj/
 [Oo]ut/
 [Ll]og/
-[Ll]ogs/
+#[Ll]ogs/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
+# JetBrains Rider options directory
+.idea/
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
 
@@ -184,7 +186,7 @@ publish/
 *.azurePubxml
 # Note: Comment the next line if you want to checkin your web deploy settings,
 # but database connection strings (with potential passwords) will be unencrypted
-# *.pubxml
+*.pubxml
 *.publishproj
 
 # Microsoft Azure Web App publish settings. Comment the next line if you want to
@@ -283,6 +285,7 @@ FakesAssemblies/
 
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
+package-lock.json
 node_modules/
 
 # Visual Studio 6 build log
@@ -361,3 +364,11 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Hexo
+.DS_Store
+Thumbs.db
+db.json
+public/
+.deploy*/
+*.bak
