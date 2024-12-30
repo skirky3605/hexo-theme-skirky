@@ -3,7 +3,7 @@
 <meta name="theme-color" content="{{ theme.theme_color.light }}" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="{{ theme.theme_color.dark }}" media="(prefers-color-scheme: dark)">
 {% if config.meta_generator %}
-{{- meta_generator() }}
+{{ meta_generator() }}
 {% endif %}
 
 <link rel="preload" href="{{ url_for(theme.css) }}/highlight.css" as="style">

@@ -13,6 +13,16 @@
   }
 }
 
+if (hexo-config('creative_commons.post')) {
+  .post-copyright ul {
+    list-style: none;
+    overflow: hidden;
+    padding: .5em 1em;
+    position: relative;
+    post-card();
+  }
+}
+
 .post-tags {
   margin-top: 1rem;
   text-align: center;

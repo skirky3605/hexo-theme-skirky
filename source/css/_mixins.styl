@@ -75,6 +75,15 @@ disable-user-select() {
   user-select: none;
 }
 
+post-card() {
+  background: $card-background-fill-color-default;
+  border-left: 3px solid $accent-fill-color-default;
+
+  +dark() {
+    background: $card-background-fill-color-default-dark;
+  }
+}
+
 round-icon($diameter) {
   border-radius: 50%;
   content: ' ';

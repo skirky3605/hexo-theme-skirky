@@ -27,7 +27,7 @@
       {% if is_index and post.excerpt %}
       {{ post.excerpt }}
       <p style="text-align: center;">
-        <a href="{{ url_for(post.path) }}" class="read-more">阅读全文</a>
+        {{ html_url(post.path, '阅读全文', { class: 'read-more' }) }}
       </p>
       {% else %}
       {{ post.content }}
@@ -37,12 +37,15 @@
       {% if is_index %}
       <div class="post-eof"></div>
       {% else %}
+      {%- if theme.creative_commons.license and theme.creative_commons.post and post.copyright !== false %}
+      {{ partial('_partials/post/post-copyright.njk') }}
+      {%- endif %}
       {% if theme.giscus.enable and post.comments %}
       <script src="https://giscus.app/client.js" data-repo="{{ theme.giscus.repo }}"
         data-category="{{ theme.giscus.category }}" data-mapping="{{ theme.giscus.mapping }}"
         data-strict="{{ theme.giscus.strict }}" data-reactions-enabled="{{ theme.giscus.reactions_enabled }}"
         data-emit-metadata="{{ theme.giscus.emit_metadata }}" data-input-position="{{ theme.giscus.input_position }}"
-        data-theme="{{ theme.giscus.theme }}" data-lang="{{ post.lang }}" crossorigin="anonymous" async
+        data-theme="preferred_color_scheme" data-lang="{{ post.lang }}" crossorigin="anonymous" async
         data-pjax></script>
       {% endif %}
       <div class="post-nav">
@@ -64,7 +67,9 @@
       {% if post.tags and post.tags.length %}
       <div class="post-tags">
         {% for tag in post.tags.toArray() %}
-        <a href="{{ url_for(tag.path) }}" rel="tag">{{ fluent_icon("Tag", 16, "Filled") }} {{ tag.name }}</a>
+        <a href="{{ url_for(tag.path) }}" rel="tag">
+          {{ fluent_icon("Tag", 16, "Filled") }} {{ tag.name }}
+        </a>
         {% endfor %}
       </div>
       {% endif %}

@@ -9,7 +9,7 @@
 </span>
 {% if theme.footer.github %}
 <div style="flex-grow: 1;"></div>
-<a class="right" href="{{ theme.footer.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+{{ html_url(theme.footer.github, 'GitHub', { class: 'right' }) }}
 {% endif %}
 {% endif %}
 <script src="{{ url_for(theme.js) }}/boot.js"></script>

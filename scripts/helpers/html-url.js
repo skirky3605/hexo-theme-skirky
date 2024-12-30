@@ -36,7 +36,7 @@ module.exports =
     if (data.protocol && data.hostname !== siteHost) {
       attrs.external = null;
       // Only for simple link need to rewrite/add attributes.
-      attrs.rel = attrs.rel || "noopener";
+      attrs.rel = attrs.rel || "noopener noreferrer";
       attrs.target = "_blank";
     }
 
