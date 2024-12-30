@@ -1,0 +1,70 @@
+.post-eof {
+  background: $control-strong-stroke-color-default;
+  height: 1px;
+  margin: 8px auto 10px;
+  width: 8%;
+
+  .post-block:last-of-type & {
+    display: none;
+  }
+
+  +dark() {
+    background: $control-strong-stroke-color-default-dark;
+  }
+}
+
+.post-tags {
+  margin-top: 1rem;
+  text-align: center;
+
+  a {
+    svg {
+      fill: $text-fill-color-primary;
+      margin-bottom: -3px;
+    }
+
+    &:hover {
+      svg {
+        fill: $text-fill-color-secondary;
+      }
+    }
+
+    &:active {
+      svg {
+        fill: $text-fill-color-tertiary;
+      }
+    }
+
+    &:not([href]):not([class]),
+    &:not([href]):not([class]):hover {
+      svg {
+        fill: $text-fill-color-disabled;
+      }
+    }
+
+    +dark() {
+      svg {
+        fill: $text-fill-color-primary-dark;
+      }
+
+      &:hover {
+        svg {
+          fill: $text-fill-color-secondary-dark;
+        }
+      }
+
+      &:active {
+        svg {
+          fill: $text-fill-color-tertiary-dark;
+        }
+      }
+
+      &:not([href]):not([class]),
+      &:not([href]):not([class]):hover {
+        svg {
+          fill: $text-fill-color-disabled-dark;
+        }
+      }
+    }
+  }
+}

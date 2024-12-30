@@ -1,0 +1,70 @@
+.post-nav {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  margin-top: 1em;
+  padding: 10px 5px 0;
+
+  .post-nav-item {
+    a {
+      svg {
+        fill: $text-fill-color-primary;
+        margin-bottom: -3px;
+      }
+
+      &:hover {
+        svg {
+          fill: $text-fill-color-secondary;
+        }
+      }
+
+      &:active {
+        svg {
+          fill: $text-fill-color-tertiary;
+        }
+      }
+
+      &:not([href]):not([class]),
+      &:not([href]):not([class]):hover {
+        svg {
+          fill: $text-fill-color-disabled;
+        }
+      }
+
+      +dark() {
+        svg {
+          fill: $text-fill-color-primary-dark;
+        }
+
+        &:hover {
+          svg {
+            fill: $text-fill-color-secondary-dark;
+          }
+        }
+
+        &:active {
+          svg {
+            fill: $text-fill-color-tertiary-dark;
+          }
+        }
+
+        &:not([href]):not([class]),
+        &:not([href]):not([class]):hover {
+          svg {
+            fill: $text-fill-color-disabled-dark;
+          }
+        }
+      }
+    }
+  }
+
+  .post-nav-item-prev {
+    float: left;
+    text-align: left;
+  }
+
+  .post-nav-item-next {
+    float: right;
+    text-align: right;
+  }
+}

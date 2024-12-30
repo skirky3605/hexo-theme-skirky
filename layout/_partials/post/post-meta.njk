@@ -4,26 +4,28 @@
       itemprop="dateCreated datePublished" datetime="{{ moment(post.date).format() }}">{{ date(post.date) }}</time>
   </span>
 
-  {%- if date(post.date) != date(post.updated) %}
+  {% if date(post.date) != date(post.updated) %}
   <span>|</span>
   <span class="post-meta-item">
-    <span class="post-meta-item-text">最后更新：</span><time title="{{ full_date(post.updated) }}" itemprop="dateModified"
+    <span class="post-meta-item-text">最后更新：</span>
+    <time title="{{ full_date(post.updated) }}" itemprop="dateModified"
       datetime="{{ moment(post.updated).format() }}">{{ date(post.updated) }}</time>
   </span>
-  {%- endif %}
+  {% endif %}
 
-  {%- if post.categories and post.categories.length %}
-  <span>|</span>
+  {% if post.categories and post.categories.length %}
+  <span>&nbsp;|&nbsp;</span>
   <span class="post-meta-item">
-    {%- for cat in post.categories.toArray() %}
+    <span class="post-meta-item-text">分类于：</span>
+    {% for cat in post.categories.toArray() %}
     <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
       <a href="{{ url_for(cat.path) }}" itemprop="url" rel="index"><span itemprop="name">{{ cat.name }}</span></a>
     </span>
-    {%- set cat_length = post.categories.length %}
-    {%- if cat_length > 1 and loop.index !== cat_length %}
-    <span>|</span>
-    {%- endif %}
-    {%- endfor %}
+    {% set cat_length = post.categories.length %}
+    {% if cat_length > 1 and loop.index !== cat_length %}
+    <span>、</span>
+    {% endif %}
+    {% endfor %}
   </span>
-  {%- endif %}
+  {% endif %}
 </div>

@@ -52,6 +52,16 @@ local_search:
   # Unescape html strings to the readable one.
   unescape: true
 
+giscus:
+  enable: false
+  repo: # yourname/yourrepo
+  category: # target_category
+  mapping: og:title # pathname | url | title | og:title
+  strict: 0
+  reactions_enabled: 1
+  emit_metadata: 0
+  input_position: bottom
+
 # Assets
 css: css
 js: js
