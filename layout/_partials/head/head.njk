@@ -21,8 +21,8 @@
 {% if theme.favicon.safari_pinned_tab %}
 <link rel="mask-icon" href="{{ url_for(theme.favicon.safari_pinned_tab) }}" color="{{ theme.theme_color.light }}">
 {% endif %}
-{% if theme.favicon.android_manifest %}
-<link rel="manifest" href="{{ url_for(theme.favicon.android_manifest) }}">
+{% if theme.webmanifest.enable %}
+<link rel="manifest" href="manifest.webmanifest">
 {% endif %}
 
 {% if theme.google_site_verification %}

@@ -3,29 +3,36 @@
 .header-container {
   height: 48px;
 
-  .header-inner {
+  .titlebar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1;
-    display: flex;
-    justify-content: space-between;
     background: $card-background-fill-color-default;
     -webkit-backdrop-filter: blur(40px);
     backdrop-filter: blur(40px);
-    padding: 0 4px;
+    padding: env(titlebar-area-y, 0) calc(100vw - env(titlebar-area-width, 100vw)) 0 env(titlebar-area-x, 0);
+    -webkit-app-region: drag;
 
     +dark() {
       background: $card-background-fill-color-default-dark;
     }
 
-    .header-left {
-      float: left;
-    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 4px;
 
-    .header-right {
-      float: right;
+      .header-left {
+        float: left;
+        -webkit-app-region: no-drag;
+      }
+
+      .header-right {
+        float: right;
+        -webkit-app-region: no-drag;
+      }
     }
   }
 }

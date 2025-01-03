@@ -71,6 +71,9 @@ giscus:
   emit_metadata: 0
   input_position: bottom
 
+webmanifest:
+  enable: false
+
 # Assets
 css: css
 js: js
