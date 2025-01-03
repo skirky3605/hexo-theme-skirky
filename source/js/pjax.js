@@ -1,4 +1,4 @@
-if (!window.history.replaceState) {
+if (window.history.replaceState) {
   const pjax = new Pjax({
     selectors: [
       'head title',

@@ -5,28 +5,32 @@
 {% block class %}index posts-expand{% endblock %}
 
 {% block cover %}
-{% if not page.prev %}
+{% if is_home() and not page.prev %}
 <div class="index-hover">
   <div class="index-container">
     <div class="index-card">
-      <h1>{{ config.title }}</h1>
-      {% if theme.avatar.url %}
-      <div class="avatar-container">
-        <img class="avatar" src="{{ url_for(theme.avatar.url) }}" alt="{{ config.author }}">
+      <div class="description">
+        <h1 class="title">{{ config.title }}</h1>
+        {% if theme.avatar.url %}
+        <div class="avatar-container">
+          <img class="avatar" src="{{ url_for(theme.avatar.url) }}" alt="{{ config.author }}">
+        </div>
+        {% endif %}
+        {% if config.subtitle %}
+        <p>———— {{ config.subtitle }} ————</p>
+        {% endif %}
+        {% if config.description %}
+        <p>{{ config.description }}</p>
+        {% endif %}
       </div>
-      {% endif %}
-      {% if config.subtitle %}
-      <p>———— {{ config.subtitle }} ————</p>
-      {% endif %}
-      {% if config.description %}
-      <p>{{ config.description }}</p>
-      {% endif %}
       <!-- 文章列表 -->
       <div class="articles">
         <h2 class="title">我的文章</h2>
-        {% for post in page.posts.toArray() %}
+        {% for post in page.posts.toArray().slice(0, 2) %}
         {{ partial('_macro/post.njk', { post: post, is_card: true }) }}
         {% endfor %}
+        <a class="more" href="javascript:void(0)" role="button"
+          onclick="window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })">查看更多</a>
       </div>
     </div>
   </div>

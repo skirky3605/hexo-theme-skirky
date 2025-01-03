@@ -28,22 +28,24 @@
         border: 1px solid $control-stroke-color-default-dark;
       }
 
-      .avatar-container {
-        margin-bottom: 20px;
+      .description {
+        .avatar-container {
+          margin-bottom: 20px;
 
-        .avatar {
-          width: 150px;
-          height: 150px;
-          margin: 0 auto;
-          border-radius: 50%;
-          object-fit: cover;
+          .avatar {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            border-radius: 50%;
+            object-fit: cover;
+          }
         }
       }
 
       .articles {
         display: flex;
         flex-direction: column;
-        padding: 20px;
+        padding: 0 20px;
 
         .title {
           font-size: 24px;
@@ -52,6 +54,14 @@
 
         a {
           margin: 4px 0;
+        }
+
+        .more {
+          padding: 6px 0 0 0;
+        }
+
+        @media (max-height: 688px) {
+          display: none;
         }
       }
     }
