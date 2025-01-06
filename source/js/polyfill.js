@@ -54,3 +54,12 @@ if (typeof HTMLElement !== "undefined") {
       wrapper.appendChild(this);
     };
 }
+
+if (typeof Document !== "undefined" && !document.currentScript) {
+  Object.defineProperty(Document.prototype, "currentScript", {
+    get() {
+      const scripts = this.getElementsByTagName("script");
+      return scripts[scripts.length - 1];
+    }
+  });
+}

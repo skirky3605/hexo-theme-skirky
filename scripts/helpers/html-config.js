@@ -12,7 +12,8 @@ module.exports = {
       root: config.root,
       hljswrap: config.highlight.wrap,
       path: url_for(config.search.path),
-      localsearch: theme.local_search
+      localsearch: theme.local_search,
+      serverworker: theme.service_worker.enable
     };
     return exportConfig;
   },

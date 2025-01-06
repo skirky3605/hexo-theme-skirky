@@ -74,6 +74,9 @@ giscus:
 webmanifest:
   enable: false
 
+service_worker:
+  enable: false
+
 # Assets
 css: css
 js: js

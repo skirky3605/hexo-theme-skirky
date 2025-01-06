@@ -46,7 +46,7 @@
         }
       };
 
-      try { localSearch.highlightSearchWords(document.querySelector(".post-body")); } catch (error) { console.error(error); }
+      try { localSearch.highlightSearchWords(document.querySelector(".post-body")); } catch { }
 
       input.addEventListener("input", inputEventFunction);
       window.addEventListener("search:loaded", inputEventFunction);
@@ -78,7 +78,7 @@
       });
       document.querySelector(".popup-btn-close").addEventListener("click", onPopupClose);
       document.addEventListener('pjax:success', () => {
-        try { localSearch.highlightSearchWords(document.querySelector('.post-body')); } catch (error) { console.error(error); }
+        try { localSearch.highlightSearchWords(document.querySelector('.post-body')); } catch { }
         onPopupClose();
       });
       window.addEventListener('keydown', event => {
