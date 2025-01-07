@@ -1,4 +1,5 @@
 {% extends '_layout.njk' %}
+{% import '_macro/sidebar.njk' as sidebar_template with context %}
 
 {% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
@@ -6,4 +7,8 @@
 
 {% block content %}
 {{ partial('_macro/post.njk', { post: page }) }}
+{% endblock %}
+
+{% block sidebar %}
+{{ sidebar_template.render(page.toc.enable) }}
 {% endblock %}

@@ -1,4 +1,5 @@
 {% extends '_layout.njk' %}
+{% import '_macro/sidebar.njk' as sidebar_template with context %}
 
 {% block title %}{% if page.title %}{{ page.title }} | {% endif %}{{ config.title }}{% endblock %}
 
@@ -21,4 +22,8 @@
     {% endif %}
   </div>
 </div>
+{% endblock %}
+
+{% block sidebar %}
+{{ sidebar_template.render(page.toc.enable) }}
 {% endblock %}

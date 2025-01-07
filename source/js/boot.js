@@ -11,6 +11,11 @@ Skirky.boot.registerEvents = () => {
 
   Pace.options.restartOnPushState = false;
   document.addEventListener("pjax:send", Pace.restart);
+
+  const sidebar = document.querySelectorAll('.sidebar-nav li');
+  for (let i = 0; i < sidebar.length; i++) {
+    sidebar[i].addEventListener('click', () => Skirky.utils.activateSidebarPanel(i));
+  }
 }
 
 Skirky.boot.refresh = () => {

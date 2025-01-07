@@ -1,20 +1,24 @@
-{% if theme.footer.copyright !== false %}
-<span class="copyright left">
-  {% set copyright_year = date(null, 'YYYY') %}
-  Copyright &copy;
-  {% if theme.footer.since and theme.footer.since != copyright_year %}{{ theme.footer.since }} – {% endif %}
-  <span itemprop="copyrightYear">{{ copyright_year }}</span>
-  <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright or config.author }}</span>.
-  All Rights Reserved
-</span>
-{% if theme.footer.github %}
-<div style="flex-grow: 1;"></div>
-{{ html_url(theme.footer.github, 'GitHub', { class: 'right' }) }}
-{% endif %}
-{% endif %}
-<script src="{{ url_for(theme.js) }}/boot.js"></script>
-<script src="{{ url_for(theme.js) }}/third-party/pjax.js"></script>
-<script src="{{ url_for(theme.js) }}/pjax.js"></script>
-<script src="{{ url_for(theme.js) }}/third-party/search.js"></script>
-<script src="{{ url_for(theme.js) }}/search.js"></script>
-<script src="{{ url_for(theme.js) }}/fallback.js"></script>
+<footer class="footer" itemtype="http://schema.org/WPFooter">
+  <div class="footer-inner">
+    {% if theme.footer.copyright !== false %}
+    <span class="copyright left">
+      {% set copyright_year = date(null, 'YYYY') %}
+      Copyright &copy;
+      {% if theme.footer.since and theme.footer.since != copyright_year %}{{ theme.footer.since }} – {% endif %}
+      <span itemprop="copyrightYear">{{ copyright_year }}</span>
+      <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright or config.author }}</span>.
+      All Rights Reserved
+    </span>
+    {% if theme.footer.github %}
+    <div style="flex-grow: 1;"></div>
+    {{ html_url(theme.footer.github, 'GitHub', { class: 'right' }) }}
+    {% endif %}
+    {% endif %}
+  </div>
+  <script src="{{ url_for(theme.js) }}/boot.js"></script>
+  <script src="{{ url_for(theme.js) }}/third-party/pjax.js"></script>
+  <script src="{{ url_for(theme.js) }}/pjax.js"></script>
+  <script src="{{ url_for(theme.js) }}/third-party/search.js"></script>
+  <script src="{{ url_for(theme.js) }}/search.js"></script>
+  <script src="{{ url_for(theme.js) }}/fallback.js"></script>
+</footer>

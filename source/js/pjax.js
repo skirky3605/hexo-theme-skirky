@@ -1,19 +1,22 @@
 if (window.history.replaceState) {
   const pjax = new Pjax({
     selectors: [
-      'head title',
+      "head title",
       'meta[property="og:title"]',
       'script[type="application/json"]',
-      '.cover',
-      '.main-inner',
-      '.pjax'
+      ".cover",
+      ".main-inner",
+      ".post-toc-wrap",
+      ".pjax"
     ],
     analytics: false,
     cacheBust: false
   });
 
   Pjax.prototype.executeScripts =
-    /** @param {NodeListOf<HTMLScriptElement>} elements */
+    /**
+     * @param {NodeListOf<HTMLScriptElement>} elements
+     */
     function (elements) {
       for (let i = 0; i < elements.length; i++) {
         const element = elements[i];
@@ -38,17 +41,23 @@ if (window.history.replaceState) {
       }
     };
 
-  document.addEventListener('pjax:success', () => {
-    let elements = document.querySelectorAll('script[data-pjax]');
-    if (!elements.forEach) {
-      const array = [];
-      for (let i = 0; i < elements.length; i++) {
-        array.push(elements[i]);
-      }
-      elements = array;
-    }
+  document.addEventListener("pjax:success", () => {
+    const elements = document.querySelectorAll("script[data-pjax]");
     pjax.executeScripts(elements);
     Skirky.boot.refresh();
+    const hasTOC = document.querySelector(".post-toc:not(.placeholder-toc)");
+    const inner = document.querySelector(".sidebar-inner");
+    if (hasTOC) {
+      if (!inner.classList.contains("sidebar-nav-active")) {
+        inner.classList.add("sidebar-nav-active");
+      }
+    }
+    else {
+      if (inner.classList.contains("sidebar-nav-active")) {
+        inner.classList.remove("sidebar-nav-active");
+      }
+    }
+    Skirky.utils.activateSidebarPanel(hasTOC ? 0 : 1);
   });
 
   window.pjax = pjax;

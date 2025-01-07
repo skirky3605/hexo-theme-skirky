@@ -1,0 +1,59 @@
+.site-state-wrap {
+  margin-top: 16px;
+
+  .site-state-item {
+    padding: 0 15px;
+    display: inline;
+
+    a {
+      border-bottom: 0;
+      display: inline-block;
+      color: $text-fill-color-primary;
+
+      &:hover {
+        color: $text-fill-color-secondary;
+      }
+
+      &:active {
+        color: $text-fill-color-tertiary;
+      }
+
+      &:not([href]):not([class]),
+      &:not([href]):not([class]):hover {
+        color: $text-fill-color-disabled;
+      }
+
+      +dark() {
+        color: $text-fill-color-primary-dark;
+
+        &:hover {
+          color: $text-fill-color-secondary-dark;
+        }
+
+        &:active {
+          color: $text-fill-color-tertiary-dark;
+        }
+
+        &:not([href]):not([class]),
+        &:not([href]):not([class]):hover {
+          color: $text-fill-color-disabled-dark;
+        }
+      }
+    }
+  }
+
+  .site-state-item-count {
+    display: block;
+    font-size: $subtitle-text-block-font-size;
+    font-weight: 600;
+  }
+
+  .site-state-item-name {
+    color: $text-fill-color-secondary;
+    font-size: $caption-text-block-font-size;
+
+    +dark() {
+      color: $text-fill-color-secondary-dark;
+    }
+  }
+}

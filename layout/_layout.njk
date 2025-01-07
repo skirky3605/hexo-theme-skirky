@@ -11,36 +11,15 @@
     <div class="background-hover"></div>
   </div>
   <div class="cover">{% block cover %}{% endblock %}</div>
-  <div class="header-container">
-    <header class="header" itemtype="http://schema.org/WPHeader">
-      <div class="titlebar">
-        <div class="header-inner">
-          <div class="header-left">
-            {% include '_partials/header/menu.njk' %}
-          </div>
-          <div class="header-right">
-            <li class="menu-item menu-item-search">
-              <a class="popup-trigger" title="搜索" href="/search" role="button">{{ fluent_icon("Search") }}</a>
-            </li>
-          </div>
-        </div>
-      </div>
-    </header>
-  </div>
+  <div class="header-container">{% include '_partials/header/header.njk' %}</div>
   <main class="main">
-    <div class="main-inner {% block class %}{% endblock %}">{% block content %}{% endblock %}</div>
-    {% include '_partials/search.njk' %}
-    <button class="back-to-top accent" title="返回顶部" type="button"
-      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
-      {{ fluent_icon("ArrowUp", 16) }}
-      <span>0%</span>
-    </button>
+    <div class="main-grid">
+      <div class="main-inner {% block class %}{% endblock %}">{% block content %}{% endblock %}</div>
+      <div class="column">{% block sidebar %}{% endblock %}</div>
+    </div>
   </main>
-  <div class="footer-container">
-    <footer class="footer" itemtype="http://schema.org/WPFooter">
-      <div class="footer-inner">{% include '_partials/footer.njk' %}</div>
-    </footer>
-  </div>
+  {% include '_partials/search.njk' %}
+  <div class="footer-container">{% include '_partials/footer.njk' %}</div>
 </body>
 
 </html>

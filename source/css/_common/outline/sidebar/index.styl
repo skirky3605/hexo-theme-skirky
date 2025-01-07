@@ -1,0 +1,23 @@
+@import 'sidebar-nav';
+@import 'sidebar-toc';
+@import 'sidebar-author';
+@import 'site-state';
+@import 'sidebar-copyright';
+
+.sidebar-container {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 52px;
+
+  .sidebar-inner {
+    padding: 0 16px;
+    background: $card-background-fill-color-default;
+    border: 1px solid $control-stroke-color-default;
+    border-radius: $overlay-corner-radius;
+
+    +dark() {
+      background: $card-background-fill-color-default-dark;
+      border: 1px solid $control-stroke-color-default-dark;
+    }
+  }
+}

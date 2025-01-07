@@ -1,0 +1,55 @@
+<div class="site-author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  {% if theme.avatar.url %}
+  <img class="site-author-image" itemprop="image" alt="{{ config.author }}" src="{{ url_for(theme.avatar.url) }}">
+  {% endif %}
+  <p class="site-author-name" itemprop="name">{{ config.author }}</p>
+  <div class="site-description" itemprop="description">{{ config.description }}</div>
+</div>
+
+<div class="site-state-wrap">
+  <nav class="site-state">
+    {% if config.archive_dir != '/' and site.posts.length > 0 %}
+    <div class="site-state-item site-state-posts">
+      {% set archive_dir = config.archive_dir + '/' %}
+      <a href="{{ url_for(archive_dir) }}">
+        <span class="site-state-item-count">{{ site.posts.length }}</span>
+        <span class="site-state-item-name">文章</span>
+      </a>
+    </div>
+    {% endif %}
+
+    {% if site.categories.length > 0 %}
+    {% set categoriesPageQuery = site.pages.find({ type: 'categories' }, { lean: true }) %}
+    {% set hasCategoriesPage = categoriesPageQuery.length > 0 %}
+    <div class="site-state-item site-state-categories">
+      {% set category_dir = config.category_dir + '/' %}
+      {% if hasCategoriesPage %}
+      <a href="{{ url_for(category_dir) }}">
+        {% endif %}
+        <span class="site-state-item-count">{{ site.categories.length }}</span>
+        <span class="site-state-item-name">分类</span>
+        {% if hasCategoriesPage %}</a>{% endif %}
+    </div>
+    {% endif %}
+
+    {% if site.tags.length > 0 %}
+    {% set tagsPageQuery = site.pages.find({ type: 'tags' }, { lean: true }) %}
+    {% set hasTagsPage = tagsPageQuery.length > 0 %}
+    <div class="site-state-item site-state-tags">
+      {% set tag_dir = config.tag_dir + '/' %}
+      {% if hasTagsPage %}
+      <a href="{{ url_for(tag_dir) }}">
+        {% endif %}
+        <span class="site-state-item-count">{{ site.tags.length }}</span>
+        <span class="site-state-item-name">标签</span>
+        {% if hasTagsPage %}</a>{% endif %}
+    </div>
+    {% endif %}
+  </nav>
+</div>
+
+{% if theme.creative_commons.license and theme.creative_commons.sidebar %}
+<div class="cc-license" itemprop="license">
+  {{ html_url(ccURL, ccBadge, { class: 'cc-opacity', title: theme.creative_commons.license | upper }) }}
+</div>
+{% endif %}

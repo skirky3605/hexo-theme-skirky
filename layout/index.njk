@@ -1,4 +1,5 @@
 {% extends '_layout.njk' %}
+{% import '_macro/sidebar.njk' as sidebar_template with context %}
 
 {% block title %}{{ config.title }}{% if config.subtitle %} - {{ config.subtitle }}{% endif %}{% endblock %}
 
@@ -45,4 +46,8 @@
   {% endfor %}
 </div>
 {% include '_partials/pagination.njk' %}
+{% endblock %}
+
+{% block sidebar %}
+{{ sidebar_template.render(false) }}
 {% endblock %}

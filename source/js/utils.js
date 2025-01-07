@@ -72,6 +72,20 @@ Skirky.utils = {
       }
     }
   },
+  /**
+   * @param {0 | 1} index
+   */
+  activateSidebarPanel(index) {
+    const sidebar = document.querySelector(".sidebar-inner");
+    const activeClassNames = ["sidebar-toc-active", "sidebar-overview-active"];
+    if (sidebar.classList.contains(activeClassNames[index])) {
+      return;
+    }
+    else if (sidebar.classList.contains(activeClassNames[1 - index])) {
+      sidebar.classList.remove(activeClassNames[1 - index]);
+    }
+    sidebar.classList.add(activeClassNames[index]);
+  },
   applyRandomGradient() {
     // 生成随机颜色，确保两种颜色的差异明显
     function getRandomColor() {

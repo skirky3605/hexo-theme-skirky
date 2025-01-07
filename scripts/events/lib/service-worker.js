@@ -57,7 +57,7 @@ const serviceWorker = () => {
           await cache.add(new Request(asset.relative, { integrity: asset.hash, cache: "no-cache" }));
           const response = await cache.match(request);
           if (response) {
-            console.info(`Service worker: Fetched and cached ${request.url}`);
+            console.info(`Service worker: Fetched and cached ${response.url}`);
             return response;
           }
         }

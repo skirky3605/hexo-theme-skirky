@@ -1,0 +1,29 @@
+.site-author-image {
+  max-width: 96px;
+  padding: 2px;
+  border-radius: 50%;
+  transition: transform 1s ease-out;
+
+  &:hover {
+    transform: rotateZ(360deg);
+  }
+}
+
+.site-author-name {
+  color: $text-fill-color-primary;
+  font-weight: bold;
+  margin: 5px 0 0;
+
+  +dark() {
+    color: $text-fill-color-primary-dark;
+  }
+}
+
+.site-description {
+  color: $text-fill-color-secondary;
+  margin-top: 5px;
+
+  +dark() {
+    color: $text-fill-color-secondary-dark;
+  }
+}
