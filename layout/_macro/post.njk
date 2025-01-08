@@ -26,9 +26,11 @@
       itemprop="articleBody">
       {% if is_index and post.excerpt %}
       {{ post.excerpt }}
-      <p style="text-align: center;">
-        {{ html_url(post.path, '阅读全文', { class: 'read-more' }) }}
-      </p>
+      <div class="post-button">
+        <a class="btn" href="{{ url_for(post.path) }}#more" rel="contents">
+          阅读全文
+        </a>
+      </div>
       {% else %}
       {{ post.content }}
       {% endif %}

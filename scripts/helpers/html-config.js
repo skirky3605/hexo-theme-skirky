@@ -1,7 +1,7 @@
 /* global hexo */
 'use strict';
 
-const { parse } = require('url');
+const { parse } = require("url");
 
 module.exports = {
   /** @this {import("@types/hexo")} */

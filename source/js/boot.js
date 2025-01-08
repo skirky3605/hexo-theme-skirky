@@ -7,14 +7,14 @@ Skirky.boot.registerEvents = () => {
 
   Skirky.utils.registerScrollPercent();
   // 当窗口大小改变时重新生成并应用随机渐变颜色（可选）
-  window.addEventListener("resize", Skirky.utils.applyRandomGradient);
+  addEventListener("resize", Skirky.utils.applyRandomGradient);
 
   Pace.options.restartOnPushState = false;
   document.addEventListener("pjax:send", Pace.restart);
 
   const sidebar = document.querySelectorAll('.sidebar-nav li');
   for (let i = 0; i < sidebar.length; i++) {
-    sidebar[i].addEventListener('click', () => Skirky.utils.activateSidebarPanel(i));
+    sidebar[i].addEventListener("click", () => Skirky.utils.activateSidebarPanel(i));
   }
 }
 

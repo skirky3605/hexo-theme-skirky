@@ -23,21 +23,23 @@ Skirky.utils = {
   sections: [],
   updateActiveNav() {
     if (!this.sections.length) { return; }
-    let index = this.sections.findIndex(element => element && element.getBoundingClientRect().top > 58);
-    if (index === -1) {
-      index = this.sections.length - 1;
-    } else if (index > 0) {
-      index--;
-    }
+    const index = (() => {
+      for (let i = 0; i < this.sections.length; i++) {
+        if (this.sections[i]?.getBoundingClientRect().top > 58) {
+          return i > 0 ? --i : i;
+        }
+      }
+      return this.sections.length - 1;
+    })();
     this.activateNavByIndex(index);
   },
   registerScrollPercent() {
     const backToTop = document.querySelector(".back-to-top");
     if (backToTop) {
       // For init back to top in sidebar if page was scrolled after page refresh.
-      window.addEventListener("scroll", () => {
-        const contentHeight = document.body.scrollHeight - window.innerHeight;
-        const scrollPercent = contentHeight > 0 ? Math.min(100 * (window.scrollY ?? window.pageYOffset) / contentHeight, 100) : 0;
+      addEventListener("scroll", () => {
+        const contentHeight = document.body.scrollHeight - innerHeight;
+        const scrollPercent = contentHeight > 0 ? Math.min(100 * (window.scrollY ?? pageYOffset) / contentHeight, 100) : 0;
         const isShow = Math.round(scrollPercent) >= 5;
         if (backToTop.classList) {
           if (isShow) {
@@ -46,13 +48,18 @@ Skirky.utils = {
             }
           }
           else {
-            if (backToTop.classList.contains("back-to-top-on")) {
-              backToTop.classList.remove("back-to-top-on");
-            }
+            backToTop.classList.remove("back-to-top-on");
           }
         }
         else {
-          backToTop.className = "back-to-top accent" + (isShow ? " back-to-top-on" : '');
+          if (isShow) {
+            if (!/(\s|^)back-to-top-on(\s|$)/.test(backToTop.className)) {
+              backToTop.className += " back-to-top-on";
+            }
+            else {
+              backToTop.className = backToTop.className.replace(/(\s|^)back-to-top-on(\s|$)/, '');
+            }
+          }
         }
         backToTop.querySelector("span").innerText = Math.round(scrollPercent) + '%';
         this.updateActiveNav();
@@ -75,13 +82,18 @@ Skirky.utils = {
           }
         }
         else {
-          if (target.classList.contains("menu-item-active")) {
-            target.classList.remove("menu-item-active");
-          }
+          target.classList.remove("menu-item-active");
         }
       }
       else {
-        target.className = isSelect ? "menu-item-active" : '';
+        if (isSelect) {
+          if (!/(^|\s)menu-item-active(\s|$)/.test(target.className)) {
+            target.className += " menu-item-active";
+          }
+        }
+        else {
+          target.className = target.className.replace(/(^|\s)menu-item-active(\s|$)/g, '');
+        }
       }
     }
   },
@@ -91,6 +103,22 @@ Skirky.utils = {
     for (let i = 0; i < elements.length; i++) {
       const element = elements[i];
       const target = document.getElementById(decodeURI(element.getAttribute("href")).replace('#', ''));
+      if (!document.documentElement.style.scrollPadding) {
+        element.addEventListener("click", event => {
+          event.preventDefault();
+          const offset = target.getBoundingClientRect().top + (window.scrollY ?? pageYOffset) - 48;
+          if (history.pushState) {
+            history.pushState(null, document.title, element.href);
+          }
+          else {
+            location.hash = element.getAttribute("href");
+          }
+          scrollTo({
+            top: offset,
+            behavior: "smooth"
+          });
+        });
+      }
       this.sections.push(target);
     }
     this.updateActiveNav();
@@ -104,20 +132,39 @@ Skirky.utils = {
 
     const navItemList = nav.querySelectorAll(".nav-item");
     const target = navItemList[index];
-    if (!target || target.classList.contains("active-current")) { return; }
+    const hasList = !!target.classList;
+
+    if (!target || (hasList ? target.classList.contains("active-current") : /(^|\s)active-current(\s|$)/.test(target.className))) { return; }
 
     const actives = nav.querySelectorAll(".active");
     for (let i = 0; i < actives.length; i++) {
       const navItem = actives[i];
-      navItem.classList.remove("active", "active-current");
+      if (hasList) {
+        navItem.classList.remove("active", "active-current");
+      }
+      else {
+        navItem.className = navItem.className.replace(/(^|\s)active(\s|$)/g, '');
+      }
     }
-    target.classList.add("active", "active-current");
+    if (hasList) {
+      target.classList.add("active", "active-current");
+    }
+    else {
+      target.className += " active active-current";
+    }
 
     let activateEle = target.querySelector(".nav-child") || target.parentElement;
 
     while (nav.contains(activateEle)) {
-      if (activateEle.classList.contains("nav-item")) {
-        activateEle.classList.add("active");
+      if (hasList) {
+        if (activateEle.classList.contains("nav-item")) {
+          activateEle.classList.add("active");
+        }
+      }
+      else {
+        if (!/(^|\s)active(\s|$)/.test(activateEle.className)) {
+          activateEle.className += " active";
+        }
       }
       activateEle = activateEle.parentElement;
     }
@@ -128,13 +175,20 @@ Skirky.utils = {
   activateSidebarPanel(index) {
     const sidebar = document.querySelector(".sidebar-inner");
     const activeClassNames = ["sidebar-toc-active", "sidebar-overview-active"];
-    if (sidebar.classList.contains(activeClassNames[index])) {
-      return;
-    }
-    else if (sidebar.classList.contains(activeClassNames[1 - index])) {
+    if (sidebar.classList) {
+      if (sidebar.classList.contains(activeClassNames[index])) {
+        return;
+      }
       sidebar.classList.remove(activeClassNames[1 - index]);
+      sidebar.classList.add(activeClassNames[index]);
     }
-    sidebar.classList.add(activeClassNames[index]);
+    else {
+      if (new RegExp(`(^|\\s)${activeClassNames[index]}(\\s|$)`).test(sidebar.className)) {
+        return;
+      }
+      sidebar.className = sidebar.className.replace(new RegExp(`(^|\\s)${activeClassNames[1 - index]}(\\s|$)`, 'g'), '');
+      sidebar.className += ` ${activeClassNames[index]}`;
+    }
   },
   applyRandomGradient() {
     // 生成随机颜色，确保两种颜色的差异明显

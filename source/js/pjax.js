@@ -1,4 +1,4 @@
-if (window.history.replaceState) {
+if (history.replaceState) {
   const pjax = new Pjax({
     selectors: [
       "head title",
@@ -48,13 +48,23 @@ if (window.history.replaceState) {
     const hasTOC = document.querySelector(".post-toc:not(.placeholder-toc)");
     const inner = document.querySelector(".sidebar-inner");
     if (hasTOC) {
-      if (!inner.classList.contains("sidebar-nav-active")) {
-        inner.classList.add("sidebar-nav-active");
+      if (inner.classList) {
+        if (!inner.classList.contains("sidebar-nav-active")) {
+          inner.classList.add("sidebar-nav-active");
+        }
+      }
+      else {
+        if (!/(^|\s)sidebar-nav-active(\s|$)/.test(inner.className)) {
+          inner.className += " sidebar-nav-active";
+        }
       }
     }
     else {
-      if (inner.classList.contains("sidebar-nav-active")) {
+      if (inner.classList) {
         inner.classList.remove("sidebar-nav-active");
+      }
+      else {
+        inner.className = inner.className.replace(/(^|\s)sidebar-nav-active(\s|$)/g, '');
       }
     }
     Skirky.utils.activateSidebarPanel(hasTOC ? 0 : 1);

@@ -1,4 +1,4 @@
-if (!window.Skirky) window.Skirky = {};
+if (!window.Skirky) { window.Skirky = {}; }
 
 (() => {
   const className = "html-config";
@@ -20,7 +20,7 @@ if (!window.Skirky) window.Skirky = {};
       ...staticConfig,
       page: getConfig("page"),
     };
-    document.addEventListener("pjax:success", () => window.CONFIG.page = getConfig("page"));
+    document.addEventListener("pjax:success", () => CONFIG.page = getConfig("page"));
   }
   else {
     /** @type {Object<string, any>} */

@@ -49,7 +49,7 @@
       try { localSearch.highlightSearchWords(document.querySelector(".post-body")); } catch { }
 
       input.addEventListener("input", inputEventFunction);
-      window.addEventListener("search:loaded", inputEventFunction);
+      addEventListener("search:loaded", inputEventFunction);
 
       // Handle and trigger popup window
       const elements = document.querySelectorAll(".popup-trigger");
@@ -78,19 +78,19 @@
       });
       document.querySelector(".popup-btn-close").addEventListener("click", onPopupClose);
       document.addEventListener('pjax:success', () => {
-        try { localSearch.highlightSearchWords(document.querySelector('.post-body')); } catch { }
+        try { localSearch.highlightSearchWords(document.querySelector(".post-body")); } catch { }
         onPopupClose();
       });
-      window.addEventListener('keydown', event => {
+      addEventListener("keydown", event => {
         if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
           event.preventDefault();
-          document.body.classList.add('search-active');
+          document.body.classList.add("search-active");
           setTimeout(input.focus, 500);
           if (!localSearch.isfetched) localSearch.fetchData();
         }
       });
-      window.addEventListener('keyup', event => {
-        if (event.key === 'Escape') {
+      addEventListener("keyup", event => {
+        if (event.key === "Escape") {
           onPopupClose();
         }
       });
