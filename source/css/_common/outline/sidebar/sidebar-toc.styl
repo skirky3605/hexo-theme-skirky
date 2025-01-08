@@ -5,6 +5,7 @@ if (hexo-config('toc.enable')) {
       margin: 0;
       padding: 0 2px 0 10px;
       text-align: left;
+      line-height: 1.8;
 
       a {
         color: $text-fill-color-primary;
@@ -36,6 +37,42 @@ if (hexo-config('toc.enable')) {
           &:not([href]):not([class]),
           &:not([href]):not([class]):hover {
             color: $text-fill-color-disabled-dark;
+          }
+        }
+      }
+    }
+
+    .nav {
+      .active>a {
+        color: $accent-text-fill-color-primary;
+
+        &:hover {
+          color: $accent-text-fill-color-secondary;
+        }
+
+        &:active {
+          color: $accent-text-fill-color-tertiary;
+        }
+
+        &:not([href]):not([class]),
+        &:not([href]):not([class]):hover {
+          color: $accent-text-fill-color-disabled;
+        }
+
+        +dark() {
+          color: $accent-text-fill-color-primary-dark;
+
+          &:hover {
+            color: $accent-text-fill-color-secondary-dark;
+          }
+
+          &:active {
+            color: $accent-text-fill-color-tertiary-dark;
+          }
+
+          &:not([href]):not([class]),
+          &:not([href]):not([class]):hover {
+            color: $accent-text-fill-color-disabled-dark;
           }
         }
       }

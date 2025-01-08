@@ -20,6 +20,7 @@ Skirky.boot.registerEvents = () => {
 
 Skirky.boot.refresh = () => {
   Skirky.utils.registerActiveMenuItem();
+  Skirky.utils.registerSidebarTOC();
   Skirky.utils.applyRandomGradient();
 };
 

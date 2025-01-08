@@ -19,6 +19,18 @@
 })();
 
 Skirky.utils = {
+  /** @type {HTMLElement[]} */
+  sections: [],
+  updateActiveNav() {
+    if (!this.sections.length) { return; }
+    let index = this.sections.findIndex(element => element && element.getBoundingClientRect().top > 58);
+    if (index === -1) {
+      index = this.sections.length - 1;
+    } else if (index > 0) {
+      index--;
+    }
+    this.activateNavByIndex(index);
+  },
   registerScrollPercent() {
     const backToTop = document.querySelector(".back-to-top");
     if (backToTop) {
@@ -43,6 +55,7 @@ Skirky.utils = {
           backToTop.className = "back-to-top accent" + (isShow ? " back-to-top-on" : '');
         }
         backToTop.querySelector("span").innerText = Math.round(scrollPercent) + '%';
+        this.updateActiveNav();
       }, { passive: true });
     }
   },
@@ -70,6 +83,43 @@ Skirky.utils = {
       else {
         target.className = isSelect ? "menu-item-active" : '';
       }
+    }
+  },
+  registerSidebarTOC() {
+    this.sections = [];
+    const elements = document.querySelectorAll(".post-toc:not(.placeholder-toc) li a.nav-link");
+    for (let i = 0; i < elements.length; i++) {
+      const element = elements[i];
+      const target = document.getElementById(decodeURI(element.getAttribute("href")).replace('#', ''));
+      this.sections.push(target);
+    }
+    this.updateActiveNav();
+  },
+  /**
+   * @param {number} index
+   */
+  activateNavByIndex(index) {
+    const nav = document.querySelector(".post-toc:not(.placeholder-toc) .nav");
+    if (!nav) { return; }
+
+    const navItemList = nav.querySelectorAll(".nav-item");
+    const target = navItemList[index];
+    if (!target || target.classList.contains("active-current")) { return; }
+
+    const actives = nav.querySelectorAll(".active");
+    for (let i = 0; i < actives.length; i++) {
+      const navItem = actives[i];
+      navItem.classList.remove("active", "active-current");
+    }
+    target.classList.add("active", "active-current");
+
+    let activateEle = target.querySelector(".nav-child") || target.parentElement;
+
+    while (nav.contains(activateEle)) {
+      if (activateEle.classList.contains("nav-item")) {
+        activateEle.classList.add("active");
+      }
+      activateEle = activateEle.parentElement;
     }
   },
   /**
