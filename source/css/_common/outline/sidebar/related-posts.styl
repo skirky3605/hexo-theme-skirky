@@ -1,0 +1,62 @@
+.sidebar-post-related {
+  margin-top: 8px;
+
+  .links-of-blogroll-title {
+    margin: 16px 12px 1rem 12px;
+  }
+
+  .popular-posts {
+    margin: 0;
+    list-style: none;
+    padding: 0 2px 4px 10px;
+    text-align: left;
+
+    .popular-posts-item {
+      margin-bottom: 16px;
+
+      .popular-posts-link {
+        color: $text-fill-color-primary;
+
+        &:hover {
+          color: $text-fill-color-secondary;
+        }
+
+        &:active {
+          color: $text-fill-color-tertiary;
+        }
+
+        &:not([href]):not([class]),
+        &:not([href]):not([class]):hover {
+          color: $text-fill-color-disabled;
+        }
+
+        +dark() {
+          color: $text-fill-color-primary-dark;
+
+          &:hover {
+            color: $text-fill-color-secondary-dark;
+          }
+
+          &:active {
+            color: $text-fill-color-tertiary-dark;
+          }
+
+          &:not([href]):not([class]),
+          &:not([href]):not([class]):hover {
+            color: $text-fill-color-disabled-dark;
+          }
+        }
+
+        .popular-posts-time {
+          display: block;
+          margin-bottom: 4px;
+          color: $text-fill-color-secondary;
+
+          +dark() {
+            color: $text-fill-color-secondary-dark;
+          }
+        }
+      }
+    }
+  }
+}

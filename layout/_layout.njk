@@ -17,6 +17,11 @@
       <div class="main-inner {% block class %}{% endblock %}">{% block content %}{% endblock %}</div>
       <div class="column">{% block sidebar %}{% endblock %}</div>
     </div>
+    <button class="back-to-top accent" title="返回顶部" type="button"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+      {{ fluent_icon("ArrowUp", 16) }}
+      <span>0%</span>
+    </button>
   </main>
   {% include '_partials/search.njk' %}
   <div class="footer-container">{% include '_partials/footer.njk' %}</div>

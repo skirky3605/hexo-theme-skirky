@@ -1,0 +1,14 @@
+<div class="links-of-blogroll-title">相关文章</div>
+<ul class="popular-posts">
+  {% for path in page.related_posts %}
+  {% set popular_post = site.posts.findOne({ path: path }) %}
+  <li class="popular-posts-item">
+    <a class="popular-posts-link" href="{{ url_for(popular_post.path) }}" rel="bookmark">
+      {% if popular_post.date %}
+      <time class="popular-posts-time">{{ date(popular_post.date) }}</time>
+      {% endif %}
+      {{ popular_post.title }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>

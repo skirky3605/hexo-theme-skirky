@@ -6,6 +6,7 @@
     "@fluentui/svg-icons": "^1.0.0",
     "@next-theme/pjax": "^0.6.0",
     "hexo-generator-searchdb": "^1.0.0",
+    "hexo-related-posts": "^1.5.2",
     "pace-js": "^1.0.0"
   },
   "devDependencies": {
