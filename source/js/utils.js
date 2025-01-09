@@ -103,7 +103,7 @@ Skirky.utils = {
     for (let i = 0; i < elements.length; i++) {
       const element = elements[i];
       const target = document.getElementById(decodeURI(element.getAttribute("href")).replace('#', ''));
-      if (!document.documentElement.style.scrollPadding) {
+      if (!("scrollPadding" in document.documentElement.style)) {
         element.addEventListener("click", event => {
           event.preventDefault();
           const offset = target.getBoundingClientRect().top + (window.scrollY ?? pageYOffset) - 48;

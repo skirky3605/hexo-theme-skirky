@@ -18,6 +18,27 @@
     line-height: 48px;
     color: $text-fill-color-primary;
 
+    svg {
+      display: none;
+      margin-bottom: -5px;
+      fill: currentColor;
+
+      +tablet-desktop() {
+        display: inline;
+        margin-right: 4px;
+      }
+    }
+
+    +mobile-smallest() {
+      svg {
+        display: inline;
+      }
+
+      .title {
+        display: none;
+      }
+    }
+
     &:hover {
       color: $text-fill-color-secondary;
     }
@@ -82,5 +103,25 @@
         color: $text-on-accent-fill-color-primary-dark;
       }
     }
+
+    @media (max-width: 235px) {
+      &.menu-item-active {
+        color: $accent-fill-color-default;
+
+        +dark() {
+          color: $accent-fill-color-default-dark;
+        }
+      }
+
+      .badge,
+      &.menu-item-active::after {
+        display: none;
+      }
+    }
+  }
+
+  &.menu-item-search a svg {
+    display: inline;
+    margin-right: 0;
   }
 }

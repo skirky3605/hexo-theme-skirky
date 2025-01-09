@@ -1,6 +1,15 @@
 @import 'categories';
 @import 'tag-cloud';
 
+:root:has(.index-hover) {
+  scroll-snap-type: y mandatory;
+}
+
+.cover:has(.index-hover),
+.cover:has(.index-hover)~.main {
+  scroll-snap-align: start;
+}
+
 .index-hover {
   width: 100%;
   height: 100vh;
@@ -36,7 +45,7 @@
             width: 150px;
             height: 150px;
             margin: 0 auto;
-            border-radius: 50%;
+            border-radius: 75px;
             object-fit: cover;
           }
         }

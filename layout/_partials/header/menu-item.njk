@@ -1,20 +1,27 @@
 {% macro render(node) %}
 
 {% set itemURL = node.path %}
-<li class="menu-item menu-item-{{ node.name | lower | replace(' ', '-') }}">
-  {% set menuText = node.name %}
+<li class="menu-item menu-item-{{ node.type | lower | replace(' ', '-') }}">
+  {% set menuText = '<span class="title">' + node.name + '</span>' %}
 
-  {% if node.type == 'archives' %}
+  {% if node.type == 'home' %}
+  {% set menuIcon = fluent_icon('Home') %}
+  {% set menuBadge = '' %}
+  {% elseif node.type == 'archives' %}
+  {% set menuIcon = fluent_icon('Archive') %}
   {% set menuBadge = '<span class="badge">' + site.posts.length + '</span>' %}
   {% elseif node.type == 'categories' %}
+  {% set menuIcon = fluent_icon('Grid') %}
   {% set menuBadge = '<span class="badge">' + site.categories.length + '</span>' %}
   {% elseif node.type == 'tags' %}
+  {% set menuIcon = fluent_icon('TagMultiple') %}
   {% set menuBadge = '<span class="badge">' + site.tags.length + '</span>' %}
   {% else %}
+  {% set menuIcon = '' %}
   {% set menuBadge = '' %}
   {% endif %}
 
-  {{ html_url(itemURL, menuText + menuBadge, { rel: 'section' }) }}
+  {{ html_url(itemURL, menuIcon + menuText + menuBadge, { rel: 'section' }) }}
 </li>
 
 {% endmacro %}
