@@ -1,24 +1,18 @@
-/**
- * @param {string} css
- */
-function addStyle(css) {
-  const style = document.createElement("style");
-  const parentNode = document.head || document.scripts[document.scripts.length - 1].parentNode;
-  parentNode.appendChild(style);
-  if (style.styleSheet) {
-    style.type = "text/css";
-    style.styleSheet.cssText = css;
+if (typeof document.documentMode === "number") {/**
+  * @param {string} css
+  */
+  function addStyle(css) {
+    const style = document.createElement("style");
+    const parentNode = document.head || document.scripts[document.scripts.length - 1].parentNode;
+    parentNode.appendChild(style);
+    if (style.styleSheet) {
+      style.type = "text/css";
+      style.styleSheet.cssText = css;
+    }
+    else {
+      style.innerText = css;
+    }
   }
-  else {
-    style.innerText = css;
-  }
-}
-
-if (!window.CSS || (!CSS?.supports("position", "sticky") && !CSS?.supports("position", "-webkit-sticky"))) {
-  addStyle(".sidebar-container{position:fixed}");
-}
-
-if (typeof document.documentMode === "number") {
   if (document.documentMode < 10) {
     addStyle(".main-grid .main-inner{width:calc(100% - 280px)}");
   }

@@ -190,6 +190,24 @@ Skirky.utils = {
       sidebar.className += ` ${activeClassNames[index]}`;
     }
   },
+  registerSidebarPanel() {
+    if (!window.CSS || (!CSS?.supports("position", "sticky") && !CSS?.supports("position", "-webkit-sticky"))) {
+      const column = document.querySelector(".column");
+      /** @type {HTMLElement} */
+      const sidebar = document.querySelector(".sidebar-container");
+      function onchange() {
+        if (innerWidth > 767 && column.getBoundingClientRect().top < 40) {
+          sidebar.style.position = "fixed";
+          sidebar.style.width = "240px";
+          return;
+        }
+        sidebar.style.position = '';
+        sidebar.style.width = '';
+      }
+      addEventListener("scroll", onchange);
+      addEventListener("resize", onchange);
+    }
+  },
   applyRandomGradient() {
     // 生成随机颜色，确保两种颜色的差异明显
     function getRandomColor() {

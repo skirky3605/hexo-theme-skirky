@@ -6,6 +6,8 @@ Skirky.boot.registerEvents = () => {
   }
 
   Skirky.utils.registerScrollPercent();
+  Skirky.utils.registerSidebarPanel();
+
   // 当窗口大小改变时重新生成并应用随机渐变颜色（可选）
   addEventListener("resize", Skirky.utils.applyRandomGradient);
 
