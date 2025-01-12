@@ -54,17 +54,30 @@ body {
   }
 }
 
+.sidebar-toggle,
 .back-to-top {
   cursor: pointer;
   fill: currentColor;
   position: fixed;
-  right: 16px;
   bottom: -300px;
-  transition: bottom .2s ease-in-out;
+  transition: bottom .25s ease-in-out;
 
   svg {
     margin-bottom: -3px;
   }
+}
+
+.sidebar-toggle {
+  left: 16px;
+  padding: 6px 8px;
+
+  +mobile() {
+    bottom: 56px;
+  }
+}
+
+.back-to-top {
+  right: 16px;
 
   &.back-to-top-on {
     bottom: 56px;

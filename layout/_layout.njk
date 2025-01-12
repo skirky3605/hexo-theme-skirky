@@ -17,6 +17,10 @@
       <div class="main-inner {% block class %}{% endblock %}">{% block content %}{% endblock %}</div>
       <div class="column">{% block sidebar %}{% endblock %}</div>
     </div>
+    <button class="toggle sidebar-toggle accent" title="导航" type="button"
+      onclick="document.body.classList ? document.body.classList.contains('sidebar-active') ? document.body.classList.remove('sidebar-active') : document.body.classList.add('sidebar-active') : /(^|\s)sidebar-active(\s|$)/.test(document.body.className) ? document.body.className = document.body.className.replace(/(^|\s)sidebar-active(\s|$)/g, '') : document.body.className += ' sidebar-active'">
+      {{ fluent_icon("Navigation", 16) }}
+    </button>
     <button class="back-to-top accent" title="返回顶部" type="button"
       onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
       {{ fluent_icon("ArrowUp", 16) }}

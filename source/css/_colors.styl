@@ -1,8 +1,303 @@
 :root {
+  /** Colors */
+
+  --system-accent-color: $system-accent-color;
+  --system-accent-color-dark1: $system-accent-color-dark1;
+  --system-accent-color-dark2: $system-accent-color-dark2;
+  --system-accent-color-dark3: $system-accent-color-dark3;
+  --system-accent-color-light1: $system-accent-color-light1;
+  --system-accent-color-light2: $system-accent-color-light2;
+  --system-accent-color-light3: $system-accent-color-light3;
+
+  --text-fill-color-primary: $text-fill-color-primary;
+  --text-fill-color-secondary: $text-fill-color-secondary;
+  --text-fill-color-tertiary: $text-fill-color-tertiary;
+  --text-fill-color-disabled: $text-fill-color-disabled;
+  --text-fill-color-inverse: $text-fill-color-inverse;
+
+  --accent-text-fill-color-primary: $accent-text-fill-color-primary;
+  --accent-text-fill-color-secondary: $accent-text-fill-color-secondary;
+  --accent-text-fill-color-tertiary: $accent-text-fill-color-tertiary;
+  --accent-text-fill-color-disabled: $accent-text-fill-color-disabled;
+
+  --text-on-accent-fill-color-selected-text: $text-on-accent-fill-color-selected-text;
+
+  --text-on-accent-fill-color-primary: $text-on-accent-fill-color-primary;
+  --text-on-accent-fill-color-secondary: $text-on-accent-fill-color-secondary;
+  --text-on-accent-fill-color-disabled: $text-on-accent-fill-color-disabled;
+
+  --control-fill-color-default: $control-fill-color-default;
+  --control-fill-color-secondary: $control-fill-color-secondary;
+  --control-fill-color-tertiary: $control-fill-color-tertiary;
+  --control-fill-color-disabled: $control-fill-color-disabled;
+  --control-fill-color-transparent: $control-fill-color-transparent;
+  --control-fill-color-input-active: $control-fill-color-input-active;
+
+  --control-strong-fill-color-default: $control-strong-fill-color-default;
+  --control-strong-fill-color-disabled: $control-strong-fill-color-disabled;
+
+  --control-solid-fill-color-default: $control-solid-fill-color-default;
+
+  --subtle-fill-color-transparent: $subtle-fill-color-transparent;
+  --subtle-fill-color-secondary: $subtle-fill-color-secondary;
+  --subtle-fill-color-tertiary: $subtle-fill-color-tertiary;
+  --subtle-fill-color-disabled: $subtle-fill-color-disabled;
+
+  --control-alt-fill-color-transparent: $control-alt-fill-color-transparent;
+  --control-alt-fill-color-secondary: $control-alt-fill-color-secondary;
+  --control-alt-fill-color-tertiary: $control-alt-fill-color-tertiary;
+  --control-alt-fill-color-quarternary: $control-alt-fill-color-quarternary;
+  --control-alt-fill-color-disabled: $control-alt-fill-color-disabled;
+
+  --control-on-image-fill-color-default: $control-on-image-fill-color-default;
+  --control-on-image-fill-color-secondary: $control-on-image-fill-color-secondary;
+  --control-on-image-fill-color-tertiary: $control-on-image-fill-color-tertiary;
+  --control-on-image-fill-color-disabled: $control-on-image-fill-color-disabled;
+
+  --accent-fill-color-default: $accent-fill-color-default;
+  --accent-fill-color-secondary: $accent-fill-color-secondary;
+  --accent-fill-color-tertiary: $accent-fill-color-tertiary;
+  --accent-fill-color-disabled: $accent-fill-color-disabled;
+
+  --control-stroke-color-default: $control-stroke-color-default;
+  --control-stroke-color-secondary: $control-stroke-color-secondary;
+  --control-stroke-color-on-accent-default: $control-stroke-color-on-accent-default;
+  --control-stroke-color-on-accent-secondary: $control-stroke-color-on-accent-secondary;
+  --control-stroke-color-on-accent-tertiary: $control-stroke-color-on-accent-tertiary;
+  --control-stroke-color-on-accent-disabled: $control-stroke-color-on-accent-disabled;
+
+  --control-stroke-color-for-strong-fill-when-on-image: $control-stroke-color-for-strong-fill-when-on-image;
+
+  --card-stroke-color-default: $card-stroke-color-default;
+  --card-stroke-color-default-solid: $card-stroke-color-default-solid;
+
+  --control-strong-stroke-color-default: $control-strong-stroke-color-default;
+  --control-strong-stroke-color-disabled: $control-strong-stroke-color-disabled;
+
+  --surface-stroke-color-default: $surface-stroke-color-default;
+  --surface-stroke-color-flyout: $surface-stroke-color-flyout;
+  --surface-stroke-color-inverse: $surface-stroke-color-inverse;
+
+  --divider-stroke-color-default: $divider-stroke-color-default;
+
+  --focus-stroke-color-outer: $focus-stroke-color-outer;
+  --focus-stroke-color-inner: $focus-stroke-color-inner;
+
+  --card-background-fill-color-default: $card-background-fill-color-default;
+  --card-background-fill-color-secondary: $card-background-fill-color-secondary;
+
+  --smoke-fill-color-default: $smoke-fill-color-default;
+
+  --layer-fill-color-default: $layer-fill-color-default;
+  --layer-fill-color-alt: $layer-fill-color-alt;
+  --layer-on-acrylic-fill-color-default: $layer-on-acrylic-fill-color-default;
+  --layer-on-accent-acrylic-fill-color-default: $layer-on-accent-acrylic-fill-color-default;
+
+  --layer-on-mica-base-alt-fill-color-default: $layer-on-mica-base-alt-fill-color-default;
+  --layer-on-mica-base-alt-fill-color-secondary: $layer-on-mica-base-alt-fill-color-secondary;
+  --layer-on-mica-base-alt-fill-color-tertiary: $layer-on-mica-base-alt-fill-color-tertiary;
+  --layer-on-mica-base-alt-fill-color-transparent: $layer-on-mica-base-alt-fill-color-transparent;
+
+  --solid-background-fill-color-base: $solid-background-fill-color-base;
+  --solid-background-fill-color-secondary: $solid-background-fill-color-secondary;
+  --solid-background-fill-color-tertiary: $solid-background-fill-color-tertiary;
+  --solid-background-fill-color-quarternary: $solid-background-fill-color-quarternary;
+  --solid-background-fill-color-transparent: $solid-background-fill-color-transparent;
+  --solid-background-fill-color-base-alt: $solid-background-fill-color-base-alt;
+
+  --system-fill-color-success: $system-fill-color-success;
+  --system-fill-color-caution: $system-fill-color-caution;
+  --system-fill-color-critical: $system-fill-color-critical;
+  --system-fill-color-neutral: $system-fill-color-neutral;
+  --system-fill-color-solid-neutral: $system-fill-color-solid-neutral;
+  --system-fill-color-attention-background: $system-fill-color-attention-background;
+  --system-fill-color-success-background: $system-fill-color-success-background;
+  --system-fill-color-caution-background: $system-fill-color-caution-background;
+  --system-fill-color-critical-background: $system-fill-color-critical-background;
+  --system-fill-color-neutral-background: $system-fill-color-neutral-background;
+  --system-fill-color-solid-attention-background: $system-fill-color-solid-attention-background;
+  --system-fill-color-solid-neutral-background: $system-fill-color-solid-neutral-background;
+
+  --text-on-accent-fill-color-default: $text-on-accent-fill-color-default;
+  --text-on-accent-a-a-fill-color-primary: $text-on-accent-a-a-fill-color-primary;
+  --text-on-accent-a-a-fill-color-secondary: $text-on-accent-a-a-fill-color-secondary;
+  --text-on-accent-a-a-fill-color-disabled: $text-on-accent-a-a-fill-color-disabled;
+  --control-a-a-fill-color-default: $control-a-a-fill-color-default;
+  --control-a-a-fill-color-disabled: $control-a-a-fill-color-disabled;
+  --accent-a-a-fill-color-disabled: $accent-a-a-fill-color-disabled;
+  --control-stroke-color-for-a-a-fill-on-image: $control-stroke-color-for-a-a-fill-on-image;
+  --control-a-a-stroke-color-default: $control-a-a-stroke-color-default;
+  --control-a-a-stroke-color-disabled: $control-a-a-stroke-color-disabled;
+
+  --control-elevation-border-brush: $control-elevation-border-brush;
+  --circle-elevation-border-brush: $circle-elevation-border-brush;
+  --accent-control-elevation-border-brush: $accent-control-elevation-border-brush;
+
   --highlight-background: $highlight-background;
   --highlight-foreground: $highlight-foreground;
   --highlight-gutter-background: $highlight-gutter-background;
   --highlight-gutter-foreground: $highlight-gutter-foreground;
+
+  /** Common */
+
+  --control-corner-radius: $control-corner-radius;
+  --overlay-corner-radius: $overlay-corner-radius;
+
+  /** Font Size */
+
+  --content-control-font-size: $content-control-font-size;
+
+  --text-style-large-font-size: $text-style-large-font-size;
+  --text-style-extra-large-font-size: $text-style-extra-large-font-size;
+
+  --pivot-header-item-font-size: $pivot-header-item-font-size;
+
+  --caption-text-block-font-size: $caption-text-block-font-size;
+  --body-text-block-font-size: $body-text-block-font-size;
+  --subtitle-text-block-font-size: $subtitle-text-block-font-size;
+  --title-text-block-font-size: $title-text-block-font-size;
+  --title-large-text-block-font-size: $title-large-text-block-font-size;
+  --display-text-block-font-size: $display-text-block-font-size;
+
+  /** Font Family */
+
+  --body-font: $body-font;
+  --code-font-family: $code-font-family;
+
+  color-scheme: light;
+
+  +dark() {
+    --text-fill-color-primary: $text-fill-color-primary-dark;
+    --text-fill-color-secondary: $text-fill-color-secondary-dark;
+    --text-fill-color-tertiary: $text-fill-color-tertiary-dark;
+    --text-fill-color-disabled: $text-fill-color-disabled-dark;
+    --text-fill-color-inverse: $text-fill-color-inverse-dark;
+
+    --accent-text-fill-color-primary: $accent-text-fill-color-primary-dark;
+    --accent-text-fill-color-secondary: $accent-text-fill-color-secondary-dark;
+    --accent-text-fill-color-tertiary: $accent-text-fill-color-tertiary-dark;
+    --accent-text-fill-color-disabled: $accent-text-fill-color-disabled-dark;
+
+    --text-on-accent-fill-color-selected-text: $text-on-accent-fill-color-selected-text-dark;
+
+    --text-on-accent-fill-color-primary: $text-on-accent-fill-color-primary-dark;
+    --text-on-accent-fill-color-secondary: $text-on-accent-fill-color-secondary-dark;
+    --text-on-accent-fill-color-disabled: $text-on-accent-fill-color-disabled-dark;
+
+    --control-fill-color-default: $control-fill-color-default-dark;
+    --control-fill-color-secondary: $control-fill-color-secondary-dark;
+    --control-fill-color-tertiary: $control-fill-color-tertiary-dark;
+    --control-fill-color-disabled: $control-fill-color-disabled-dark;
+    --control-fill-color-transparent: $control-fill-color-transparent-dark;
+    --control-fill-color-input-active: $control-fill-color-input-active-dark;
+
+    --control-strong-fill-color-default: $control-strong-fill-color-default-dark;
+    --control-strong-fill-color-disabled: $control-strong-fill-color-disabled-dark;
+
+    --control-solid-fill-color-default: $control-solid-fill-color-default-dark;
+
+    --subtle-fill-color-transparent: $subtle-fill-color-transparent-dark;
+    --subtle-fill-color-secondary: $subtle-fill-color-secondary-dark;
+    --subtle-fill-color-tertiary: $subtle-fill-color-tertiary-dark;
+    --subtle-fill-color-disabled: $subtle-fill-color-disabled-dark;
+
+    --control-alt-fill-color-transparent: $control-alt-fill-color-transparent-dark;
+    --control-alt-fill-color-secondary: $control-alt-fill-color-secondary-dark;
+    --control-alt-fill-color-tertiary: $control-alt-fill-color-tertiary-dark;
+    --control-alt-fill-color-quarternary: $control-alt-fill-color-quarternary-dark;
+    --control-alt-fill-color-disabled: $control-alt-fill-color-disabled-dark;
+
+    --control-on-image-fill-color-default: $control-on-image-fill-color-default-dark;
+    --control-on-image-fill-color-secondary: $control-on-image-fill-color-secondary-dark;
+    --control-on-image-fill-color-tertiary: $control-on-image-fill-color-tertiary-dark;
+    --control-on-image-fill-color-disabled: $control-on-image-fill-color-disabled-dark;
+
+    --accent-fill-color-default: $accent-fill-color-default-dark;
+    --accent-fill-color-secondary: $accent-fill-color-secondary-dark;
+    --accent-fill-color-tertiary: $accent-fill-color-tertiary-dark;
+    --accent-fill-color-disabled: $accent-fill-color-disabled-dark;
+
+    --control-stroke-color-default: $control-stroke-color-default-dark;
+    --control-stroke-color-secondary: $control-stroke-color-secondary-dark;
+    --control-stroke-color-on-accent-default: $control-stroke-color-on-accent-default-dark;
+    --control-stroke-color-on-accent-secondary: $control-stroke-color-on-accent-secondary-dark;
+    --control-stroke-color-on-accent-tertiary: $control-stroke-color-on-accent-tertiary-dark;
+    --control-stroke-color-on-accent-disabled: $control-stroke-color-on-accent-disabled-dark;
+
+    --control-stroke-color-for-strong-fill-when-on-image: $control-stroke-color-for-strong-fill-when-on-image-dark;
+
+    --card-stroke-color-default: $card-stroke-color-default-dark;
+    --card-stroke-color-default-solid: $card-stroke-color-default-solid-dark;
+
+    --control-strong-stroke-color-default: $control-strong-stroke-color-default-dark;
+    --control-strong-stroke-color-disabled: $control-strong-stroke-color-disabled-dark;
+
+    --surface-stroke-color-default: $surface-stroke-color-default-dark;
+    --surface-stroke-color-flyout: $surface-stroke-color-flyout-dark;
+    --surface-stroke-color-inverse: $surface-stroke-color-inverse-dark;
+
+    --divider-stroke-color-default: $divider-stroke-color-default-dark;
+
+    --focus-stroke-color-outer: $focus-stroke-color-outer-dark;
+    --focus-stroke-color-inner: $focus-stroke-color-inner-dark;
+
+    --card-background-fill-color-default: $card-background-fill-color-default-dark;
+    --card-background-fill-color-secondary: $card-background-fill-color-secondary-dark;
+
+    --smoke-fill-color-default: $smoke-fill-color-default-dark;
+
+    --layer-fill-color-default: $layer-fill-color-default-dark;
+    --layer-fill-color-alt: $layer-fill-color-alt-dark;
+    --layer-on-acrylic-fill-color-default: $layer-on-acrylic-fill-color-default-dark;
+    --layer-on-accent-acrylic-fill-color-default: $layer-on-accent-acrylic-fill-color-default-dark;
+
+    --layer-on-mica-base-alt-fill-color-default: $layer-on-mica-base-alt-fill-color-default-dark;
+    --layer-on-mica-base-alt-fill-color-secondary: $layer-on-mica-base-alt-fill-color-secondary-dark;
+    --layer-on-mica-base-alt-fill-color-tertiary: $layer-on-mica-base-alt-fill-color-tertiary-dark;
+    --layer-on-mica-base-alt-fill-color-transparent: $layer-on-mica-base-alt-fill-color-transparent-dark;
+
+    --solid-background-fill-color-base: $solid-background-fill-color-base-dark;
+    --solid-background-fill-color-secondary: $solid-background-fill-color-secondary-dark;
+    --solid-background-fill-color-tertiary: $solid-background-fill-color-tertiary-dark;
+    --solid-background-fill-color-quarternary: $solid-background-fill-color-quarternary-dark;
+    --solid-background-fill-color-transparent: $solid-background-fill-color-transparent-dark;
+    --solid-background-fill-color-base-alt: $solid-background-fill-color-base-alt-dark;
+
+    --system-fill-color-success: $system-fill-color-success-dark;
+    --system-fill-color-caution: $system-fill-color-caution-dark;
+    --system-fill-color-critical: $system-fill-color-critical-dark;
+    --system-fill-color-neutral: $system-fill-color-neutral-dark;
+    --system-fill-color-solid-neutral: $system-fill-color-solid-neutral-dark;
+    --system-fill-color-attention-background: $system-fill-color-attention-background-dark;
+    --system-fill-color-success-background: $system-fill-color-success-background-dark;
+    --system-fill-color-caution-background: $system-fill-color-caution-background-dark;
+    --system-fill-color-critical-background: $system-fill-color-critical-background-dark;
+    --system-fill-color-neutral-background: $system-fill-color-neutral-background-dark;
+    --system-fill-color-solid-attention-background: $system-fill-color-solid-attention-background-dark;
+    --system-fill-color-solid-neutral-background: $system-fill-color-solid-neutral-background-dark;
+
+    --text-on-accent-fill-color-default: $text-on-accent-fill-color-default-dark;
+    --text-on-accent-a-a-fill-color-primary: $text-on-accent-a-a-fill-color-primary-dark;
+    --text-on-accent-a-a-fill-color-secondary: $text-on-accent-a-a-fill-color-secondary-dark;
+    --text-on-accent-a-a-fill-color-disabled: $text-on-accent-a-a-fill-color-disabled-dark;
+    --control-a-a-fill-color-default: $control-a-a-fill-color-default-dark;
+    --control-a-a-fill-color-disabled: $control-a-a-fill-color-disabled-dark;
+    --accent-a-a-fill-color-disabled: $accent-a-a-fill-color-disabled-dark;
+    --control-stroke-color-for-a-a-fill-on-image: $control-stroke-color-for-a-a-fill-on-image-dark;
+    --control-a-a-stroke-color-default: $control-a-a-stroke-color-default-dark;
+    --control-a-a-stroke-color-disabled: $control-a-a-stroke-color-disabled-dark;
+
+    --control-elevation-border-brush: $control-elevation-border-brush-dark;
+    --circle-elevation-border-brush: $circle-elevation-border-brush-dark;
+    --accent-control-elevation-border-brush: $accent-control-elevation-border-brush-dark;
+
+    --highlight-background: $highlight-background-dark;
+    --highlight-foreground: $highlight-foreground-dark;
+    --highlight-gutter-background: $highlight-gutter-background-dark;
+    --highlight-gutter-foreground: $highlight-gutter-foreground-dark;
+
+    color-scheme: dark;
+  }
 
   @keyframes gradient-animation {
     0% {
@@ -16,16 +311,5 @@
     100% {
       background-position: 0% 50%;
     }
-  }
-
-  color-scheme: light;
-
-  +dark() {
-    --highlight-background: $highlight-background-dark;
-    --highlight-foreground: $highlight-foreground-dark;
-    --highlight-gutter-background: $highlight-gutter-background-dark;
-    --highlight-gutter-foreground: $highlight-gutter-foreground-dark;
-
-    color-scheme: dark;
   }
 }

@@ -29,6 +29,11 @@
 
     &:active {
       color: $text-fill-color-tertiary;
+
+      .sidebar-overview-active &.sidebar-nav-overview::after,
+      .sidebar-toc-active &.sidebar-nav-toc::after {
+        transform: scaleX(0.625);
+      }
     }
 
     .sidebar-overview-active &.sidebar-nav-overview::after,
@@ -41,6 +46,7 @@
       margin-top: 38px;
       border-radius: 2px;
       background-color: $accent-fill-color-default;
+      transition: transform 0.167s ease-in-out;
     }
 
     +dark() {

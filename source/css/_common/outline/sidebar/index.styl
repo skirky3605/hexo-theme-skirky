@@ -9,6 +9,7 @@
   position: -webkit-sticky;
   position: sticky;
   width: 240px;
+  max-width: 100%;
   top: 56px;
 
   .sidebar-inner {
@@ -20,6 +21,14 @@
     +dark() {
       background: $card-background-fill-color-default-dark;
       border: 1px solid $control-stroke-color-default-dark;
+    }
+  }
+
+  +mobile() {
+    position: static;
+
+    .sidebar-inner {
+      backdrop-filter: blur(40px);
     }
   }
 }

@@ -1,5 +1,5 @@
 (() => {
-  if (typeof LocalSearch !== "undefined") {
+  if (typeof LocalSearch !== "undefined" && typeof fetch !== "undefined") {
     document.addEventListener("DOMContentLoaded", () => {
       if (!CONFIG.path) {
         // Search DB path
