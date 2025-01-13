@@ -1,3 +1,42 @@
+interface LocalSearchOptions {
+  path: string;
+  unescape: boolean;
+  top_n_per_article: number;
+}
+
+interface ReasultItem {
+  item: string;
+  id: number;
+  hitCount: number;
+  includedCount: number;
+}
+
+declare class LocalSearch {
+  isfetched: boolean;
+  constructor(config?: {
+    path: string;
+    unescape: boolean;
+    top_n_per_article: number;
+  });
+  getResultItems(keywords: string[]): ReasultItem[];
+  fetchData(): void;
+  highlightSearchWords(body: Element): void;
+}
+
+declare interface Pjax {
+  refresh(el: Element): void;
+}
+
+declare const CONFIG: {
+  path: string;
+  localsearch: {
+    top_n_per_article: number;
+    unescape: boolean;
+  }
+};
+
+declare const pjax: Pjax;
+
 (() => {
   if (typeof LocalSearch !== "undefined" && typeof fetch !== "undefined") {
     document.addEventListener("DOMContentLoaded", () => {
@@ -13,15 +52,14 @@
         unescape: CONFIG.localsearch.unescape
       });
 
-      /** @type {HTMLInputElement} */
-      const input = document.querySelector("input.search-input");
-      const container = document.querySelector(".search-result-container");
+      const input = document.querySelector("input.search-input") as HTMLInputElement;
+      const container = document.querySelector(".search-result-container")!;
 
       function inputEventFunction() {
         if (!localSearch.isfetched) { return; }
         const searchText = input.value.trim().toLowerCase();
         const keywords = searchText.split(/[-\s]+/);
-        let resultItems = [];
+        let resultItems: ReasultItem[] = [];
         if (searchText.length > 0) {
           // Perform local searching
           resultItems = localSearch.getResultItems(keywords);
@@ -46,7 +84,7 @@
         }
       };
 
-      try { localSearch.highlightSearchWords(document.querySelector(".post-body")); } catch { }
+      try { localSearch.highlightSearchWords(document.querySelector(".post-body")!); } catch { }
 
       input.addEventListener("input", inputEventFunction);
       addEventListener("search:loaded", inputEventFunction);
@@ -71,14 +109,14 @@
         document.body.classList.remove("search-active");
       }
 
-      document.querySelector(".search-pop-overlay").addEventListener("click", event => {
+      document.querySelector(".search-pop-overlay")!.addEventListener("click", event => {
         if (event.target === document.querySelector(".search-pop-overlay")) {
           onPopupClose();
         }
       });
-      document.querySelector(".popup-btn-close").addEventListener("click", onPopupClose);
+      document.querySelector(".popup-btn-close")!.addEventListener("click", onPopupClose);
       document.addEventListener('pjax:success', () => {
-        try { localSearch.highlightSearchWords(document.querySelector(".post-body")); } catch { }
+        try { localSearch.highlightSearchWords(document.querySelector(".post-body")!); } catch { }
         onPopupClose();
       });
       addEventListener("keydown", event => {
@@ -95,7 +133,7 @@
         }
       });
 
-      window.localSearch = localSearch;
+      (window as any).localSearch = localSearch;
     });
   }
 })();

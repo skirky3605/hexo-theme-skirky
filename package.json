@@ -2,12 +2,16 @@
   "name": "hexo-theme-skirky",
   "version": "0.0.1",
   "dependencies": {
+    "@babel/core": "^7.0.0",
     "@creativecommons/vocabulary": "^2020.11.3",
     "@fluentui/svg-icons": "^1.0.0",
     "@next-theme/pjax": "^0.6.0",
     "hexo-generator-searchdb": "^1.0.0",
-    "hexo-related-posts": "^1.5.2",
+    "hexo-related-posts": "^1.0.0",
     "pace-js": "^1.0.0"
+  },
+  "peerDependencies": {
+    "@babel/preset-typescript": "^7.0.0"
   },
   "devDependencies": {
     "@adobe/css-tools": "^4.0.0",

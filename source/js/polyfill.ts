@@ -1,14 +1,10 @@
 (() => {
   if (!window.globalThis) {
-    window.globalThis = window;
+    (window as any).globalThis = window;
   }
 
   if (!String.prototype.startsWith) {
     String.prototype.startsWith =
-      /**
-       * @param {string} searchString
-       * @param {number} position
-       */
       function (searchString, position = 0) {
         return this.indexOf(searchString, position) === position;
       };
@@ -16,10 +12,6 @@
 
   if (!String.prototype.endsWith) {
     String.prototype.endsWith =
-      /**
-       * @param {string} searchString
-       * @param {number} position
-       */
       function (searchString, position = this.length) {
         const index = this.lastIndexOf(searchString);
         return index !== -1 && index === position - searchString.length;
@@ -29,10 +21,6 @@
   if (typeof DOMTokenList !== "undefined") {
     if (!DOMTokenList.prototype.replace) {
       DOMTokenList.prototype.replace =
-        /**
-         * @param {string} token
-         * @param {string} newToken
-         */
         function (token, newToken) {
           if (this.contains(token)) {
             this.remove(token);
@@ -45,11 +33,8 @@
   }
 
   if (typeof HTMLElement !== "undefined") {
-    HTMLElement.prototype.wrap =
-      /**
-       * @param {HTMLElement} wrapper
-       */
-      function (wrapper) {
+    (HTMLElement.prototype as any).wrap =
+      function (wrapper: HTMLElement) {
         this.parentNode.insertBefore(wrapper, this);
         this.parentNode.removeChild(this);
         wrapper.appendChild(this);
@@ -68,8 +53,7 @@
   if (!document.documentElement.scrollTo) {
     const scrollTo = window.scrollTo;
     window.scrollTo = function () {
-      /** @type {ScrollToOptions} */
-      const options = arguments[0];
+      const options: ScrollToOptions = arguments[0];
       if (typeof arguments[0] === "object") {
         scrollTo(options.left || 0, options.top || 0);
       }

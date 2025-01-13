@@ -1,3 +1,21 @@
+declare const CONFIG: {
+  root: string;
+};
+
+declare const Skirky: {
+  utils: {
+    sections: HTMLElement[];
+    updateActiveNav(): void;
+    registerScrollPercent(): void;
+    registerActiveMenuItem(): void;
+    registerSidebarTOC(): void;
+    activateNavByIndex(index: number): void;
+    activateSidebarPanel(index: 0 | 1): void;
+    registerSidebarPanel(): void;
+    applyRandomGradient(): void;
+  };
+}
+
 (() => {
   const onPageLoaded = () => {
     try {
@@ -19,7 +37,6 @@
 })();
 
 Skirky.utils = {
-  /** @type {HTMLElement[]} */
   sections: [],
   updateActiveNav() {
     if (!this.sections.length) { return; }
@@ -61,13 +78,13 @@ Skirky.utils = {
             }
           }
         }
-        backToTop.querySelector("span").innerText = Math.round(scrollPercent) + '%';
+        backToTop.querySelector("span")!.innerText = Math.round(scrollPercent) + '%';
         this.updateActiveNav();
       }, { passive: true });
     }
   },
   registerActiveMenuItem() {
-    const items = document.querySelectorAll(".menu-item a[href]");
+    const items = document.querySelectorAll<HTMLAnchorElement>(".menu-item a[href]");
     const hasList = !!document.body.classList;
     for (let i = 0; i < items.length; i++) {
       const target = items[i];
@@ -99,19 +116,19 @@ Skirky.utils = {
   },
   registerSidebarTOC() {
     this.sections = [];
-    const elements = document.querySelectorAll(".post-toc:not(.placeholder-toc) li a.nav-link");
+    const elements = document.querySelectorAll<HTMLAnchorElement>(".post-toc:not(.placeholder-toc) li a.nav-link");
     for (let i = 0; i < elements.length; i++) {
       const element = elements[i];
-      const target = document.getElementById(decodeURI(element.getAttribute("href")).replace('#', ''));
+      const target = document.getElementById(decodeURI(element.getAttribute("href")!).replace('#', ''));
       if (!("scrollPadding" in document.documentElement.style)) {
         element.addEventListener("click", event => {
           event.preventDefault();
-          const offset = target.getBoundingClientRect().top + (window.scrollY ?? pageYOffset) - 48;
+          const offset = target!.getBoundingClientRect().top + (window.scrollY ?? pageYOffset) - 48;
           if (history.pushState) {
             history.pushState(null, document.title, element.href);
           }
           else {
-            location.hash = element.getAttribute("href");
+            location.hash = element.getAttribute("href")!;
           }
           scrollTo({
             top: offset,
@@ -123,9 +140,6 @@ Skirky.utils = {
     }
     this.updateActiveNav();
   },
-  /**
-   * @param {number} index
-   */
   activateNavByIndex(index) {
     const nav = document.querySelector(".post-toc:not(.placeholder-toc) .nav");
     if (!nav) { return; }
@@ -153,7 +167,7 @@ Skirky.utils = {
       target.className += " active active-current";
     }
 
-    let activateEle = target.querySelector(".nav-child") || target.parentElement;
+    let activateEle = target.querySelector(".nav-child") || target.parentElement!;
 
     while (nav.contains(activateEle)) {
       if (hasList) {
@@ -166,14 +180,11 @@ Skirky.utils = {
           activateEle.className += " active";
         }
       }
-      activateEle = activateEle.parentElement;
+      activateEle = activateEle.parentElement!;
     }
   },
-  /**
-   * @param {0 | 1} index
-   */
   activateSidebarPanel(index) {
-    const sidebar = document.querySelector(".sidebar-inner");
+    const sidebar = document.querySelector(".sidebar-inner")!;
     const activeClassNames = ["sidebar-toc-active", "sidebar-overview-active"];
     if (sidebar.classList) {
       if (sidebar.classList.contains(activeClassNames[index])) {
@@ -192,9 +203,8 @@ Skirky.utils = {
   },
   registerSidebarPanel() {
     if (!window.CSS || (!CSS?.supports("position", "sticky") && !CSS?.supports("position", "-webkit-sticky"))) {
-      const column = document.querySelector(".column");
-      /** @type {HTMLElement} */
-      const sidebar = document.querySelector(".sidebar-container");
+      const column = document.querySelector(".column")!;
+      const sidebar = document.querySelector(".sidebar-container") as HTMLElement;
       function onchange() {
         if (innerWidth > 767 && column.getBoundingClientRect().top < 40) {
           sidebar.style.position = "fixed";
@@ -212,7 +222,7 @@ Skirky.utils = {
     // 生成随机颜色，确保两种颜色的差异明显
     function getRandomColor() {
       const letters = "0123456789ABCDEF";
-      let color1, color2;
+      let color1: string, color2: string;
       do {
         color1 = '#';
         color2 = '#';
@@ -223,7 +233,7 @@ Skirky.utils = {
       } while (Math.abs(parseInt(color1, 16) - parseInt(color2, 16)) < 0x333333); // 确保两种颜色的差异明显
       return { color1, color2 };
     }
-    const links = document.querySelectorAll("a.random-link");
+    const links = document.querySelectorAll<HTMLAnchorElement>("a.random-link");
     for (let i = 0; i < links.length; i++) {
       const link = links[i];
       const { color1: randomColor1, color2: randomColor2 } = getRandomColor();

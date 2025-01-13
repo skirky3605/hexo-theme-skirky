@@ -11,8 +11,8 @@ favicon:
 
 # Browser header panel color.
 theme_color:
-  light: "#F3F3F3"
-  dark: "#202020"
+  light: '#F3F3F3'
+  dark: '#202020'
 
 menu:
   home: / || fa fa-home
@@ -92,6 +92,10 @@ webmanifest:
 
 service_worker:
   enable: false
+
+babel:
+  options:
+    sourceType: unambiguous
 
 # Assets
 css: css

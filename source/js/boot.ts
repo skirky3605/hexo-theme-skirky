@@ -1,0 +1,57 @@
+declare const CONFIG: {
+  serverworker: boolean;
+}
+
+declare const Skirky: {
+  boot: {
+    registerEvents: () => void;
+    refresh: () => void;
+  };
+  utils: {
+    registerScrollPercent: () => void;
+    registerSidebarPanel: () => void;
+    activateSidebarPanel: (index: number) => void;
+    registerActiveMenuItem: () => void;
+    registerSidebarTOC: () => void;
+    applyRandomGradient: () => void;
+  };
+}
+
+declare const Pace: {
+  options: {
+    restartOnPushState: boolean;
+  };
+  restart: () => void;
+}
+
+Skirky.boot = {
+  registerEvents() {
+    if (CONFIG.serverworker) {
+      navigator.serviceWorker?.register("/service-worker.js");
+    }
+
+    Skirky.utils.registerScrollPercent();
+    Skirky.utils.registerSidebarPanel();
+
+    // 当窗口大小改变时重新生成并应用随机渐变颜色（可选）
+    addEventListener("resize", Skirky.utils.applyRandomGradient);
+
+    Pace.options.restartOnPushState = false;
+    document.addEventListener("pjax:send", Pace.restart);
+
+    const sidebar = document.querySelectorAll('.sidebar-nav li');
+    for (let i = 0; i < sidebar.length; i++) {
+      sidebar[i].addEventListener("click", () => Skirky.utils.activateSidebarPanel(i));
+    }
+  },
+  refresh() {
+    Skirky.utils.registerActiveMenuItem();
+    Skirky.utils.registerSidebarTOC();
+    Skirky.utils.applyRandomGradient();
+  }
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  Skirky.boot.registerEvents();
+  Skirky.boot.refresh();
+});
