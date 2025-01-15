@@ -1,15 +1,9 @@
-declare const Skirky: {
-  boot: {
-    refresh(): void;
-  };
-  utils: {
-    activateSidebarPanel(index: 0 | 1): void;
-  };
-}
+/// <reference path="boot.ts" />
 
 declare class Pjax {
   constructor(options?: Partial<Pjax.IOptions>);
   executeScripts(elements: NodeListOf<HTMLScriptElement>): void;
+  refresh(el: Element): void;
 }
 
 declare namespace Pjax {
@@ -34,7 +28,9 @@ declare namespace Pjax {
   }
 }
 
-if (history.replaceState!) {
+declare const pjax: Pjax;
+
+if ("replaceState" in history) {
   const pjax = new Pjax({
     selectors: [
       "head title",

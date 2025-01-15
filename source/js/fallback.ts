@@ -1,3 +1,5 @@
+/// <reference path="search.ts" />
+
 interface IEDocument extends Document {
   documentMode: number;
 }

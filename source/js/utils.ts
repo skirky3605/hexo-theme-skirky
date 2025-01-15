@@ -1,8 +1,10 @@
-declare const CONFIG: {
-  root: string;
-};
+/// <reference path="config.ts" />
 
 declare const Skirky: {
+  boot: {
+    registerEvents: () => void;
+    refresh: () => void;
+  };
   utils: {
     sections: HTMLElement[];
     updateActiveNav(): void;

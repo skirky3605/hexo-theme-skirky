@@ -1,3 +1,5 @@
+/// <reference path="fallback.ts" />
+
 interface StaticConfig {
   hostname: string;
   root: string;
@@ -21,16 +23,18 @@ interface GlobalConfig extends StaticConfig {
   page: PageConfig;
 }
 
-interface ConfigMap {
-  main: StaticConfig;
-  page: PageConfig;
-}
+declare const CONFIG: GlobalConfig;
 
 (() => {
-  if (!(window as any).Skirky) { (window as any).Skirky = {}; }
+  if (!("Skirky" in window)) { (window as any).Skirky = {}; }
 
   const className = "html-config";
 
+  interface ConfigMap {
+    main: StaticConfig;
+    page: PageConfig;
+  }
+  
   function getConfig<T extends keyof ConfigMap>(name: T) {
     const target = document.querySelector(`script.${className}[data-name="${name}"]`) as HTMLScriptElement;
     if (!target) { return {} as ConfigMap[T]; }
@@ -62,7 +66,7 @@ interface ConfigMap {
         }
         else {
           if (!(name in variableConfig)) { updateConfig(name as keyof ConfigMap); }
-          existing = variableConfig[name as keyof ConfigMap] as any as StaticConfig[T];
+          existing = variableConfig[name as keyof ConfigMap] as unknown as StaticConfig[T];
         }
 
         // For unset override and mixable existing

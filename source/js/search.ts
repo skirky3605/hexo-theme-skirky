@@ -1,8 +1,4 @@
-interface LocalSearchOptions {
-  path: string;
-  unescape: boolean;
-  top_n_per_article: number;
-}
+/// <reference path="pjax.ts" />
 
 interface ReasultItem {
   item: string;
@@ -23,19 +19,7 @@ declare class LocalSearch {
   highlightSearchWords(body: Element): void;
 }
 
-declare interface Pjax {
-  refresh(el: Element): void;
-}
-
-declare const CONFIG: {
-  path: string;
-  localsearch: {
-    top_n_per_article: number;
-    unescape: boolean;
-  }
-};
-
-declare const pjax: Pjax;
+declare const localSearch: LocalSearch;
 
 (() => {
   if (typeof LocalSearch !== "undefined" && typeof fetch !== "undefined") {
@@ -78,8 +62,7 @@ declare const pjax: Pjax;
                 ? right.hitCount - left.hitCount
                 : right.id - left.id);
 
-          container.innerHTML = `<div class="search-stats">找到 ${resultItems.length} 个搜索结果</div>
-          <ul class="search-result-list">${resultItems.map(result => result.item).join('')}</ul>`;
+          container.innerHTML = `<div class="search-stats">找到 ${resultItems.length} 个搜索结果</div>\n<ul class="search-result-list">${resultItems.map(result => result.item).join('')}</ul>`;
           if (typeof pjax === "object") { pjax.refresh(container); }
         }
       };
@@ -124,7 +107,7 @@ declare const pjax: Pjax;
           event.preventDefault();
           document.body.classList.add("search-active");
           setTimeout(input.focus, 500);
-          if (!localSearch.isfetched) localSearch.fetchData();
+          if (!localSearch.isfetched) { localSearch.fetchData(); }
         }
       });
       addEventListener("keyup", event => {

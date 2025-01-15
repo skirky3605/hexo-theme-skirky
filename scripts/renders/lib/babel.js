@@ -11,6 +11,7 @@ module.exports =
     const { path, text } = data;
     if (!text) { return text; }
     const { base } = parse(path);
+    /** @type {import("@types/babel__core").TransformOptions} */
     const options = {
       filename: base,
       presets: [

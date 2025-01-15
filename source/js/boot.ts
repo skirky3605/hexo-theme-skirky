@@ -1,21 +1,4 @@
-declare const CONFIG: {
-  serverworker: boolean;
-}
-
-declare const Skirky: {
-  boot: {
-    registerEvents: () => void;
-    refresh: () => void;
-  };
-  utils: {
-    registerScrollPercent: () => void;
-    registerSidebarPanel: () => void;
-    activateSidebarPanel: (index: number) => void;
-    registerActiveMenuItem: () => void;
-    registerSidebarTOC: () => void;
-    applyRandomGradient: () => void;
-  };
-}
+/// <reference path="utils.ts" />
 
 declare const Pace: {
   options: {
@@ -41,7 +24,7 @@ Skirky.boot = {
 
     const sidebar = document.querySelectorAll('.sidebar-nav li');
     for (let i = 0; i < sidebar.length; i++) {
-      sidebar[i].addEventListener("click", () => Skirky.utils.activateSidebarPanel(i));
+      sidebar[i].addEventListener("click", () => Skirky.utils.activateSidebarPanel(i as 0 | 1));
     }
   },
   refresh() {
