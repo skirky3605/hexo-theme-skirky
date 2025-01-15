@@ -1,0 +1,55 @@
+$combobox-item-foreground = $text-fill-color-primary
+$combobox-item-foreground-pressed = $text-fill-color-secondary
+$combobox-item-foreground-pointer-over = $text-fill-color-primary
+$combobox-item-foreground-disabled = $text-fill-color-disabled
+$combobox-item-foreground-selected = $text-fill-color-primary
+$combobox-item-foreground-selected-unfocused = $text-fill-color-primary
+$combobox-item-foreground-selected-pressed = $text-fill-color-secondary
+$combobox-item-foreground-selected-pointer-over = $text-fill-color-primary
+$combobox-item-foreground-selected-disabled = $text-fill-color-disabled
+$combobox-item-background = $subtle-fill-color-transparent
+$combobox-item-background-pressed = $subtle-fill-color-tertiary
+$combobox-item-background-pointer-over = $subtle-fill-color-secondary
+$combobox-item-background-disabled = $subtle-fill-color-disabled
+$combobox-item-background-selected = $subtle-fill-color-secondary
+$combobox-item-background-selected-unfocused = $subtle-fill-color-tertiary
+$combobox-item-background-selected-pressed = $subtle-fill-color-secondary
+$combobox-item-background-selected-pointer-over = $subtle-fill-color-tertiary
+$combobox-item-background-selected-disabled = $subtle-fill-color-secondary
+
+$combobox-item-foreground-dark = $text-fill-color-primary-dark
+$combobox-item-foreground-pressed-dark = $text-fill-color-secondary-dark
+$combobox-item-foreground-pointer-over-dark = $text-fill-color-primary-dark
+$combobox-item-foreground-disabled-dark = $text-fill-color-disabled-dark
+$combobox-item-foreground-selected-dark = $text-fill-color-primary-dark
+$combobox-item-foreground-selected-unfocused-dark = $text-fill-color-primary-dark
+$combobox-item-foreground-selected-pressed-dark = $text-fill-color-secondary-dark
+$combobox-item-foreground-selected-pointer-over-dark = $text-fill-color-primary-dark
+$combobox-item-foreground-selected-disabled-dark = $text-fill-color-disabled-dark
+$combobox-item-background-dark = $subtle-fill-color-transparent-dark
+$combobox-item-background-pressed-dark = $subtle-fill-color-tertiary-dark
+$combobox-item-background-pointer-over-dark = $subtle-fill-color-secondary-dark
+$combobox-item-background-disabled-dark = $subtle-fill-color-disabled-dark
+$combobox-item-background-selected-dark = $subtle-fill-color-secondary-dark
+$combobox-item-background-selected-unfocused-dark = $subtle-fill-color-tertiary-dark
+$combobox-item-background-selected-pressed-dark = $subtle-fill-color-secondary-dark
+$combobox-item-background-selected-pointer-over-dark = $subtle-fill-color-tertiary-dark
+$combobox-item-background-selected-disabled-dark = $subtle-fill-color-secondary-dark
+
+$combobox-item-theme-padding = 6px 11px
+
+option {
+  padding: $combobox-item-theme-padding;
+  color: $combobox-item-foreground;
+  background-color: blend($combobox-item-background, $system-chrome-medium-low-color);
+
+  &:disabled {
+    color: $combobox-item-foreground-disabled;
+    background-color: blend($combobox-item-background-disabled, $system-chrome-medium-low-color);
+  }
+
+  +dark() {
+    color: $combobox-item-foreground-dark;
+    background-color: blend($combobox-item-background-dark, $system-chrome-medium-low-color-dark);
+  }
+}

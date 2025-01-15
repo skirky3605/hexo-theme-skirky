@@ -10,6 +10,33 @@ $system-accent-color-light3 = #86eae3
 
 /** Light */
 
+$system-alt-high-color = #FFFFFFFF
+$system-alt-low-color = #FFFFFF33
+$system-alt-medium-color = #FFFFFF99
+$system-alt-medium-high-color = #FFFFFFCC
+$system-alt-medium-low-color = #FFFFFF66
+$system-base-high-color = #000000FF
+$system-base-low-color = #00000033
+$system-base-medium-color = #00000099
+$system-base-medium-high-color = #000000CC
+$system-base-medium-low-color = #00000066
+$system-chrome-alt-low-color = #171717FF
+$system-chrome-black-high-color = #000000FF
+$system-chrome-black-low-color = #00000033
+$system-chrome-black-medium-low-color = #00000066
+$system-chrome-black-medium-color = #000000CC
+$system-chrome-disabled-high-color = #CCCCCCFF
+$system-chrome-disabled-low-color = #7A7A7AFF
+$system-chrome-high-color = #CCCCCCFF
+$system-chrome-low-color = #F2F2F2FF
+$system-chrome-medium-color = #E6E6E6FF
+$system-chrome-medium-low-color = #F2F2F2FF
+$system-chrome-white-color = #FFFFFFFF
+$system-chrome-gray-color = #767676FF
+$system-list-low-color = #00000019
+$system-list-medium-color = #00000033
+$system-error-text-color = #C50500
+
 $text-fill-color-primary = #000000E4
 $text-fill-color-secondary = #0000009E
 $text-fill-color-tertiary = #00000072
@@ -158,10 +185,10 @@ $text-control-elevation-border-brush = linear-gradient($control-stroke-color-def
 $text-control-elevation-border-focused-brush = linear-gradient($control-stroke-color-default 97%, $system-accent-color-dark1 97%);
 
 text-control-elevation-border-brush($color) {
-  linear-gradient(blend($color, $control-stroke-color-default) 100%, blend($color, $control-strong-stroke-color-default))
+  linear-gradient(blend($control-stroke-color-default, $color) 100%, blend($control-strong-stroke-color-default, $color))
 }
 text-control-elevation-focused-border-brush($color) {
-  linear-gradient(blend($color, $control-stroke-color-default) 97%, blend($color, $system-accent-color-dark1) 97%)
+  linear-gradient(blend($control-stroke-color-default, $color) 97%, blend($system-accent-color-dark1, $color) 97%)
 }
 
 text-control-elevation-border($background, $border-width) {
@@ -172,6 +199,33 @@ text-control-elevation-border-focused($background, $border-width) {
 }
 
 /** Dark */
+
+$system-alt-high-color-dark = #000000FF
+$system-alt-low-color-dark = #00000033
+$system-alt-medium-color-dark = #00000099
+$system-alt-medium-high-color-dark = #000000CC
+$system-alt-medium-low-color-dark = #00000066
+$system-base-high-color-dark = #FFFFFFFF
+$system-base-low-color-dark = #FFFFFF33
+$system-base-medium-color-dark = #FFFFFF99
+$system-base-medium-high-color-dark = #FFFFFFCC
+$system-base-medium-low-color-dark = #FFFFFF66
+$system-chrome-alt-low-color-dark = #F2F2F2FF
+$system-chrome-black-high-color-dark = #000000FF
+$system-chrome-black-low-color-dark = #00000033
+$system-chrome-black-medium-low-color-dark = #00000066
+$system-chrome-black-medium-color-dark = #000000CC
+$system-chrome-disabled-high-color-dark = #333333FF
+$system-chrome-disabled-low-color-dark = #858585FF
+$system-chrome-high-color-dark = #767676FF
+$system-chrome-low-color-dark = #171717FF
+$system-chrome-medium-color-dark = #1F1F1FFF
+$system-chrome-medium-low-color-dark = #2B2B2BFF
+$system-chrome-white-color-dark = #FFFFFFFF
+$system-chrome-gray-color-dark = #767676FF
+$system-list-low-color-dark = #FFFFFF19
+$system-list-medium-color-dark = #FFFFFF33
+$system-error-text-color-dark = #FFF000
 
 $text-fill-color-primary-dark = #FFFFFF
 $text-fill-color-secondary-dark = #FFFFFFC5
