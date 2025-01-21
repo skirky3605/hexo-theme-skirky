@@ -43,6 +43,22 @@ if (hexo-config('toc.enable')) {
     }
 
     .nav {
+      .nav-child {
+        height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: height, opacity 0.167s ease-in-out;
+        visibility: hidden;
+      }
+
+      .active>.nav-child,
+      li:hover>.nav-child,
+      li>.nav-child:hover {
+        height: auto;
+        opacity: 1;
+        visibility: visible;
+      }
+
       .active>a {
         color: $accent-text-fill-color-primary;
 
