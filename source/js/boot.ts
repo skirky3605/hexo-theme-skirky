@@ -26,6 +26,22 @@ Skirky.boot = {
     for (let i = 0; i < sidebar.length; i++) {
       sidebar[i].addEventListener("click", () => Skirky.utils.activateSidebarPanel(i as 0 | 1));
     }
+
+    if (!("scrollPadding" in document.documentElement.style)) {
+      addEventListener("hashchange", () => {
+        const tHash = location.hash ?? '';
+        if (tHash !== '' && !tHash.match(/%\S{2}/)) {
+          const target = document.getElementById(tHash.slice(1));
+          if (target instanceof HTMLElement) {
+            const offset = target.getBoundingClientRect().top + (window.scrollY ?? pageYOffset) - 48;
+            scrollTo({
+              top: offset,
+              behavior: "smooth"
+            });
+          }
+        }
+      });
+    }
   },
   refresh() {
     Skirky.utils.registerActiveMenuItem();

@@ -24,7 +24,7 @@ if (typeof (document as IEDocument).documentMode === "number") {
     }
   }
   if ((document as IEDocument).documentMode < 10) {
-    addStyle(".main-grid .main-inner{width:calc(100% - 280px)}");
+    addStyle(".main-grid .main-inner{width:calc(100% - 290px)}");
   }
   if ((document as IEDocument).documentMode < 7) {
     addStyle("body .background{position:absolute}a.random-link{color:#000;background:transparent}.menu-item a .badge{right:auto}.sidebar-container{position:absolute}");
