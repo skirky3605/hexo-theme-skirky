@@ -14,9 +14,33 @@ $code-block {
 }
 
 pre,
-code {
+code,
+kbd,
+samp {
   font-size: 0.875em;
   font-family: $code-font-family;
+}
+
+mark,
+code,
+kbd {
+  padding: 0.10rem 0.25rem;
+  color: $highlight-foreground;
+  background: $highlight-background;
+  border-radius: 0.25rem;
+
+  +dark() {
+    color: $highlight-foreground-dark;
+    background-color: $highlight-background-dark;
+  }
+}
+
+a>code {
+  font-size: inherit;
+  color: inherit;
+  padding: 0;
+  background: none;
+  border-radius: 0;
 }
 
 figure.highlight {

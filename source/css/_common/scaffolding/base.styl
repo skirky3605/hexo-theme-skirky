@@ -18,69 +18,34 @@ body {
   font-weight: 400;
   font-family: $body-font;
   color: $text-fill-color-primary;
-  background: alpha($solid-background-fill-color-base, 0.5);
+  background: $solid-background-fill-color-base;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   +dark() {
     color: $text-fill-color-primary-dark;
     background: $solid-background-fill-color-base-dark;
   }
+}
 
-  .background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-size: 400% 400%;
-    background-image: linear-gradient(45deg, #ff9a9a, #a8e6cf, $solid-background-fill-color-base, #ff9a9a);
-    background-position: 0%;
-    animation: gradient-animation 10s ease infinite;
+blockquote {
+  border-left: 5px solid $accent-fill-color-default;
+  border-right: none;
+  font-style: italic;
+  padding: 2px 15px;
+  margin-inline-start: 1rem;
+  margin-inline-end: 1rem;
 
-    +dark() {
-      background-image: linear-gradient(45deg, #ff6b6b, #4ecdc4, $solid-background-fill-color-base-dark, #ff6b6b);
+  [dir='rtl'] & {
+    border-left: none;
+    border-left: 5px solid $accent-fill-color-default;
+  }
+
+  +dark() {
+    border-left: 5px solid $accent-fill-color-default-dark;
+
+    [dir='rtl'] & {
+      border-left: 5px solid $accent-fill-color-default-dark;
     }
-
-    .background-hover {
-      width: 100%;
-      height: 100%;
-      background: alpha($solid-background-fill-color-base, 0.5);
-
-      +dark() {
-        background: alpha($solid-background-fill-color-base-dark, 0.8);
-      }
-    }
-  }
-}
-
-.sidebar-toggle,
-.back-to-top {
-  cursor: pointer;
-  fill: currentColor;
-  position: fixed;
-  bottom: -300px;
-  transition: bottom .25s ease-in-out;
-
-  svg {
-    margin-bottom: -3px;
-  }
-}
-
-.sidebar-toggle {
-  left: 16px;
-  padding: 6px 8px;
-
-  +mobile() {
-    bottom: 56px;
-  }
-}
-
-.back-to-top {
-  right: 16px;
-
-  &.back-to-top-on {
-    bottom: 56px;
   }
 }
 
@@ -119,6 +84,14 @@ a {
   }
 }
 
+kbd {
+  border: 1px solid $accent-fill-color-default;
+
+  +dark() {
+    border: 1px solid $accent-fill-color-default-dark;
+  }
+}
+
 embed,
 iframe,
 img,
@@ -126,23 +99,4 @@ video {
   display: block;
   max-width: 100%;
   margin: 0 auto;
-}
-
-a.random-link {
-  display: block;
-  padding: 15px 20px;
-  text-decoration: none;
-  text-align: center;
-  color: $text-fill-color-primary-dark;
-  border-radius: $control-corner-radius;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  background: #007bff;
-  /* 初始渐变色 */
-  background: linear-gradient(135deg, #007bff, #ff6b6b);
-  /* 添加过渡效果 */
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.01);
-  }
 }

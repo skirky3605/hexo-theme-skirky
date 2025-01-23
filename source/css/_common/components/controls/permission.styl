@@ -1,0 +1,89 @@
+permission {
+  width: auto;
+  height: auto;
+  padding-bottom: 6px;
+  padding-right: 11px;
+  padding-top: 6px;
+  padding-left: 11px;
+  color: $button-foreground;
+  border-radius: $control-corner-radius;
+  background-color: blend($button-background, $solid-background-fill-color-base);
+  border: $button-border-theme-thickness solid $card-stroke-color-default;
+
+  &:not(:invalid):hover {
+    color: $button-foreground-pointer-over;
+    background-color: blend($button-background-pointer-over, $solid-background-fill-color-base);
+  }
+
+  &:not(:invalid):active {
+    color: $button-foreground-pressed;
+    background: blend($button-background-pressed, $solid-background-fill-color-base);
+  }
+
+  &:disabled {
+    color: $button-foreground-disabled;
+    background: blend($button-background-disabled, $solid-background-fill-color-base);
+  }
+
+  +dark() {
+    color: $button-foreground-dark;
+    background-color: blend($button-background-dark, $solid-background-fill-color-base-dark);
+    border: $button-border-theme-thickness solid $card-stroke-color-default-dark;
+
+    &:not(:invalid):hover {
+      color: $button-foreground-pointer-over-dark;
+      background-color: blend($button-background-pointer-over-dark, $solid-background-fill-color-base-dark);
+    }
+
+    &:not(:invalid):active {
+      color: $button-foreground-pressed-dark;
+      background: blend($button-background-pressed-dark, $solid-background-fill-color-base-dark);
+    }
+
+    &:invalid {
+      color: $button-foreground-disabled-dark;
+      background: blend($button-background-disabled-dark, $solid-background-fill-color-base-dark);
+      border: $button-border-theme-thickness solid $button-border-brush-disabled-dark;
+    }
+  }
+
+  &:granted {
+    color: $accent-button-foreground;
+    background-color: $accent-button-background;
+  
+    &:not(:invalid):hover {
+      color: $accent-button-foreground-pointer-over;
+      background-color: $accent-button-background-pointer-over;
+    }
+  
+    &:not(:invalid):active {
+      color: $accent-button-foreground-pressed;
+      background: $accent-button-background-pressed;
+    }
+  
+    &:invalid {
+      color: $accent-button-foreground-disabled;
+      background: $accent-button-background-disabled;
+    }
+  
+    +dark() {
+      color: $accent-button-foreground-dark;
+      background-color: $accent-button-background-dark;
+  
+      &:not(:invalid):hover {
+        color: $accent-button-foreground-pointer-over-dark;
+        background-color: $accent-button-background-pointer-over-dark;
+      }
+  
+      &:not(:invalid):active {
+        color: $accent-button-foreground-pressed-dark;
+        background: $accent-button-background-pressed-dark;
+      }
+  
+      &:invalid {
+        color: $accent-button-foreground-disabled-dark;
+        background: $accent-button-background-disabled-dark;
+      }
+    }
+  }
+}

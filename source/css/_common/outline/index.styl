@@ -2,6 +2,35 @@
 @import 'sidebar';
 @import 'footer';
 
+body {
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-size: 400% 400%;
+    background-image: linear-gradient(45deg, #ff9a9a, #a8e6cf, $solid-background-fill-color-base, #ff9a9a);
+    background-position: 0%;
+    animation: gradient-animation 10s ease infinite;
+
+    +dark() {
+      background-image: linear-gradient(45deg, #ff6b6b, #4ecdc4, $solid-background-fill-color-base-dark, #ff6b6b);
+    }
+
+    .background-hover {
+      width: 100%;
+      height: 100%;
+      background: alpha($solid-background-fill-color-base, 0.5);
+
+      +dark() {
+        background: alpha($solid-background-fill-color-base-dark, 0.8);
+      }
+    }
+  }
+}
+
 .main-grid {
   display: flex;
 
@@ -54,5 +83,54 @@
   +desktop-largest() {
     width: 75%;
     max-width: none;
+  }
+}
+
+.sidebar-toggle,
+.back-to-top {
+  cursor: pointer;
+  fill: currentColor;
+  position: fixed;
+  bottom: -300px;
+  transition: bottom .25s ease-in-out;
+
+  svg {
+    margin-bottom: -3px;
+  }
+}
+
+.sidebar-toggle {
+  left: 16px;
+  padding: 6px 8px;
+
+  +mobile() {
+    bottom: 56px;
+  }
+}
+
+.back-to-top {
+  right: 16px;
+
+  &.back-to-top-on {
+    bottom: 56px;
+  }
+}
+
+a.random-link {
+  display: block;
+  padding: 15px 20px;
+  text-decoration: none;
+  text-align: center;
+  color: $text-fill-color-primary-dark;
+  border-radius: $control-corner-radius;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background: #007bff;
+  /* 初始渐变色 */
+  background: linear-gradient(135deg, #007bff, #ff6b6b);
+  /* 添加过渡效果 */
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.01);
   }
 }
