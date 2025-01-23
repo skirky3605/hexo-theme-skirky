@@ -75,9 +75,9 @@ Skirky.utils = {
             if (!/(\s|^)back-to-top-on(\s|$)/.test(backToTop.className)) {
               backToTop.className += " back-to-top-on";
             }
-            else {
-              backToTop.className = backToTop.className.replace(/(\s|^)back-to-top-on(\s|$)/, '');
-            }
+          }
+          else {
+            backToTop.className = backToTop.className.replace(/(\s|^)back-to-top-on(\s|$)/, '');
           }
         }
         backToTop.querySelector("span")!.innerText = Math.round(scrollPercent) + '%';
