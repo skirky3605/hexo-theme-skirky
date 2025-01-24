@@ -41,6 +41,10 @@
 <link rel="stylesheet" href="{{ url_for(theme.css) }}/highlight.css">
 <link rel="stylesheet" href="{{ url_for(theme.css) }}/main.css">
 
+<noscript>
+  <link rel="stylesheet" href="{{ url_for(theme.css) }}/noscript.css">
+</noscript>
+
 <script src="{{ url_for(theme.js) }}/polyfill.js"></script>
 
 {{ html_data('main', html_config()) }}
