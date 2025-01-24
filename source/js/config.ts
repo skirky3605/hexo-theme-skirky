@@ -34,7 +34,7 @@ declare const CONFIG: GlobalConfig;
     main: StaticConfig;
     page: PageConfig;
   }
-  
+
   function getConfig<T extends keyof ConfigMap>(name: T) {
     const target = document.querySelector(`script.${className}[data-name="${name}"]`) as HTMLScriptElement;
     if (!target) { return {} as ConfigMap[T]; }

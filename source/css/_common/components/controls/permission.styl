@@ -7,8 +7,12 @@ permission {
   padding-left: 11px;
   color: $button-foreground;
   border-radius: $control-corner-radius;
+  background-clip: padding-box;
   background-color: blend($button-background, $solid-background-fill-color-base);
-  border: $button-border-theme-thickness solid $card-stroke-color-default;
+  border-left: $button-border-theme-thickness solid blend($control-stroke-color-default, $solid-background-fill-color-base);
+  border-top: $button-border-theme-thickness solid blend($control-stroke-color-default, $solid-background-fill-color-base);
+  border-right: $button-border-theme-thickness solid blend($control-stroke-color-default, $solid-background-fill-color-base);
+  border-bottom: $button-border-theme-thickness solid blend($control-stroke-color-secondary, $solid-background-fill-color-base);
 
   &:not(:invalid):hover {
     color: $button-foreground-pointer-over;
@@ -17,18 +21,23 @@ permission {
 
   &:not(:invalid):active {
     color: $button-foreground-pressed;
-    background: blend($button-background-pressed, $solid-background-fill-color-base);
+    background-color: blend($button-background-pressed, $solid-background-fill-color-base);
+    border: $button-border-theme-thickness solid blend($button-border-brush-pressed, $solid-background-fill-color-base);
   }
 
-  &:disabled {
+  &:invalid {
     color: $button-foreground-disabled;
-    background: blend($button-background-disabled, $solid-background-fill-color-base);
+    background-color: blend($button-background-disabled, $solid-background-fill-color-base);
+    border: $button-border-theme-thickness solid blend($button-border-brush-disabled, $solid-background-fill-color-base);
   }
 
   +dark() {
     color: $button-foreground-dark;
     background-color: blend($button-background-dark, $solid-background-fill-color-base-dark);
-    border: $button-border-theme-thickness solid $card-stroke-color-default-dark;
+    border-left: $button-border-theme-thickness solid blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark);
+    border-top: $button-border-theme-thickness solid blend($control-stroke-color-secondary-dark, $solid-background-fill-color-base-dark);
+    border-right: $button-border-theme-thickness solid blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark);
+    border-bottom: $button-border-theme-thickness solid blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark);
 
     &:not(:invalid):hover {
       color: $button-foreground-pointer-over-dark;
@@ -37,52 +46,66 @@ permission {
 
     &:not(:invalid):active {
       color: $button-foreground-pressed-dark;
-      background: blend($button-background-pressed-dark, $solid-background-fill-color-base-dark);
+      background-color: blend($button-background-pressed-dark, $solid-background-fill-color-base-dark);
+      border: $button-border-theme-thickness solid blend($button-border-brush-pressed-dark, $solid-background-fill-color-base-dark);
     }
 
     &:invalid {
       color: $button-foreground-disabled-dark;
-      background: blend($button-background-disabled-dark, $solid-background-fill-color-base-dark);
-      border: $button-border-theme-thickness solid $button-border-brush-disabled-dark;
+      background-color: blend($button-background-disabled-dark, $solid-background-fill-color-base-dark);
+      border: $button-border-theme-thickness solid blend($button-border-brush-disabled-dark, $solid-background-fill-color-base-dark);
     }
   }
 
   &:granted {
     color: $accent-button-foreground;
+    background-clip: border-box;
     background-color: $accent-button-background;
-  
+    border-left: $button-border-theme-thickness solid $control-stroke-color-on-accent-default;
+    border-top: $button-border-theme-thickness solid $control-stroke-color-on-accent-default;
+    border-right: $button-border-theme-thickness solid $control-stroke-color-on-accent-default;
+    border-bottom: $button-border-theme-thickness solid $control-stroke-color-on-accent-secondary;
+
     &:not(:invalid):hover {
       color: $accent-button-foreground-pointer-over;
       background-color: $accent-button-background-pointer-over;
     }
-  
+
     &:not(:invalid):active {
       color: $accent-button-foreground-pressed;
-      background: $accent-button-background-pressed;
+      background-color: $accent-button-background-pressed;
+      border: $button-border-theme-thickness solid $accent-button-border-brush-pressed;
     }
-  
+
     &:invalid {
       color: $accent-button-foreground-disabled;
-      background: $accent-button-background-disabled;
+      background-color: $accent-button-background-disabled;
+      border: $button-border-theme-thickness solid $accent-button-border-brush-disabled;
     }
-  
+
     +dark() {
       color: $accent-button-foreground-dark;
       background-color: $accent-button-background-dark;
-  
+      border-left: $button-border-theme-thickness solid $control-stroke-color-on-accent-default-dark;
+      border-top: $button-border-theme-thickness solid $control-stroke-color-on-accent-default-dark;
+      border-right: $button-border-theme-thickness solid $control-stroke-color-on-accent-default-dark;
+      border-bottom: $button-border-theme-thickness solid $control-stroke-color-on-accent-secondary-dark;
+
       &:not(:invalid):hover {
         color: $accent-button-foreground-pointer-over-dark;
         background-color: $accent-button-background-pointer-over-dark;
       }
-  
+
       &:not(:invalid):active {
         color: $accent-button-foreground-pressed-dark;
-        background: $accent-button-background-pressed-dark;
+        background-color: $accent-button-background-pressed-dark;
+        border: $button-border-theme-thickness solid $accent-button-border-brush-pressed-dark;
       }
-  
+
       &:invalid {
         color: $accent-button-foreground-disabled-dark;
-        background: $accent-button-background-disabled-dark;
+        background-color: $accent-button-background-disabled-dark;
+        border: $button-border-theme-thickness solid $accent-button-border-brush-disabled-dark;
       }
     }
   }
