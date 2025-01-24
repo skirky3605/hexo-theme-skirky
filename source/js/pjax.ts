@@ -74,10 +74,17 @@ if ("replaceState" in history) {
     const elements = document.querySelectorAll<HTMLScriptElement>("script[data-pjax]");
     pjax.executeScripts(elements);
     Skirky.boot.refresh();
+    const hasList = !!document.body.classList;
+    if (hasList) {
+      document.body.classList.remove("sidebar-active");
+    }
+    else {
+      document.body.className = document.body.className.replace(/(^|\s)sidebar-active(\s|$)/g, '');
+    }
     const hasTOC = document.querySelector(".post-toc:not(.placeholder-toc)");
     const inner = document.querySelector(".sidebar-inner")!;
     if (hasTOC) {
-      if (inner.classList) {
+      if (hasList) {
         if (!inner.classList.contains("sidebar-nav-active")) {
           inner.classList.add("sidebar-nav-active");
         }
@@ -89,7 +96,7 @@ if ("replaceState" in history) {
       }
     }
     else {
-      if (inner.classList) {
+      if (hasList) {
         inner.classList.remove("sidebar-nav-active");
       }
       else {
