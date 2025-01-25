@@ -3,14 +3,14 @@ const { parse } = require("path")
 
 module.exports =
   /**
+   * @param {import("@types/hexo")} hexo
    * @param {import("@types/hexo").extend.RendererData} data
-   * @this {import("@types/hexo")}
+   * @param {"js" | "ts"} type
    */
-  async function (data) {
-    const hexo = this;
+  async function (hexo, data, type) {
     const { path, text } = data;
     if (!text) { return text; }
-    const { base } = parse(path);
+    const base = path ? parse(path).base : `temp.${type}`;
     /** @type {import("@types/babel__core").TransformOptions} */
     const options = {
       filename: base,

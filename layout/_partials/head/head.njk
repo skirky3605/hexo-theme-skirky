@@ -6,6 +6,19 @@
 {{ meta_generator() }}
 {% endif %}
 
+{% if theme.google_site_verification %}
+<meta name="google-site-verification" content="{{ theme.google_site_verification }}">
+{% endif %}
+{% if theme.bing_site_verification %}
+<meta name="msvalidate.01" content="{{ theme.bing_site_verification }}">
+{% endif %}
+{% if theme.yandex_site_verification %}
+<meta name="yandex-verification" content="{{ theme.yandex_site_verification }}">
+{% endif %}
+{% if theme.baidu_site_verification %}
+<meta name="baidu-site-verification" content="{{ theme.baidu_site_verification }}">
+{% endif %}
+
 <link rel="preload" href="{{ url_for(theme.css) }}/highlight.css" as="style">
 <link rel="preload" href="{{ url_for(theme.css) }}/main.css" as="style">
 
@@ -25,19 +38,6 @@
 <link rel="manifest" href="/manifest.webmanifest">
 {% endif %}
 
-{% if theme.google_site_verification %}
-<meta name="google-site-verification" content="{{ theme.google_site_verification }}">
-{% endif %}
-{% if theme.bing_site_verification %}
-<meta name="msvalidate.01" content="{{ theme.bing_site_verification }}">
-{% endif %}
-{% if theme.yandex_site_verification %}
-<meta name="yandex-verification" content="{{ theme.yandex_site_verification }}">
-{% endif %}
-{% if theme.baidu_site_verification %}
-<meta name="baidu-site-verification" content="{{ theme.baidu_site_verification }}">
-{% endif %}
-
 <link rel="stylesheet" href="{{ url_for(theme.css) }}/highlight.css">
 <link rel="stylesheet" href="{{ url_for(theme.css) }}/main.css">
 
@@ -54,3 +54,42 @@
 <script src="{{ url_for(theme.js) }}/third-party/pace.js"></script>
 <script src="{{ url_for(theme.js) }}/config.js"></script>
 <script src="{{ url_for(theme.js) }}/utils.js"></script>
+
+{% if theme.baidu_analytics %}
+<script src="{{ url_for(theme.js) }}/third-party/analytics/baidu-analytics.js"></script>
+<script src="https://hm.baidu.com/hm.js?{{ theme.baidu_analytics }}" async></script>
+{% endif %}
+
+{% if theme.cloudflare_analytics %}
+<script src="https://static.cloudflareinsights.com/beacon.min.js"
+  data-cf-beacon='{"token": "{{ theme.cloudflare_analytics }}"}' defer data-pjax></script>
+{% endif %}
+
+{% if theme.google_analytics.tracking_id %}
+{% if not theme.google_analytics.only_pageview %}
+<script src="https://www.googletagmanager.com/gtag/js?id={{ theme.google_analytics.tracking_id }}" async></script>
+{% endif %}
+<script src="{{ url_for(theme.js) }}/third-party/analytics/google-analytics.js"></script>
+{% endif %}
+
+{% if theme.growingio_analytics %}
+<script src="https://assets.growingio.com/2.1/gio.js" async></script>
+<script src="{{ url_for(theme.js) }}/third-party/analytics/growingio.js"></script>
+{% endif %}
+
+{% if theme.matomo.enable %}
+<script src="{{ url_for(theme.js) }}/third-party/analytics/matomo.js"></script>
+{% endif %}
+
+{% if theme.clarity_analytics %}
+<script src="{{ url_for(theme.js) }}/third-party/analytics/clarity.js"></script>
+{% endif %}
+
+{% if theme.plausible.enable %}
+<script src="{{ theme.plausible.script_url }}" data-domain="{{ theme.plausible.site_domain }}" defer></script>
+{% endif %}
+
+{% if theme.umami.enable %}
+<script src="{{ theme.umami.script_url }}" data-website-id="{{ theme.umami.website_id }}" {% if theme.umami.host_url %}
+  data-host-url="{{ theme.umami.host_url }}" {% endif %} async defer></script>
+{% endif %}
