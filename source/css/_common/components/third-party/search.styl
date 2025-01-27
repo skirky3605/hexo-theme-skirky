@@ -87,31 +87,31 @@
         width: 100%;
         padding-right: 30px;
 
-        &:not([disabled]):hover {
+        &:not(:disabled):hover {
           +.search-icon {
             fill: $text-fill-color-secondary;
           }
         }
 
-        &:not([disabled]):active {
+        &:not(:disabled):active {
           +.search-icon {
             fill: $text-fill-color-tertiary;
           }
         }
 
-        &:not([disabled]):active,
-        &:not([disabled]):focus-within:not(:active) {
+        &:not(:disabled):active,
+        &:not(:disabled):focus-within:not(:active) {
           padding-right: 30px;
         }
 
         +dark() {
-          &:not([disabled]):hover {
+          &:not(:disabled):hover {
             +.search-icon {
               fill: $text-fill-color-secondary-dark;
             }
           }
 
-          &:not([disabled]):active {
+          &:not(:disabled):active {
             +.search-icon {
               fill: $text-fill-color-tertiary-dark;
             }

@@ -4,6 +4,14 @@
   height: 48px;
 
   .titlebar {
+    background: rgb(blend($card-background-fill-color-default, $solid-background-fill-color-base));
+
+    +dark() {
+      background: rgb(blend($card-background-fill-color-default-dark, $solid-background-fill-color-base-dark));
+    }
+  }
+
+  .titlebar {
     position: fixed;
     top: 0;
     left: 0;

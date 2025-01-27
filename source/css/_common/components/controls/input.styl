@@ -64,6 +64,68 @@ input[type="tel"],
 input[type="text"],
 input[type="url"],
 textarea {
+  color: rgb(blend($text-control-foreground, blend($text-control-background, $solid-background-fill-color-base)));
+  background: rgb(blend($text-control-background, $solid-background-fill-color-base));
+  border-left: $text-control-border-theme-thickness solid rgb(blend($control-stroke-color-default, $solid-background-fill-color-base));
+  border-top: $text-control-border-theme-thickness solid rgb(blend($control-stroke-color-default, $solid-background-fill-color-base));
+  border-right: $text-control-border-theme-thickness solid rgb(blend($control-stroke-color-default, $solid-background-fill-color-base));
+  border-bottom: $text-control-border-theme-thickness solid rgb(blend($control-stroke-color-secondary, $solid-background-fill-color-base));
+
+  &:not(:disabled):hover {
+    color: rgb(blend($text-control-foreground-pointer-over, blend($text-control-background-pointer-over, $solid-background-fill-color-base)));
+    background: rgb(blend($text-control-background-pointer-over, $solid-background-fill-color-base));
+  }
+
+  &:not(:disabled):active,
+  &:not(:disabled):focus:not(:active) {
+    color: rgb(blend($text-control-foreground-focused, blend($text-control-background-focused, $solid-background-fill-color-base)));
+    background: rgb(blend($text-control-background-focused, $solid-background-fill-color-base));
+    border-bottom: $text-control-border-theme-thickness-focused solid rgb(blend($system-accent-color-dark1, $solid-background-fill-color-base));
+  }
+
+  &:disabled {
+    color: rgb(blend($text-control-foreground-disabled, blend($text-control-background, $solid-background-fill-color-base)));
+    background: rgb(blend($text-control-foreground-disabled, $solid-background-fill-color-base));
+    border: $text-control-border-theme-thickness solid rgb(blend($text-control-border-brush-disabled, $solid-background-fill-color-base));
+  }
+  
+  +dark() {
+    color: rgb(blend($text-control-foreground-dark, blend($text-control-background-dark, $solid-background-fill-color-base-dark)));
+    background: rgb(blend($text-control-background-dark, $solid-background-fill-color-base-dark));
+    border-left: $text-control-border-theme-thickness solid rgb(blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark));
+    border-top: $text-control-border-theme-thickness solid rgb(blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark));
+    border-right: $text-control-border-theme-thickness solid rgb(blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark));
+    border-bottom: $text-control-border-theme-thickness solid rgb(blend($control-stroke-color-secondary-dark, $solid-background-fill-color-base-dark));
+
+    &:not(:disabled):hover {
+      color: rgb(blend($text-control-foreground-pointer-over-dark, blend($text-control-background-pointer-over-dark, $solid-background-fill-color-base-dark)));
+      background: rgb(blend($text-control-background-pointer-over-dark, $solid-background-fill-color-base-dark));
+    }
+
+    &:not(:disabled):active,
+    &:not(:disabled):focus:not(:active) {
+      color: rgb(blend($text-control-foreground-focused-dark, blend($text-control-background-focused-dark, $solid-background-fill-color-base-dark)));
+      background: rgb(blend($text-control-background-focused-dark, $solid-background-fill-color-base-dark));
+      border-bottom: $text-control-border-theme-thickness-focused solid rgb(blend($system-accent-color-light2, $solid-background-fill-color-base-dark));
+    }
+
+    &:disabled {
+      color: rgb(blend($text-control-foreground-disabled-dark, blend($text-control-background-dark, $solid-background-fill-color-base-dark)));
+      background: rgb(blend($text-control-foreground-disabled-dark, $solid-background-fill-color-base-dark));
+      border: $text-control-border-theme-thickness solid rgb(blend($text-control-border-brush-disabled-dark, $solid-background-fill-color-base-dark));
+    }
+  }
+}
+
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="url"],
+textarea {
   padding: 6px;
   font-family: $body-font;
   color: $text-control-foreground;
@@ -74,13 +136,13 @@ textarea {
   border-right: $text-control-border-theme-thickness solid $control-stroke-color-default;
   border-bottom: $text-control-border-theme-thickness solid $control-strong-stroke-color-default;
 
-  &:not([disabled]):hover {
+  &:not(:disabled):hover {
     color: $text-control-foreground-pointer-over;
     background: $text-control-background-pointer-over;
   }
 
-  &:not([disabled]):active,
-  &:not([disabled]):focus:not(:active) {
+  &:not(:disabled):active,
+  &:not(:disabled):focus:not(:active) {
     outline: none;
     padding: 6px 6px 5px 6px;
     color: $text-control-foreground-focused;
@@ -102,22 +164,92 @@ textarea {
     border-right: $text-control-border-theme-thickness solid $control-stroke-color-default-dark;
     border-bottom: $text-control-border-theme-thickness solid $control-strong-stroke-color-default-dark;
 
-    &:not([disabled]):hover {
+    &:not(:disabled):hover {
       color: $text-control-foreground-pointer-over-dark;
       background: $text-control-background-pointer-over-dark;
     }
 
-    &:not([disabled]):active,
-    &:not([disabled]):focus:not(:active) {
+    &:not(:disabled):active,
+    &:not(:disabled):focus:not(:active) {
       color: $text-control-foreground-focused-dark;
       background: $text-control-background-focused-dark;
-      border-bottom: $text-control-border-theme-thickness-focused solid $system-accent-color-dark1;
+      border-bottom: $text-control-border-theme-thickness-focused solid $system-accent-color-light2;
     }
 
     &:disabled {
       color: $text-control-foreground-disabled-dark;
       background: $text-control-background-disabled-dark;
       border: $text-control-border-theme-thickness solid $text-control-border-brush-disabled-dark;
+    }
+  }
+}
+
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="time"],
+input[type="week"] {
+  color: rgb(blend($button-foreground, blend($button-background, $solid-background-fill-color-base)));
+  background: rgb(blend($button-background, $solid-background-fill-color-base));
+  border-left: $button-border-theme-thickness solid rgb(blend($control-stroke-color-default, $solid-background-fill-color-base));
+  border-top: $button-border-theme-thickness solid rgb(blend($control-stroke-color-default, $solid-background-fill-color-base));
+  border-right: $button-border-theme-thickness solid rgb(blend($control-stroke-color-default, $solid-background-fill-color-base));
+  border-bottom: $button-border-theme-thickness solid rgb(blend($control-stroke-color-secondary, $solid-background-fill-color-base));
+
+  &:not(:disabled):hover {
+    color: rgb(blend($button-foreground-pointer-over, blend($button-background-pointer-over, $solid-background-fill-color-base)));
+    background: rgb(blend($button-background-pointer-over, $solid-background-fill-color-base));
+  }
+
+  &:not(:disabled):active:not(:focus) {
+    color: rgb(blend($button-foreground-pressed, blend($button-background-pressed, $solid-background-fill-color-base)));
+    background: rgb(blend($button-background-pressed, $solid-background-fill-color-base));
+    border: $button-border-theme-thickness solid rgb(blend($button-border-brush-pressed, $solid-background-fill-color-base));
+  }
+
+  &:not(:disabled):active,
+  &:not(:disabled):focus:not(:active) {
+    color: rgb(blend($text-control-foreground-focused, blend($text-control-background-focused, $solid-background-fill-color-base)));
+    background: rgb(blend($text-control-background-focused, $solid-background-fill-color-base));
+    border-bottom: $text-control-border-theme-thickness-focused solid rgb(blend($system-accent-color-dark1, $solid-background-fill-color-base));
+  }
+
+  &:disabled {
+    color: rgb(blend($button-foreground-disabled, blend($button-background, $solid-background-fill-color-base)));
+    background: rgb(blend($button-background, $solid-background-fill-color-base));
+    border: $button-border-theme-thickness solid rgb(blend($button-border-brush-disabled, $solid-background-fill-color-base));
+  }
+
+  +dark() {
+    color: rgb(blend($button-foreground-dark, blend($button-background-dark, $solid-background-fill-color-base-dark)));
+    background: rgb(blend($button-background-dark, $solid-background-fill-color-base-dark));
+    border-left: $button-border-theme-thickness solid rgb(blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark));
+    border-top: $button-border-theme-thickness solid rgb(blend($control-stroke-color-secondary-dark, $solid-background-fill-color-base-dark));
+    border-right: $button-border-theme-thickness solid rgb(blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark));
+    border-bottom: $button-border-theme-thickness solid rgb(blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark));
+
+    &:not(:disabled):hover {
+      color: rgb(blend($button-foreground-pointer-over-dark, blend($button-background-pointer-over-dark, $solid-background-fill-color-base-dark)));
+      background: rgb(blend($button-background-pointer-over-dark, $solid-background-fill-color-base-dark));
+    }
+
+    &:not(:disabled):active:not(:focus) {
+      color: rgb(blend($button-foreground-pressed-dark, blend($button-background-pressed-dark, $solid-background-fill-color-base-dark)));
+      background: rgb(blend($button-background-pressed-dark, $solid-background-fill-color-base-dark));
+      border: $button-border-theme-thickness solid rgb(blend($button-border-brush-pressed-dark, $solid-background-fill-color-base-dark));
+    }
+
+    &:not(:disabled):active,
+    &:not(:disabled):focus:not(:active) {
+      color: rgb(blend($text-control-foreground-focused-dark, blend($text-control-background-focused-dark, $solid-background-fill-color-base-dark)));
+      border-top: $text-control-border-theme-thickness solid rgb(blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark));
+      border-bottom: $text-control-border-theme-thickness-focused solid rgb(blend($system-accent-color-light2, $solid-background-fill-color-base-dark));
+    }
+
+    &:disabled {
+      color: rgb(blend($button-foreground-disabled-dark, blend($button-background-dark, $solid-background-fill-color-base-dark)));
+      background: rgb(blend($button-background-dark, $solid-background-fill-color-base-dark));
+      border: $button-border-theme-thickness solid rgb(blend($button-border-brush-disabled-dark, $solid-background-fill-color-base-dark));
     }
   }
 }
@@ -137,26 +269,23 @@ input[type="week"] {
   border-right: $button-border-theme-thickness solid $control-stroke-color-default;
   border-bottom: $button-border-theme-thickness solid $control-stroke-color-secondary;
 
-  &:not([disabled]):hover {
+  &:not(:disabled):hover {
     color: $button-foreground-pointer-over;
     background: padding-box $button-background-pointer-over;
   }
 
-  &:not([disabled]):active:not(:focus) {
+  &:not(:disabled):active:not(:focus) {
     color: $button-foreground-pressed;
     background: padding-box $button-background-pressed;
     border: $button-border-theme-thickness solid $button-border-brush-pressed;
   }
 
-  &:not([disabled]):active,
-  &:not([disabled]):focus:not(:active) {
+  &:not(:disabled):active,
+  &:not(:disabled):focus:not(:active) {
     outline: none;
     padding: 6px 6px 5px 6px;
     color: $text-control-foreground-focused;
     background: $text-control-background-focused;
-    border-left: $text-control-border-theme-thickness solid $control-stroke-color-default-dark;
-    border-top: $text-control-border-theme-thickness solid $control-stroke-color-default-dark;
-    border-right: $text-control-border-theme-thickness solid $control-stroke-color-default-dark;
     border-bottom: $text-control-border-theme-thickness-focused solid $system-accent-color-dark1;
   }
 
@@ -174,25 +303,23 @@ input[type="week"] {
     border-right: $button-border-theme-thickness solid $control-stroke-color-default-dark;
     border-bottom: $button-border-theme-thickness solid $control-stroke-color-default-dark;
 
-    &:not([disabled]):hover {
+    &:not(:disabled):hover {
       color: $button-foreground-pointer-over-dark;
       background: padding-box $button-background-pointer-over-dark;
     }
 
-    &:not([disabled]):active:not(:focus) {
+    &:not(:disabled):active:not(:focus) {
       color: $button-foreground-pressed-dark;
       background: padding-box $button-background-pressed-dark;
       border: $button-border-theme-thickness solid $button-border-brush-pressed-dark;
     }
 
-    &:not([disabled]):active,
-    &:not([disabled]):focus:not(:active) {
+    &:not(:disabled):active,
+    &:not(:disabled):focus:not(:active) {
       color: $text-control-foreground-focused-dark;
       background: $text-control-background-focused-dark;
-      border-left: $text-control-border-theme-thickness solid $control-stroke-color-default-dark;
       border-top: $text-control-border-theme-thickness solid $control-stroke-color-default-dark;
-      border-right: $text-control-border-theme-thickness solid $control-stroke-color-default-dark;
-      border-bottom: $text-control-border-theme-thickness-focused solid $system-accent-color-dark1;
+      border-bottom: $text-control-border-theme-thickness-focused solid $system-accent-color-light2;
     }
 
     &:disabled {

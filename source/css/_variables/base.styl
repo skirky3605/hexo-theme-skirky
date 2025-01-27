@@ -371,14 +371,14 @@ accent-control-elevation-border-dark($background, $border-width) {
   border-image-border($background, accent-control-elevation-border-brush-dark($background), $border-width)
 }
 
-$text-control-elevation-border-brush-dark = linear-gradient($control-stroke-color-default 8%, $control-strong-stroke-color-default 54%);
-$text-control-elevation-border-focused-brush-dark = linear-gradient($control-stroke-color-default 8%, $system-accent-color-light2);
+$text-control-elevation-border-brush-dark = linear-gradient($control-stroke-color-default-dark 8%, $control-strong-stroke-color-default-dark 54%);
+$text-control-elevation-border-focused-brush-dark = linear-gradient($control-stroke-color-default-dark 8%, $system-accent-color-light2);
 
 text-control-elevation-border-brush-dark($color) {
-  linear-gradient(blend($color, $control-stroke-color-default) 8%, blend($color, $control-strong-stroke-color-default) 54%)
+  linear-gradient(blend($color, $control-stroke-color-default-dark) 8%, blend($color, $control-strong-stroke-color-default-dark) 54%)
 }
 text-control-elevation-border-focused-brush-dark($color) {
-  linear-gradient(blend($color, $control-stroke-color-default) 8%, rgba($system-accent-color-light2, 0.9))
+  linear-gradient(blend($color, $control-stroke-color-default-dark) 8%, rgba($system-accent-color-light2, 0.9))
 }
 
 text-control-elevation-border-dark($background, $border-width) {

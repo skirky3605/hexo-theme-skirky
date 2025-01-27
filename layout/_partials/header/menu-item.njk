@@ -21,7 +21,7 @@
   {% set menuBadge = '' %}
   {% endif %}
 
-  {{ html_url(itemURL, menuIcon + menuText + menuBadge, { rel: 'section' }) }}
+  {{ html_url(itemURL, menuIcon + menuText + menuBadge, { title: node.name, rel: 'section' }) }}
 </li>
 
 {% endmacro %}

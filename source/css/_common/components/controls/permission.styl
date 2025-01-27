@@ -8,52 +8,52 @@ permission {
   color: $button-foreground;
   border-radius: $control-corner-radius;
   background-clip: padding-box;
-  background-color: blend($button-background, $solid-background-fill-color-base);
-  border-left: $button-border-theme-thickness solid blend($control-stroke-color-default, $solid-background-fill-color-base);
-  border-top: $button-border-theme-thickness solid blend($control-stroke-color-default, $solid-background-fill-color-base);
-  border-right: $button-border-theme-thickness solid blend($control-stroke-color-default, $solid-background-fill-color-base);
-  border-bottom: $button-border-theme-thickness solid blend($control-stroke-color-secondary, $solid-background-fill-color-base);
+  background-color: rgb(blend($button-background, $solid-background-fill-color-base));
+  border-left: $button-border-theme-thickness solid rgb(blend($control-stroke-color-default, $solid-background-fill-color-base));
+  border-top: $button-border-theme-thickness solid rgb(blend($control-stroke-color-default, $solid-background-fill-color-base));
+  border-right: $button-border-theme-thickness solid rgb(blend($control-stroke-color-default, $solid-background-fill-color-base));
+  border-bottom: $button-border-theme-thickness solid rgb(blend($control-stroke-color-secondary, $solid-background-fill-color-base));
 
   &:not(:invalid):hover {
     color: $button-foreground-pointer-over;
-    background-color: blend($button-background-pointer-over, $solid-background-fill-color-base);
+    background-color: rgb(blend($button-background-pointer-over, $solid-background-fill-color-base));
   }
 
   &:not(:invalid):active {
     color: $button-foreground-pressed;
-    background-color: blend($button-background-pressed, $solid-background-fill-color-base);
-    border: $button-border-theme-thickness solid blend($button-border-brush-pressed, $solid-background-fill-color-base);
+    background-color: rgb(blend($button-background-pressed, $solid-background-fill-color-base));
+    border: $button-border-theme-thickness solid rgb(blend($button-border-brush-pressed, $solid-background-fill-color-base));
   }
 
   &:invalid {
     color: $button-foreground-disabled;
-    background-color: blend($button-background-disabled, $solid-background-fill-color-base);
-    border: $button-border-theme-thickness solid blend($button-border-brush-disabled, $solid-background-fill-color-base);
+    background-color: rgb(blend($button-background-disabled, $solid-background-fill-color-base));
+    border: $button-border-theme-thickness solid rgb(blend($button-border-brush-disabled, $solid-background-fill-color-base));
   }
 
   +dark() {
     color: $button-foreground-dark;
-    background-color: blend($button-background-dark, $solid-background-fill-color-base-dark);
-    border-left: $button-border-theme-thickness solid blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark);
-    border-top: $button-border-theme-thickness solid blend($control-stroke-color-secondary-dark, $solid-background-fill-color-base-dark);
-    border-right: $button-border-theme-thickness solid blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark);
-    border-bottom: $button-border-theme-thickness solid blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark);
+    background-color: rgb(blend($button-background-dark, $solid-background-fill-color-base-dark));
+    border-left: $button-border-theme-thickness solid rgb(blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark));
+    border-top: $button-border-theme-thickness solid rgb(blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark));
+    border-right: $button-border-theme-thickness solid rgb(blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark));
+    border-bottom: $button-border-theme-thickness solid rgb(blend($control-stroke-color-secondary-dark, $solid-background-fill-color-base-dark));
 
     &:not(:invalid):hover {
       color: $button-foreground-pointer-over-dark;
-      background-color: blend($button-background-pointer-over-dark, $solid-background-fill-color-base-dark);
+      background-color: rgb(blend($button-background-pointer-over-dark, $solid-background-fill-color-base-dark));
     }
 
     &:not(:invalid):active {
       color: $button-foreground-pressed-dark;
-      background-color: blend($button-background-pressed-dark, $solid-background-fill-color-base-dark);
-      border: $button-border-theme-thickness solid blend($button-border-brush-pressed-dark, $solid-background-fill-color-base-dark);
+      background-color: rgb(blend($button-background-pressed-dark, $solid-background-fill-color-base-dark));
+      border: $button-border-theme-thickness solid rgb(blend($button-border-brush-pressed-dark, $solid-background-fill-color-base-dark));
     }
 
     &:invalid {
       color: $button-foreground-disabled-dark;
-      background-color: blend($button-background-disabled-dark, $solid-background-fill-color-base-dark);
-      border: $button-border-theme-thickness solid blend($button-border-brush-disabled-dark, $solid-background-fill-color-base-dark);
+      background-color: rgb(blend($button-background-disabled-dark, $solid-background-fill-color-base-dark));
+      border: $button-border-theme-thickness solid rgb(blend($button-border-brush-disabled-dark, $solid-background-fill-color-base-dark));
     }
   }
 
