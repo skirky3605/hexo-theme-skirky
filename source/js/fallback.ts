@@ -27,7 +27,7 @@ if (typeof (document as IEDocument).documentMode === "number") {
     addStyle(".main-grid .main-inner{width:calc(100% - 290px)}");
   }
   if ((document as IEDocument).documentMode < 7) {
-    addStyle("body .background{position:absolute}a.random-link{color:#000;background:transparent}.menu-item a .badge{right:auto}.sidebar-container{position:absolute}");
+    addStyle("body .background{position:absolute}a.random-link{color:#000;background:none}.menu-item a .badge{right:auto}.sidebar-container{position:absolute}");
   }
   if ((document as IEDocument).documentMode < 9) {
     addStyle(".sidebar-container{display:none}");

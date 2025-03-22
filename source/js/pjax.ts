@@ -60,9 +60,6 @@ if ("replaceState" in history) {
           // Force synchronous loading of peripheral JS.
           script.async = false;
         }
-        if (typeof script.dataset?.pjax !== "undefined") {
-          script.dataset.pjax = '';
-        }
         if (code !== '') {
           script.appendChild(document.createTextNode(code));
         }
