@@ -5,7 +5,7 @@
   </span>
 
   {% if date(post.date) != date(post.updated) %}
-  <span>|</span>
+  <span>&nbsp;|&nbsp;</span>
   <span class="post-meta-item">
     <span class="post-meta-item-text">最后更新：</span>
     <time title="{{ full_date(post.updated) }}" itemprop="dateModified"
