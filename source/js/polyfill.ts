@@ -3,6 +3,17 @@
     (window as any).globalThis = window;
   }
 
+  if (!window.console) {
+    function noop() { }
+    window.console = {
+      debug: noop,
+      error: noop,
+      info: noop,
+      log: noop,
+      warn: noop
+    } as Console;
+  }
+
   if (!String.prototype.startsWith) {
     String.prototype.startsWith =
       function (searchString, position = 0) {
@@ -62,7 +73,7 @@
       }
     };
   }
-  
+
   if ((() => {
     const element = document.createElement('a');
     element.innerHTML = "<xyz></xyz>";

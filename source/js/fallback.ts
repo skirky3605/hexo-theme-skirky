@@ -24,21 +24,37 @@ function addStyle(css: string) {
 }
 
 if (typeof (document as IEDocument).documentMode === "number") {
-  const documentMode = (document as IEDocument).documentMode;
-  if (documentMode < 7) {
+  if ((document as IEDocument).documentMode < 7) {
     addStyle("body .background{position:absolute}a.random-link{color:#000;background:none}.menu-item a .badge{right:auto}.sidebar-container{position:absolute}");
   }
-  else if (documentMode == 9) {
-    addStyle("@media(min-width:768px){.main-grid .main-inner{float:left;width:calc(100% - 290px)}}");
-  }
-  else {
-    addStyle(".sidebar-container{display:none}");
-  }
 }
-else {
-  if (!window.CSS?.supports("display", "flex") && !("flex" in document.documentElement.style || "msFlex" in document.documentElement.style)) {
-    addStyle(".sidebar-container{display:none}");
-  }
+
+if (window.CSS ? !window.CSS?.supports("width", "calc(40px - 20px)") :
+  !(() => {
+    try {
+      const div = document.createElement("div");
+      div.style.width = "calc(40px - 20px)";
+      document.body.appendChild(div);
+      let isCalcAvailable = div.offsetWidth === 20;
+      if (!isCalcAvailable) {
+        div.style.width = "-webkit-calc(40px - 20px)";
+        isCalcAvailable = div.offsetWidth === 20;
+        if (!isCalcAvailable) {
+          div.style.width = "-moz-calc(40px - 20px)";
+          isCalcAvailable = div.offsetWidth === 20;
+        }
+      }
+      document.body.removeChild(div);
+      return isCalcAvailable;
+    }
+    catch {
+      return false;
+    }
+  })()) {
+  addStyle(".sidebar-container{display:none}");
+}
+else if (!("flex" in document.documentElement.style || "msFlex" in document.documentElement.style)) {
+  addStyle("@media(min-width:768px){.main-grid .main-inner{float:left;width:-webkit-calc(100% - 290px);width:-moz-calc(100% - 290px);width:calc(100% - 290px)}}");
 }
 
 if (!window.MediaList) {
