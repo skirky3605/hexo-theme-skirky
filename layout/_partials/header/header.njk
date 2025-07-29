@@ -5,9 +5,19 @@
         {% include './menu.njk' %}
       </div>
       <div class="header-right">
-        <li class="menu-item menu-item-search">
-          <a class="popup-trigger" title="搜索" href="/search" role="button">{{ fluent_icon("Search") }}</a>
-        </li>
+        <ul class="main-menu menu">
+          <li class="menu-item menu-item-icon menu-item-theme">
+            <a class="toggle-system" title="跟随系统" href="javascript:void(0)" role="button"
+              onclick="switch(document.documentElement.style.colorScheme) { case 'light': document.documentElement.style.colorScheme = 'dark'; this.title = '深色'; this.className = 'toggle-dark'; break; case 'dark': document.documentElement.style.colorScheme = ''; this.title = '跟随系统'; this.className = 'toggle-system'; break; default: document.documentElement.style.colorScheme = 'light'; this.title = '浅色'; this.className = 'toggle-light'; }">
+              <span class="dark-icon">{{ fluent_icon("WeatherMoon") }}</span>
+              <span class="light-icon">{{ fluent_icon("WeatherSunny") }}</span>
+              <span class="system-icon">{{ fluent_icon("DarkTheme") }}</span>
+            </a>
+          </li>
+          <li class="menu-item menu-item-icon menu-item-search">
+            <a class="popup-trigger" title="搜索" href="/search" role="button">{{ fluent_icon("Search") }}</a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

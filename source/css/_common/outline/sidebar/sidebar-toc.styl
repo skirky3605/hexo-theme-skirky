@@ -39,6 +39,23 @@ if (hexo-config('toc.enable')) {
             color: $text-fill-color-disabled-dark;
           }
         }
+
+        +supports-light-dark() {
+          color: light-dark($text-fill-color-primary, $text-fill-color-primary-dark);
+
+          &:hover {
+            color: light-dark($text-fill-color-secondary, $text-fill-color-secondary-dark);
+          }
+
+          &:active {
+            color: light-dark($text-fill-color-tertiary, $text-fill-color-tertiary-dark);
+          }
+
+          &:not([href]),
+          &:not([href]):hover {
+            color: light-dark($text-fill-color-disabled, $text-fill-color-disabled-dark);
+          }
+        }
       }
     }
 
@@ -89,6 +106,23 @@ if (hexo-config('toc.enable')) {
           &:not([href]),
           &:not([href]):hover {
             color: $accent-text-fill-color-disabled-dark;
+          }
+        }
+
+        +supports-light-dark() {
+          color: light-dark($accent-text-fill-color-primary, $accent-text-fill-color-primary-dark);
+
+          &:hover {
+            color: light-dark($accent-text-fill-color-secondary, $accent-text-fill-color-secondary-dark);
+          }
+
+          &:active {
+            color: light-dark($accent-text-fill-color-tertiary, $accent-text-fill-color-tertiary-dark);
+          }
+
+          &:not([href]),
+          &:not([href]):hover {
+            color: light-dark($accent-text-fill-color-disabled, $accent-text-fill-color-disabled-dark);
           }
         }
       }

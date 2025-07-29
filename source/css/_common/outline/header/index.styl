@@ -18,13 +18,17 @@
     right: 0;
     z-index: 1;
     background: $card-background-fill-color-default;
-    -webkit-backdrop-filter: blur(40px);
     backdrop-filter: blur(40px);
     padding: env(titlebar-area-y, 0) calc(100vw - env(titlebar-area-width, 100vw) - env(titlebar-area-x, 0px)) 0 env(titlebar-area-x, 0);
     -webkit-app-region: drag;
+    app-region: drag;
 
     +dark() {
       background: $card-background-fill-color-default-dark;
+    }
+
+    +supports-light-dark() {
+      background: light-dark($card-background-fill-color-default, $card-background-fill-color-default-dark);
     }
 
     .header-inner {
@@ -36,11 +40,13 @@
       .header-left {
         float: left;
         -webkit-app-region: no-drag;
+        app-region: no-drag;
       }
 
       .header-right {
         float: right;
         -webkit-app-region: no-drag;
+        app-region: no-drag;
       }
     }
   }

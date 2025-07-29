@@ -1,5 +1,7 @@
 /// <reference path="config.ts" />
 
+type Theme = "dark" | "light" | "system";
+
 declare const Skirky: {
   boot: {
     registerEvents: () => void;
@@ -15,6 +17,13 @@ declare const Skirky: {
     activateSidebarPanel(index: 0 | 1): void;
     registerSidebarPanel(): void;
     applyRandomGradient(): void;
+  };
+  settings: {
+    getValue(key: string): any;
+    setValue(key: string, value: any): void;
+    clear(): void;
+    get theme(): Theme;
+    set theme(value: Theme);
   };
 }
 

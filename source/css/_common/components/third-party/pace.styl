@@ -27,4 +27,8 @@
   +dark() {
     background: $accent-fill-color-default-dark;
   }
+
+  +supports-light-dark() {
+    background: light-dark($accent-fill-color-default, $accent-fill-color-default-dark);
+  }
 }

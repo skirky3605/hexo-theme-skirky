@@ -6,7 +6,6 @@
 @import 'related-posts';
 
 .sidebar-container {
-  position: -webkit-sticky;
   position: sticky;
   width: 240px;
   max-width: 100%;
@@ -21,6 +20,11 @@
     +dark() {
       background: $card-background-fill-color-default-dark;
       border: 1px solid $control-stroke-color-default-dark;
+    }
+
+    +supports-light-dark() {
+      background: light-dark($card-background-fill-color-default, $card-background-fill-color-default-dark);
+      border: 1px solid light-dark($control-stroke-color-default, $control-stroke-color-default-dark);
     }
   }
 

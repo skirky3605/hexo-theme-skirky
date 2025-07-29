@@ -57,6 +57,32 @@ permission {
     }
   }
 
+  +supports-light-dark() {
+    color: light-dark($button-foreground, $button-foreground-dark);
+    background-color: light-dark(rgb(blend($button-background, $solid-background-fill-color-base)), rgb(blend($button-background-dark, $solid-background-fill-color-base-dark)));
+    border-left: $button-border-theme-thickness solid light-dark(rgb(blend($control-stroke-color-default, $solid-background-fill-color-base)), rgb(blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark)));
+    border-top: $button-border-theme-thickness solid light-dark(rgb(blend($control-stroke-color-default, $solid-background-fill-color-base)), rgb(blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark)));
+    border-right: $button-border-theme-thickness solid light-dark(rgb(blend($control-stroke-color-default, $solid-background-fill-color-base)), rgb(blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark)));
+    border-bottom: $button-border-theme-thickness solid light-dark(rgb(blend($control-stroke-color-secondary, $solid-background-fill-color-base)), rgb(blend($control-stroke-color-secondary-dark, $solid-background-fill-color-base-dark)));
+
+    &:not(:invalid):hover {
+      color: light-dark($button-foreground-pointer-over, $button-foreground-pointer-over-dark);
+      background-color: light-dark(rgb(blend($button-background-pointer-over, $solid-background-fill-color-base)), rgb(blend($button-background-pointer-over-dark, $solid-background-fill-color-base-dark)));
+    }
+
+    &:not(:invalid):active {
+      color: light-dark($button-foreground-pressed, $button-foreground-pressed-dark);
+      background-color: light-dark(rgb(blend($button-background-pressed, $solid-background-fill-color-base)), rgb(blend($button-background-pressed-dark, $solid-background-fill-color-base-dark)));
+      border: $button-border-theme-thickness solid light-dark(rgb(blend($button-border-brush-pressed, $solid-background-fill-color-base)), rgb(blend($button-border-brush-pressed-dark, $solid-background-fill-color-base-dark)));
+    }
+
+    &:invalid {
+      color: light-dark($button-foreground-disabled, $button-foreground-disabled-dark);
+      background-color: light-dark(rgb(blend($button-background-disabled, $solid-background-fill-color-base)), rgb(blend($button-background-disabled-dark, $solid-background-fill-color-base-dark)));
+      border: $button-border-theme-thickness solid light-dark(rgb(blend($button-border-brush-disabled, $solid-background-fill-color-base)), rgb(blend($button-border-brush-disabled-dark, $solid-background-fill-color-base-dark)));
+    }
+  }
+
   &:granted {
     color: $accent-button-foreground;
     background-clip: border-box;
@@ -106,6 +132,32 @@ permission {
         color: $accent-button-foreground-disabled-dark;
         background-color: $accent-button-background-disabled-dark;
         border: $button-border-theme-thickness solid $accent-button-border-brush-disabled-dark;
+      }
+    }
+
+    +supports-light-dark() {
+      color: light-dark($accent-button-foreground, $accent-button-foreground-dark);
+      background-color: light-dark($accent-button-background, $accent-button-background-dark);
+      border-left: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-default, $control-stroke-color-on-accent-default-dark);
+      border-top: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-default, $control-stroke-color-on-accent-default-dark);
+      border-right: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-default, $control-stroke-color-on-accent-default-dark);
+      border-bottom: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-secondary, $control-stroke-color-on-accent-secondary-dark);
+
+      &:not(:invalid):hover {
+        color: light-dark($accent-button-foreground-pointer-over, $accent-button-foreground-pointer-over-dark);
+        background-color: light-dark($accent-button-background-pointer-over, $accent-button-background-pointer-over-dark);
+      }
+
+      &:not(:invalid):active {
+        color: light-dark($accent-button-foreground-pressed, $accent-button-foreground-pressed-dark);
+        background-color: light-dark($accent-button-background-pressed, $accent-button-background-pressed-dark);
+        border: $button-border-theme-thickness solid light-dark($accent-button-border-brush-pressed, $accent-button-border-brush-pressed-dark);
+      }
+
+      &:invalid {
+        color: light-dark($accent-button-foreground-disabled, $accent-button-foreground-disabled-dark);
+        background-color: light-dark($accent-button-background-disabled, $accent-button-background-disabled-dark);
+        border: $button-border-theme-thickness solid light-dark($accent-button-border-brush-disabled, $accent-button-border-brush-disabled-dark);
       }
     }
   }

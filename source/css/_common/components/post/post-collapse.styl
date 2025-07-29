@@ -19,6 +19,11 @@
         background: $accent-fill-color-default-dark;
         border-color: $control-solid-fill-color-default-dark;
       }
+
+      +supports-light-dark() {
+        background: light-dark($accent-fill-color-default, $accent-fill-color-default-dark);
+        border-color: light-dark($control-solid-fill-color-default, $control-solid-fill-color-default-dark);
+      }
     }
   }
 
@@ -46,6 +51,11 @@
         background: $accent-fill-color-default-dark;
         border-color: $control-solid-fill-color-default-dark;
       }
+
+      +supports-light-dark() {
+        background: light-dark($accent-fill-color-default, $accent-fill-color-default-dark);
+        border-color: light-dark($control-solid-fill-color-default, $control-solid-fill-color-default-dark);
+      }
     }
   }
 
@@ -59,6 +69,10 @@
 
       +dark() {
         color: $text-fill-color-secondary-dark;
+      }
+
+      +supports-light-dark() {
+        color: light-dark($text-fill-color-secondary, $text-fill-color-secondary-dark);
       }
     }
   }
@@ -100,6 +114,21 @@
         background: $accent-text-fill-color-tertiary-dark;
       }
     }
+
+    +supports-light-dark() {
+      &::before {
+        background: light-dark($accent-fill-color-default, $accent-fill-color-default-dark);
+        border-color: light-dark($control-solid-fill-color-default, $control-solid-fill-color-default-dark);
+      }
+
+      &:hover::before {
+        background: light-dark($accent-text-fill-color-secondary, $accent-text-fill-color-secondary-dark);
+      }
+
+      &:active::before {
+        background: light-dark($accent-text-fill-color-tertiary, $accent-text-fill-color-tertiary-dark);
+      }
+    }
   }
 
   .post-meta-container {
@@ -124,6 +153,10 @@
 
     +dark() {
       background: $control-strong-fill-color-default-dark;
+    }
+
+    +supports-light-dark() {
+      background: light-dark($control-strong-fill-color-default, $control-strong-fill-color-default-dark);
     }
   }
 }

@@ -12,6 +12,10 @@ for $tag-cloud in (0 .. 10) {
   tag-cloud-color($color) {
      mix($color, $text-fill-color-disabled, $tag-cloud * 10);
   }
+  
+  tag-cloud-color-dark($color) {
+    mix($color, $text-fill-color-disabled-dark, $tag-cloud * 10);
+  }
 
   .tag-cloud-{$tag-cloud} {
     color: tag-cloud-color($text-fill-color-primary);
@@ -31,10 +35,6 @@ for $tag-cloud in (0 .. 10) {
   }
 
   +dark() {
-    tag-cloud-color-dark($color) {
-      mix($color, $text-fill-color-disabled-dark, $tag-cloud * 10);
-    }
-
     .tag-cloud-{$tag-cloud} {
       color: tag-cloud-color-dark($text-fill-color-primary-dark);
 
@@ -49,6 +49,25 @@ for $tag-cloud in (0 .. 10) {
       &:not([href]),
       &:not([href]):hover {
         color: $text-fill-color-disabled-dark;
+      }
+    }
+  }
+
+  +supports-light-dark() {
+    .tag-cloud-{$tag-cloud} {
+      color: light-dark(tag-cloud-color($text-fill-color-primary), tag-cloud-color-dark($text-fill-color-primary-dark));
+
+      &:hover {
+        color: light-dark($text-fill-color-secondary, $text-fill-color-secondary-dark);
+      }
+
+      &:active {
+        color: light-dark($text-fill-color-tertiary, $text-fill-color-tertiary-dark);
+      }
+
+      &:not([href]),
+      &:not([href]):hover {
+        color: light-dark($text-fill-color-disabled, $text-fill-color-disabled-dark);
       }
     }
   }

@@ -234,6 +234,32 @@ select {
     }
   }
 
+  +supports-light-dark() {
+    color: light-dark($button-foreground, $button-foreground-dark);
+    background: padding-box light-dark($button-background, $button-background-dark);
+    border-left: $button-border-theme-thickness solid light-dark($control-stroke-color-default, $control-stroke-color-default-dark);
+    border-top: $button-border-theme-thickness solid light-dark($control-stroke-color-default, $control-stroke-color-secondary-dark);
+    border-right: $button-border-theme-thickness solid light-dark($control-stroke-color-default, $control-stroke-color-default-dark);
+    border-bottom: $button-border-theme-thickness solid light-dark($control-stroke-color-secondary, $control-stroke-color-default-dark);
+
+    &:not(:disabled):hover {
+      color: light-dark($button-foreground-pointer-over, $button-foreground-pointer-over-dark);
+      background: padding-box light-dark($button-background-pointer-over, $button-background-pointer-over-dark);
+    }
+
+    &:not(:disabled):active {
+      color: light-dark($button-foreground-pressed, $button-foreground-pressed-dark);
+      background: padding-box light-dark($button-background-pressed, $button-background-pressed-dark);
+      border: $button-border-theme-thickness solid light-dark($button-border-brush-pressed, $button-border-brush-pressed-dark);
+    }
+
+    &:disabled {
+      color: light-dark($button-foreground-disabled, $button-foreground-disabled-dark);
+      background: padding-box light-dark($button-background-disabled, $button-background-disabled-dark);
+      border: $button-border-theme-thickness solid light-dark($button-border-brush-disabled, $button-border-brush-disabled-dark);
+    }
+  }
+
   &.accent {
     color: $accent-button-foreground;
     background: $accent-button-background;
@@ -284,6 +310,32 @@ select {
         border: $button-border-theme-thickness solid $accent-button-border-brush-disabled-dark;
       }
     }
+
+    +supports-light-dark() {
+      color: light-dark($accent-button-foreground, $accent-button-foreground-dark);
+      background: light-dark($accent-button-background, $accent-button-background-dark);
+      border-left: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-default, $control-stroke-color-on-accent-default-dark);
+      border-top: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-default, $control-stroke-color-on-accent-default-dark);
+      border-right: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-default, $control-stroke-color-on-accent-default-dark);
+      border-bottom: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-secondary, $control-stroke-color-on-accent-secondary-dark);
+
+      &:not(:disabled):hover {
+        color: light-dark($accent-button-foreground-pointer-over, $accent-button-foreground-pointer-over-dark);
+        background: light-dark($accent-button-background-pointer-over, $accent-button-background-pointer-over-dark);
+      }
+
+      &:not(:disabled):active {
+        color: light-dark($accent-button-foreground-pressed, $accent-button-foreground-pressed-dark);
+        background: light-dark($accent-button-background-pressed, $accent-button-background-pressed-dark);
+        border: $button-border-theme-thickness solid light-dark($accent-button-border-brush-pressed, $accent-button-border-brush-pressed-dark);
+      }
+
+      &:disabled {
+        color: light-dark($accent-button-foreground-disabled, $accent-button-foreground-disabled-dark);
+        background: light-dark($accent-button-background-disabled, $accent-button-background-disabled-dark);
+        border: $button-border-theme-thickness solid light-dark($accent-button-border-brush-disabled, $accent-button-border-brush-disabled-dark);
+      }
+    }
   }
 }
 
@@ -324,6 +376,24 @@ select {
     }
   }
 
+  +supports-light-dark() {
+    &::-ms-expand {
+      color: light-dark($button-foreground, $button-foreground-dark);
+    }
+
+    &:not(:disabled):hover::-ms-expand {
+      color: light-dark($button-foreground-pointer-over, $button-foreground-pointer-over-dark);
+    }
+
+    &:not(:disabled):active::-ms-expand {
+      color: light-dark($button-foreground-pressed, $button-foreground-pressed-dark);
+    }
+
+    &:disabled::-ms-expand {
+      color: light-dark($button-foreground-disabled, $button-foreground-disabled-dark);
+    }
+  }
+
   &.accent {
     &::-ms-expand {
       color: $accent-button-foreground;
@@ -356,6 +426,24 @@ select {
 
       &:disabled::-ms-expand {
         color: $accent-button-foreground-disabled-dark;
+      }
+    }
+
+    +supports-light-dark() {
+      &::-ms-expand {
+        color: light-dark($accent-button-foreground, $accent-button-foreground-dark);
+      }
+
+      &:not(:disabled):hover::-ms-expand {
+        color: light-dark($accent-button-foreground-pointer-over, $accent-button-foreground-pointer-over-dark);
+      }
+
+      &:not(:disabled):active::-ms-expand {
+        color: light-dark($accent-button-foreground-pressed, $accent-button-foreground-pressed-dark);
+      }
+
+      &:disabled::-ms-expand {
+        color: light-dark($accent-button-foreground-disabled, $accent-button-foreground-disabled-dark);
       }
     }
   }
@@ -473,6 +561,36 @@ input[type="color"] {
       border: $button-border-theme-thickness solid $card-stroke-color-default-dark;
     }
   }
+
+  +supports-light-dark() {
+    color: light-dark($button-foreground, $button-foreground-dark);
+    background: padding-box light-dark($button-background, $button-background-dark);
+    border-left: $button-border-theme-thickness solid light-dark($control-stroke-color-default, $control-stroke-color-default-dark);
+    border-top: $button-border-theme-thickness solid light-dark($control-stroke-color-default, $control-stroke-color-secondary-dark);
+    border-right: $button-border-theme-thickness solid light-dark($control-stroke-color-default, $control-stroke-color-default-dark);
+    border-bottom: $button-border-theme-thickness solid light-dark($control-stroke-color-secondary, $control-stroke-color-default-dark);
+
+    &:not(:disabled):hover {
+      color: light-dark($button-foreground-pointer-over, $button-foreground-pointer-over-dark);
+      background: padding-box light-dark($button-background-pointer-over, $button-background-pointer-over-dark);
+    }
+
+    &:not(:disabled):active {
+      color: light-dark($button-foreground-pressed, $button-foreground-pressed-dark);
+      background: padding-box light-dark($button-background-pressed, $button-background-pressed-dark);
+      border: $button-border-theme-thickness solid light-dark($button-border-brush-pressed, $button-border-brush-pressed-dark);
+    }
+
+    &:disabled {
+      color: light-dark($button-foreground-disabled, $button-foreground-disabled-dark);
+      background: padding-box light-dark($button-background-disabled, $button-background-disabled-dark);
+      border: $button-border-theme-thickness solid light-dark($button-border-brush-disabled, $button-border-brush-disabled-dark);
+    }
+
+    &::-webkit-color-swatch {
+      border: $button-border-theme-thickness solid light-dark($card-stroke-color-default, $card-stroke-color-default-dark);
+    }
+  }
 }
 
 input[type="file"] {
@@ -532,6 +650,34 @@ input[type="file"] {
     }
   }
 
+  +supports-light-dark() {
+    &::-ms-browse {
+      color: light-dark($button-foreground, $button-foreground-dark);
+      background: padding-box light-dark($button-background, $button-background-dark);
+      border-left: $button-border-theme-thickness solid light-dark($control-stroke-color-default, $control-stroke-color-default-dark);
+      border-top: $button-border-theme-thickness solid light-dark($control-stroke-color-default, $control-stroke-color-secondary-dark);
+      border-right: $button-border-theme-thickness solid light-dark($control-stroke-color-default, $control-stroke-color-default-dark);
+      border-bottom: $button-border-theme-thickness solid light-dark($control-stroke-color-secondary, $control-stroke-color-default-dark);
+    }
+
+    &:not(:disabled):hover::-ms-browse {
+      color: light-dark($button-foreground-pointer-over, $button-foreground-pointer-over-dark);
+      background: padding-box light-dark($button-background-pointer-over, $button-background-pointer-over-dark);
+    }
+
+    &:not(:disabled):active::-ms-browse {
+      color: light-dark($button-foreground-pressed, $button-foreground-pressed-dark);
+      background: padding-box light-dark($button-background-pressed, $button-background-pressed-dark);
+      border: $button-border-theme-thickness solid light-dark($button-border-brush-pressed, $button-border-brush-pressed-dark);
+    }
+
+    &:disabled::-ms-browse {
+      color: light-dark($button-foreground-disabled, $button-foreground-disabled-dark);
+      background: padding-box light-dark($button-background-disabled, $button-background-disabled-dark);
+      border: $button-border-theme-thickness solid light-dark($button-border-brush-disabled, $button-border-brush-disabled-dark);
+    }
+  }
+
   &.accent {
     &::-ms-browse {
       color: $accent-button-foreground;
@@ -584,6 +730,34 @@ input[type="file"] {
         color: $accent-button-foreground-disabled-dark;
         background: $accent-button-background-disabled-dark;
         border: $button-border-theme-thickness solid $accent-button-border-brush-disabled-dark;
+      }
+    }
+
+    +supports-light-dark() {
+      &::-ms-browse {
+        color: light-dark($accent-button-foreground, $accent-button-foreground-dark);
+        background: light-dark($accent-button-background, $accent-button-background-dark);
+        border-left: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-default, $control-stroke-color-on-accent-default-dark);
+        border-top: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-default, $control-stroke-color-on-accent-default-dark);
+        border-right: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-default, $control-stroke-color-on-accent-default-dark);
+        border-bottom: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-secondary, $control-stroke-color-on-accent-secondary-dark);
+      }
+
+      &:not(:disabled):hover::-ms-browse {
+        color: light-dark($accent-button-foreground-pointer-over, $accent-button-foreground-pointer-over-dark);
+        background: light-dark($accent-button-background-pointer-over, $accent-button-background-pointer-over-dark);
+      }
+
+      &:not(:disabled):active::-ms-browse {
+        color: light-dark($accent-button-foreground-pressed, $accent-button-foreground-pressed-dark);
+        background: light-dark($accent-button-background-pressed, $accent-button-background-pressed-dark);
+        border: $button-border-theme-thickness solid light-dark($accent-button-border-brush-pressed, $accent-button-border-brush-pressed-dark);
+      }
+
+      &:disabled::-ms-browse {
+        color: light-dark($accent-button-foreground-disabled, $accent-button-foreground-disabled-dark);
+        background: light-dark($accent-button-background-disabled, $accent-button-background-disabled-dark);
+        border: $button-border-theme-thickness solid light-dark($accent-button-border-brush-disabled, $accent-button-border-brush-disabled-dark);
       }
     }
   }
@@ -646,6 +820,34 @@ input[type="file"] {
     }
   }
 
+  +supports-light-dark() {
+    &::-webkit-file-upload-button {
+      color: light-dark($button-foreground, $button-foreground-dark);
+      background: padding-box light-dark($button-background, $button-background-dark);
+      border-left: $button-border-theme-thickness solid light-dark($control-stroke-color-default, $control-stroke-color-default-dark);
+      border-top: $button-border-theme-thickness solid light-dark($control-stroke-color-default, $control-stroke-color-secondary-dark);
+      border-right: $button-border-theme-thickness solid light-dark($control-stroke-color-default, $control-stroke-color-default-dark);
+      border-bottom: $button-border-theme-thickness solid light-dark($control-stroke-color-secondary, $control-stroke-color-default-dark);
+    }
+
+    &:not(:disabled):hover::-webkit-file-upload-button {
+      color: light-dark($button-foreground-pointer-over, $button-foreground-pointer-over-dark);
+      background: padding-box light-dark($button-background-pointer-over, $button-background-pointer-over-dark);
+    }
+
+    &:not(:disabled):active::-webkit-file-upload-button {
+      color: light-dark($button-foreground-pressed, $button-foreground-pressed-dark);
+      background: padding-box light-dark($button-background-pressed, $button-background-pressed-dark);
+      border: $button-border-theme-thickness solid light-dark($button-border-brush-pressed, $button-border-brush-pressed-dark);
+    }
+
+    &:disabled::-webkit-file-upload-button {
+      color: light-dark($button-foreground-disabled, $button-foreground-disabled-dark);
+      background: padding-box light-dark($button-background-disabled, $button-background-disabled-dark);
+      border: $button-border-theme-thickness solid light-dark($button-border-brush-disabled, $button-border-brush-disabled-dark);
+    }
+  }
+
   &.accent {
     &::-webkit-file-upload-button {
       color: $accent-button-foreground;
@@ -698,6 +900,34 @@ input[type="file"] {
         color: $accent-button-foreground-disabled-dark;
         background: $accent-button-background-disabled-dark;
         border: $button-border-theme-thickness solid $accent-button-border-brush-disabled-dark;
+      }
+    }
+
+    +supports-light-dark() {
+      &::-webkit-file-upload-button {
+        color: light-dark($accent-button-foreground, $accent-button-foreground-dark);
+        background: light-dark($accent-button-background, $accent-button-background-dark);
+        border-left: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-default, $control-stroke-color-on-accent-default-dark);
+        border-top: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-default, $control-stroke-color-on-accent-secondary-dark);
+        border-right: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-default, $control-stroke-color-on-accent-default-dark);
+        border-bottom: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-secondary, $control-stroke-color-on-accent-secondary-dark);
+      }
+
+      &:not(:disabled):hover::-webkit-file-upload-button {
+        color: light-dark($accent-button-foreground-pointer-over, $accent-button-foreground-pointer-over-dark);
+        background: padding-box light-dark($accent-button-background-pointer-over, $accent-button-background-pointer-over-dark);
+      }
+
+      &:not(:disabled):active::-webkit-file-upload-button {
+        color: light-dark($accent-button-foreground-pressed, $accent-button-foreground-pressed-dark);
+        background: padding-box light-dark($accent-button-background-pressed, $accent-button-background-pressed-dark);
+        border: $button-border-theme-thickness solid light-dark($accent-button-border-brush-pressed, $accent-button-border-brush-pressed-dark);
+      }
+
+      &:disabled::-webkit-file-upload-button {
+        color: light-dark($accent-button-foreground-disabled, $accent-button-foreground-disabled-dark);
+        background: padding-box light-dark($accent-button-background-disabled, $accent-button-background-disabled-dark);
+        border: $button-border-theme-thickness solid light-dark($accent-button-border-brush-disabled, $accent-button-border-brush-disabled-dark);
       }
     }
   }

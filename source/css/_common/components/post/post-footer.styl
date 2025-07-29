@@ -11,6 +11,10 @@
   +dark() {
     background: $control-strong-stroke-color-default-dark;
   }
+
+  +supports-light-dark() {
+    background: light-dark($control-strong-stroke-color-default, $control-strong-stroke-color-default-dark);
+  }
 }
 
 if (hexo-config('creative_commons.post')) {
@@ -73,6 +77,31 @@ if (hexo-config('creative_commons.post')) {
       &:not([href]):hover {
         svg {
           fill: $text-fill-color-disabled-dark;
+        }
+      }
+    }
+
+    +supports-light-dark() {
+      svg {
+        fill: light-dark($text-fill-color-primary, $text-fill-color-primary-dark);
+      }
+
+      &:hover {
+        svg {
+          fill: light-dark($text-fill-color-secondary, $text-fill-color-secondary-dark);
+        }
+      }
+
+      &:active {
+        svg {
+          fill: light-dark($text-fill-color-tertiary, $text-fill-color-tertiary-dark);
+        }
+      }
+
+      &:not([href]),
+      &:not([href]):hover {
+        svg {
+          fill: light-dark($text-fill-color-disabled, $text-fill-color-disabled-dark);
         }
       }
     }

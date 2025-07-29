@@ -51,5 +51,20 @@ option {
   +dark() {
     color: $combobox-item-foreground-dark;
     background-color: blend($combobox-item-background-dark, $system-chrome-medium-low-color-dark);
+
+    &:disabled {
+      color: $combobox-item-foreground-disabled-dark;
+      background-color: blend($combobox-item-background-disabled-dark, $system-chrome-medium-low-color-dark);
+    }
+  }
+
+  +supports-light-dark() {
+    color: light-dark($combobox-item-foreground, $combobox-item-foreground-dark);
+    background-color: light-dark(blend($combobox-item-background, $system-chrome-medium-low-color), blend($combobox-item-background-dark, $system-chrome-medium-low-color-dark));
+
+    &:disabled {
+      color: light-dark($combobox-item-foreground-disabled, $combobox-item-foreground-disabled-dark);
+      background-color: light-dark(blend($combobox-item-background-disabled, $system-chrome-medium-low-color), blend($combobox-item-background-disabled-dark, $system-chrome-medium-low-color-dark));
+    }
   }
 }

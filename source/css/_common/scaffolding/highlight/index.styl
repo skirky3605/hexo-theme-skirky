@@ -33,6 +33,11 @@ kbd {
     color: $highlight-foreground-dark;
     background-color: $highlight-background-dark;
   }
+
+  +supports-light-dark() {
+    color: light-dark($highlight-foreground, $highlight-foreground-dark);
+    background-color: light-dark($highlight-background, $highlight-background-dark);
+  }
 }
 
 a>code {
@@ -47,6 +52,12 @@ figure.highlight {
   @extend $code-block;
   overflow: auto;
   position: relative;
+
+  color-scheme: light;
+
+  +dark() {
+    color-scheme: dark;
+  }
 
   pre {
     border: 0;

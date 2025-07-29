@@ -19,6 +19,16 @@ body {
       background-image: linear-gradient(45deg, #ff6b6b, #4ecdc4, $solid-background-fill-color-base-dark, #ff6b6b);
     }
 
+    +supports-light-dark() {
+      background-image: linear-gradient(
+        45deg,
+        light-dark(#ff9a9a, #ff6b6b),
+        light-dark(#a8e6cf, #4ecdc4),
+        light-dark($solid-background-fill-color-base, $solid-background-fill-color-base-dark),
+        light-dark(#ff9a9a, #ff6b6b)
+      );
+    }
+
     .background-hover {
       width: 100%;
       height: 100%;
@@ -26,6 +36,13 @@ body {
 
       +dark() {
         background: alpha($solid-background-fill-color-base-dark, 0.8);
+      }
+
+      +supports-light-dark() {
+        background: light-dark(
+          alpha($solid-background-fill-color-base, 0.5),
+          alpha($solid-background-fill-color-base-dark, 0.8)
+        );
       }
     }
   }

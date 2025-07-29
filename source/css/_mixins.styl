@@ -64,6 +64,12 @@ dark() {
   }
 }
 
+supports-light-dark() {
+  @supports (color: light-dark(red, red)) {
+    {block};
+  }
+}
+
 word-wrap() {
   overflow-wrap: break-word;
 }
@@ -81,6 +87,11 @@ post-card() {
 
   +dark() {
     background: $card-background-fill-color-default-dark;
+  }
+
+  +supports-light-dark() {
+    background: light-dark($card-background-fill-color-default, $card-background-fill-color-default-dark);
+    border-left: 3px solid light-dark($accent-fill-color-default, $accent-fill-color-default-dark);
   }
 }
 
@@ -103,6 +114,11 @@ badge() {
   +dark() {
     background: $accent-fill-color-default-dark;
     color: $text-on-accent-fill-color-primary-dark;
+  }
+
+  +supports-light-dark() {
+    background: light-dark($accent-fill-color-default, $accent-fill-color-default-dark);
+    color: light-dark($text-on-accent-fill-color-primary, $text-on-accent-fill-color-primary-dark);
   }
 }
 
