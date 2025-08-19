@@ -29,7 +29,7 @@ if (typeof (document as IEDocument).documentMode === "number") {
   }
 }
 
-if (window.CSS ? !window.CSS?.supports("width", "calc(40px - 20px)") :
+if (window.CSS?.supports ? !window.CSS.supports("width", "calc(40px - 20px)") :
   !(() => {
     try {
       const div = document.createElement("div");
