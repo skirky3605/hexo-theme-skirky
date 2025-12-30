@@ -71,9 +71,7 @@ Skirky.utils = {
         const isShow = Math.round(scrollPercent) >= 5;
         if (backToTop.classList) {
           if (isShow) {
-            if (!backToTop.classList.contains("back-to-top-on")) {
               backToTop.classList.add("back-to-top-on");
-            }
           }
           else {
             backToTop.classList.remove("back-to-top-on");
@@ -105,9 +103,7 @@ Skirky.utils = {
       const isSelect = target.hostname === location.hostname && (isSamePath || isSubPath);
       if (hasList) {
         if (isSelect) {
-          if (!target.classList.contains("menu-item-active")) {
             target.classList.add("menu-item-active");
-          }
         }
         else {
           target.classList.remove("menu-item-active");
@@ -147,7 +143,7 @@ Skirky.utils = {
           });
         });
       }
-      this.sections.push(target);
+      this.sections.push(target!);
     }
     this.updateActiveNav();
   },
@@ -182,9 +178,7 @@ Skirky.utils = {
 
     while (nav.contains(activateEle)) {
       if (hasList) {
-        if (activateEle.classList.contains("nav-item")) {
           activateEle.classList.add("active");
-        }
       }
       else {
         if (!/(^|\s)active(\s|$)/.test(activateEle.className)) {

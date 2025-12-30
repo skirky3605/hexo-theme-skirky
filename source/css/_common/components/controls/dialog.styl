@@ -1,0 +1,35 @@
+dialog {
+    &::backdrop {
+        background: $smoke-fill-color-default;
+
+        +dark() {
+            background: $smoke-fill-color-default-dark;
+        }
+
+        +supports-light-dark() {
+            background: light-dark($smoke-fill-color-default, $smoke-fill-color-default-dark);
+        }
+    }
+
+    &:modal {
+        padding: 24px;
+        box-sizing: border-box;
+        overflow: auto;
+        color: $text-fill-color-primary;
+        background: $solid-background-fill-color-base;
+        border: 1px solid $surface-stroke-color-default;
+        border-radius: $overlay-corner-radius;
+
+        +dark() {
+            color: $text-fill-color-primary-dark;
+            background: $solid-background-fill-color-base-dark;
+            border: 1px solid $surface-stroke-color-default-dark;
+        }
+
+        +supports-light-dark() {
+            color: light-dark($text-fill-color-primary, $text-fill-color-primary-dark);
+            background: light-dark($solid-background-fill-color-base, $solid-background-fill-color-base-dark);
+            border: 1px solid light-dark($surface-stroke-color-default, $surface-stroke-color-default-dark);
+        }
+    }
+}

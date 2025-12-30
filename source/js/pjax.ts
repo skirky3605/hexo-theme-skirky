@@ -82,9 +82,7 @@ if ("replaceState" in history) {
     const inner = document.querySelector(".sidebar-inner")!;
     if (hasTOC) {
       if (hasList) {
-        if (!inner.classList.contains("sidebar-nav-active")) {
           inner.classList.add("sidebar-nav-active");
-        }
       }
       else {
         if (!/(^|\s)sidebar-nav-active(\s|$)/.test(inner.className)) {

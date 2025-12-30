@@ -1,5 +1,16 @@
 const { transformAsync } = require("@babel/core");
-const { parse } = require("path")
+const { parse } = require("path");
+const { minify } = require("terser");
+
+/**
+ * @param {import("@types/hexo")} hexo
+ * @param {string} str
+ */
+async function terser(hexo, str) {
+  const options = hexo.theme.config.terser.js;
+  if (!str) { return str; }
+  return minify(str, options).then(x => x.code);
+}
 
 module.exports =
   /**
@@ -22,7 +33,7 @@ module.exports =
     };
     try {
       const results = await transformAsync(text, options);
-      return results.code;
+      return await terser(hexo, results.code);
     }
     catch (e) {
       throw new Error(`Path: ${path}\n${e}`);

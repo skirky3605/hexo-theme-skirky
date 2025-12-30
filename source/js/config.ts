@@ -82,8 +82,8 @@ declare const CONFIG: GlobalConfig;
             // Mix, proxy changes to the override.
             return new Proxy({ ...existing, ...override }, {
               set(target, prop, value) {
-                target[prop] = value;
-                override[prop] = value;
+                target[prop as keyof StaticConfig[T]] = value;
+                override[prop as keyof StaticConfig[T]] = value;
                 return true;
               }
             });

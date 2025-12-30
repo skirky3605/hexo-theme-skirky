@@ -4,11 +4,14 @@
   "license": "AGPL-3.0",
   "dependencies": {
     "@babel/core": "^7.0.0",
-    "@creativecommons/vocabulary": "^2020.11.3",
+    "@creativecommons/vocabulary": "^2020.0.0",
     "@fluentui/svg-icons": "^1.0.0",
     "@next-theme/pjax": "^0.6.0",
+    "cssnano": "^7.0.0",
+    "cssnano-preset-advanced": "^7.0.0",
     "hexo-generator-searchdb": "^1.0.0",
     "hexo-related-posts": "^1.0.0",
+    "html-minifier-terser": "^7.0.0",
     "pace-js": "^1.0.0",
     "postcss": "^8.0.0",
     "postcss-html": "^1.0.0",
@@ -18,8 +21,7 @@
     "@babel/preset-typescript": "^7.0.0"
   },
   "devDependencies": {
-    "@adobe/css-tools": "^4.0.0",
     "@types/hexo": "^3.0.0",
-    "hexo": "^7.0.0"
+    "hexo": ">=5.0.0"
   }
 }

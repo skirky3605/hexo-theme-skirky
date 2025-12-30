@@ -2,7 +2,6 @@
 
 const fs = require("fs");
 const path = require("path");
-const fluentui = path.dirname(require.resolve(`@fluentui/svg-icons/package.json`));
 
 /**
  * @typedef {{filled: IconSize, regular: IconSize, light: IconSize, color: IconSize}} IconVariant
@@ -20,8 +19,7 @@ const icons = new Proxy(variants, {
       get: function (_, size) {
         return new Proxy({}, {
           get: function (_, name) {
-            const buffer = fs.readFileSync(`${fluentui}/icons/${name.replace(/([A-Z])/g, '_$1').toLowerCase().replace(/^_/, '')}_${size.replace(/size/i, '')}_${variant.toLowerCase()}.svg`);
-            return buffer.toString();
+            return fs.readFileSync(require.resolve(`@fluentui/svg-icons/icons/${name.replace(/([A-Z])/g, '_$1').toLowerCase().replace(/^_/, '')}_${size.replace(/size/i, '')}_${variant.toLowerCase()}.svg`), "utf-8");
           }
         });
       }

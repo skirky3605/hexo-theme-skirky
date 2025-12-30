@@ -23,7 +23,7 @@
 
   if (!String.prototype.endsWith) {
     String.prototype.endsWith =
-      function (searchString, position = this.length) {
+      function (this: string, searchString, position = this.length) {
         const index = this.lastIndexOf(searchString);
         return index !== -1 && index === position - searchString.length;
       };
@@ -63,15 +63,15 @@
 
   if (!document.documentElement.scrollTo) {
     const scrollTo = window.scrollTo;
-    window.scrollTo = function () {
+    window.scrollTo = (function () {
       const options: ScrollToOptions = arguments[0];
-      if (typeof arguments[0] === "object") {
+      if (typeof options === "object") {
         scrollTo(options.left || 0, options.top || 0);
       }
       else {
-        scrollTo.apply(window, arguments);
+        scrollTo.apply(window, arguments as any);
       }
-    };
+    });
   }
 
   if ((() => {

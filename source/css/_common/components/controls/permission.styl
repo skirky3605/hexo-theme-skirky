@@ -5,7 +5,7 @@ permission {
   padding-right: 11px;
   padding-top: 6px;
   padding-left: 11px;
-  color: $button-foreground;
+  color: rgb(blend($button-foreground, $solid-background-fill-color-base));
   border-radius: $control-corner-radius;
   background-clip: padding-box;
   background-color: rgb(blend($button-background, $solid-background-fill-color-base));
@@ -15,24 +15,24 @@ permission {
   border-bottom: $button-border-theme-thickness solid rgb(blend($control-stroke-color-secondary, $solid-background-fill-color-base));
 
   &:not(:invalid):hover {
-    color: $button-foreground-pointer-over;
+    color: rgb(blend($button-foreground-pointer-over, blend($button-background-pointer-over, $solid-background-fill-color-base)));
     background-color: rgb(blend($button-background-pointer-over, $solid-background-fill-color-base));
   }
 
   &:not(:invalid):active {
-    color: $button-foreground-pressed;
+    color: rgb(blend($button-foreground-pressed, blend($button-background-pressed, $solid-background-fill-color-base)));
     background-color: rgb(blend($button-background-pressed, $solid-background-fill-color-base));
     border: $button-border-theme-thickness solid rgb(blend($button-border-brush-pressed, $solid-background-fill-color-base));
   }
 
   &:invalid {
-    color: $button-foreground-disabled;
+    color: rgb(blend($button-foreground-disabled, blend($button-background-disabled, $solid-background-fill-color-base)));
     background-color: rgb(blend($button-background-disabled, $solid-background-fill-color-base));
     border: $button-border-theme-thickness solid rgb(blend($button-border-brush-disabled, $solid-background-fill-color-base));
   }
 
   +dark() {
-    color: $button-foreground-dark;
+    color: rgb(blend($button-foreground-dark, blend($button-background-dark, $solid-background-fill-color-base-dark)));
     background-color: rgb(blend($button-background-dark, $solid-background-fill-color-base-dark));
     border-left: $button-border-theme-thickness solid rgb(blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark));
     border-top: $button-border-theme-thickness solid rgb(blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark));
@@ -40,25 +40,25 @@ permission {
     border-bottom: $button-border-theme-thickness solid rgb(blend($control-stroke-color-secondary-dark, $solid-background-fill-color-base-dark));
 
     &:not(:invalid):hover {
-      color: $button-foreground-pointer-over-dark;
+      color: rgb(blend($button-foreground-pointer-over-dark, blend($button-background-pointer-over-dark, $solid-background-fill-color-base-dark)));
       background-color: rgb(blend($button-background-pointer-over-dark, $solid-background-fill-color-base-dark));
     }
 
     &:not(:invalid):active {
-      color: $button-foreground-pressed-dark;
+      color: rgb(blend($button-foreground-pressed-dark, blend($button-background-pressed-dark, $solid-background-fill-color-base-dark)));
       background-color: rgb(blend($button-background-pressed-dark, $solid-background-fill-color-base-dark));
       border: $button-border-theme-thickness solid rgb(blend($button-border-brush-pressed-dark, $solid-background-fill-color-base-dark));
     }
 
     &:invalid {
-      color: $button-foreground-disabled-dark;
+      color: rgb(blend($button-foreground-disabled-dark, blend($button-background-disabled-dark, $solid-background-fill-color-base-dark)));
       background-color: rgb(blend($button-background-disabled-dark, $solid-background-fill-color-base-dark));
       border: $button-border-theme-thickness solid rgb(blend($button-border-brush-disabled-dark, $solid-background-fill-color-base-dark));
     }
   }
 
   +supports-light-dark() {
-    color: light-dark($button-foreground, $button-foreground-dark);
+    color: light-dark(rgb(blend($button-foreground, blend($button-background, $solid-background-fill-color-base))), rgb(blend($button-foreground-dark, blend($button-background-dark, $solid-background-fill-color-base-dark))));
     background-color: light-dark(rgb(blend($button-background, $solid-background-fill-color-base)), rgb(blend($button-background-dark, $solid-background-fill-color-base-dark)));
     border-left: $button-border-theme-thickness solid light-dark(rgb(blend($control-stroke-color-default, $solid-background-fill-color-base)), rgb(blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark)));
     border-top: $button-border-theme-thickness solid light-dark(rgb(blend($control-stroke-color-default, $solid-background-fill-color-base)), rgb(blend($control-stroke-color-default-dark, $solid-background-fill-color-base-dark)));
@@ -66,98 +66,97 @@ permission {
     border-bottom: $button-border-theme-thickness solid light-dark(rgb(blend($control-stroke-color-secondary, $solid-background-fill-color-base)), rgb(blend($control-stroke-color-secondary-dark, $solid-background-fill-color-base-dark)));
 
     &:not(:invalid):hover {
-      color: light-dark($button-foreground-pointer-over, $button-foreground-pointer-over-dark);
+      color: light-dark(rgb(blend($button-foreground-pointer-over, blend($button-background-pointer-over, $solid-background-fill-color-base))), rgb(blend($button-foreground-pointer-over-dark, blend($button-background-pointer-over-dark, $solid-background-fill-color-base-dark))));
       background-color: light-dark(rgb(blend($button-background-pointer-over, $solid-background-fill-color-base)), rgb(blend($button-background-pointer-over-dark, $solid-background-fill-color-base-dark)));
     }
 
     &:not(:invalid):active {
-      color: light-dark($button-foreground-pressed, $button-foreground-pressed-dark);
+      color: light-dark(rgb(blend($button-foreground-pressed, blend($button-background-pressed, $solid-background-fill-color-base))), rgb(blend($button-foreground-pressed-dark, blend($button-background-pressed-dark, $solid-background-fill-color-base-dark))));
       background-color: light-dark(rgb(blend($button-background-pressed, $solid-background-fill-color-base)), rgb(blend($button-background-pressed-dark, $solid-background-fill-color-base-dark)));
       border: $button-border-theme-thickness solid light-dark(rgb(blend($button-border-brush-pressed, $solid-background-fill-color-base)), rgb(blend($button-border-brush-pressed-dark, $solid-background-fill-color-base-dark)));
     }
 
     &:invalid {
-      color: light-dark($button-foreground-disabled, $button-foreground-disabled-dark);
+      color: light-dark(rgb(blend($button-foreground-disabled, blend($button-background-disabled, $solid-background-fill-color-base))), rgb(blend($button-foreground-disabled-dark, blend($button-background-disabled-dark, $solid-background-fill-color-base-dark))));
       background-color: light-dark(rgb(blend($button-background-disabled, $solid-background-fill-color-base)), rgb(blend($button-background-disabled-dark, $solid-background-fill-color-base-dark)));
       border: $button-border-theme-thickness solid light-dark(rgb(blend($button-border-brush-disabled, $solid-background-fill-color-base)), rgb(blend($button-border-brush-disabled-dark, $solid-background-fill-color-base-dark)));
     }
   }
 
   &:granted {
-    color: $accent-button-foreground;
-    background-clip: border-box;
-    background-color: $accent-button-background;
-    border-left: $button-border-theme-thickness solid $control-stroke-color-on-accent-default;
-    border-top: $button-border-theme-thickness solid $control-stroke-color-on-accent-default;
-    border-right: $button-border-theme-thickness solid $control-stroke-color-on-accent-default;
-    border-bottom: $button-border-theme-thickness solid $control-stroke-color-on-accent-secondary;
+    color: rgb(blend($accent-button-foreground, blend($accent-button-background, $solid-background-fill-color-base)));
+    background: rgb(blend($accent-button-background, $solid-background-fill-color-base));
+    border-left: $button-border-theme-thickness solid rgb(blend($control-stroke-color-on-accent-default, blend($accent-button-background, $solid-background-fill-color-base)));
+    border-top: $button-border-theme-thickness solid rgb(blend($control-stroke-color-on-accent-default, blend($accent-button-background, $solid-background-fill-color-base)));
+    border-right: $button-border-theme-thickness solid rgb(blend($control-stroke-color-on-accent-default, blend($accent-button-background, $solid-background-fill-color-base)));
+    border-bottom: $button-border-theme-thickness solid rgb(blend($control-stroke-color-on-accent-secondary, blend($accent-button-background, $solid-background-fill-color-base)));
 
     &:not(:invalid):hover {
-      color: $accent-button-foreground-pointer-over;
-      background-color: $accent-button-background-pointer-over;
+      color: rgb(blend($accent-button-foreground-pointer-over, blend($accent-button-background-pointer-over, $solid-background-fill-color-base)));
+      background: rgb(blend($accent-button-background-pointer-over, $solid-background-fill-color-base));
     }
 
     &:not(:invalid):active {
-      color: $accent-button-foreground-pressed;
-      background-color: $accent-button-background-pressed;
-      border: $button-border-theme-thickness solid $accent-button-border-brush-pressed;
+      color: rgb(blend($accent-button-foreground-pressed, blend($accent-button-background-pressed, $solid-background-fill-color-base)));
+      background: rgb(blend($accent-button-background-pressed, $solid-background-fill-color-base));
+      border: $button-border-theme-thickness solid rgb(blend($accent-button-border-brush-pressed, blend($accent-button-background-pressed, $solid-background-fill-color-base)));
     }
 
     &:invalid {
-      color: $accent-button-foreground-disabled;
-      background-color: $accent-button-background-disabled;
-      border: $button-border-theme-thickness solid $accent-button-border-brush-disabled;
+      color: rgb(blend($accent-button-foreground-disabled, blend($accent-button-background-disabled, $solid-background-fill-color-base)));
+      background: rgb(blend($accent-button-background-disabled, $solid-background-fill-color-base));
+      border: $button-border-theme-thickness solid rgb(blend($accent-button-border-brush-disabled, blend($accent-button-background-disabled, $solid-background-fill-color-base)));
     }
 
     +dark() {
-      color: $accent-button-foreground-dark;
-      background-color: $accent-button-background-dark;
-      border-left: $button-border-theme-thickness solid $control-stroke-color-on-accent-default-dark;
-      border-top: $button-border-theme-thickness solid $control-stroke-color-on-accent-default-dark;
-      border-right: $button-border-theme-thickness solid $control-stroke-color-on-accent-default-dark;
-      border-bottom: $button-border-theme-thickness solid $control-stroke-color-on-accent-secondary-dark;
+      color: rgb(blend($accent-button-foreground-dark, blend($accent-button-background-dark, $solid-background-fill-color-base-dark)));
+      background: rgb(blend($accent-button-background-dark, $solid-background-fill-color-base-dark));
+      border-left: $button-border-theme-thickness solid rgb(blend($control-stroke-color-on-accent-default-dark, blend($accent-button-background-dark, $solid-background-fill-color-base-dark)));
+      border-top: $button-border-theme-thickness solid rgb(blend($control-stroke-color-on-accent-default-dark, blend($accent-button-background-dark, $solid-background-fill-color-base-dark)));
+      border-right: $button-border-theme-thickness solid rgb(blend($control-stroke-color-on-accent-default-dark, blend($accent-button-background-dark, $solid-background-fill-color-base-dark)));
+      border-bottom: $button-border-theme-thickness solid rgb(blend($control-stroke-color-on-accent-secondary-dark, blend($accent-button-background-dark, $solid-background-fill-color-base-dark)));
 
       &:not(:invalid):hover {
-        color: $accent-button-foreground-pointer-over-dark;
-        background-color: $accent-button-background-pointer-over-dark;
+        color: rgb(blend($accent-button-foreground-pointer-over-dark, blend($accent-button-background-pointer-over-dark, $solid-background-fill-color-base-dark)));
+        background: rgb(blend($accent-button-background-pointer-over-dark, $solid-background-fill-color-base-dark));
       }
 
       &:not(:invalid):active {
-        color: $accent-button-foreground-pressed-dark;
-        background-color: $accent-button-background-pressed-dark;
-        border: $button-border-theme-thickness solid $accent-button-border-brush-pressed-dark;
+        color: rgb(blend($accent-button-foreground-pressed-dark, blend($accent-button-background-pressed-dark, $solid-background-fill-color-base-dark)));
+        background: rgb(blend($accent-button-background-pressed-dark, $solid-background-fill-color-base-dark));
+        border: $button-border-theme-thickness solid rgb(blend($accent-button-border-brush-pressed-dark, blend($accent-button-background-pressed-dark, $solid-background-fill-color-base-dark)));
       }
 
       &:invalid {
-        color: $accent-button-foreground-disabled-dark;
-        background-color: $accent-button-background-disabled-dark;
-        border: $button-border-theme-thickness solid $accent-button-border-brush-disabled-dark;
+        color: rgb(blend($accent-button-foreground-disabled-dark, blend($accent-button-background-disabled-dark, $solid-background-fill-color-base-dark)));
+        background: rgb(blend($accent-button-background-disabled-dark, $solid-background-fill-color-base-dark));
+        border: $button-border-theme-thickness solid rgb(blend($accent-button-border-brush-disabled-dark, blend($accent-button-background-disabled-dark, $solid-background-fill-color-base-dark)));
       }
     }
 
     +supports-light-dark() {
-      color: light-dark($accent-button-foreground, $accent-button-foreground-dark);
-      background-color: light-dark($accent-button-background, $accent-button-background-dark);
-      border-left: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-default, $control-stroke-color-on-accent-default-dark);
-      border-top: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-default, $control-stroke-color-on-accent-default-dark);
-      border-right: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-default, $control-stroke-color-on-accent-default-dark);
-      border-bottom: $button-border-theme-thickness solid light-dark($control-stroke-color-on-accent-secondary, $control-stroke-color-on-accent-secondary-dark);
+      color: light-dark(rgb(blend($accent-button-foreground, blend($accent-button-background, $solid-background-fill-color-base))), rgb(blend($accent-button-foreground-dark, blend($accent-button-background-dark, $solid-background-fill-color-base-dark))));
+      background-color: light-dark(rgb(blend($accent-button-background, $solid-background-fill-color-base)), rgb(blend($accent-button-background-dark, $solid-background-fill-color-base-dark)));
+      border-left: $button-border-theme-thickness solid light-dark(rgb(blend($control-stroke-color-on-accent-default, blend($accent-button-background, $solid-background-fill-color-base))), rgb(blend($control-stroke-color-on-accent-default-dark, blend($accent-button-background-dark, $solid-background-fill-color-base-dark))));
+      border-top: $button-border-theme-thickness solid light-dark(rgb(blend($control-stroke-color-on-accent-default, blend($accent-button-background, $solid-background-fill-color-base))), rgb(blend($control-stroke-color-on-accent-default-dark, blend($accent-button-background-dark, $solid-background-fill-color-base-dark))));
+      border-right: $button-border-theme-thickness solid light-dark(rgb(blend($control-stroke-color-on-accent-default, blend($accent-button-background, $solid-background-fill-color-base))), rgb(blend($control-stroke-color-on-accent-default-dark, blend($accent-button-background-dark, $solid-background-fill-color-base-dark))));
+      border-bottom: $button-border-theme-thickness solid light-dark(rgb(blend($control-stroke-color-on-accent-secondary, blend($accent-button-background, $solid-background-fill-color-base))), rgb(blend($control-stroke-color-on-accent-secondary-dark, blend($accent-button-background-dark, $solid-background-fill-color-base-dark))));
 
       &:not(:invalid):hover {
-        color: light-dark($accent-button-foreground-pointer-over, $accent-button-foreground-pointer-over-dark);
-        background-color: light-dark($accent-button-background-pointer-over, $accent-button-background-pointer-over-dark);
+        color: light-dark(rgb(blend($accent-button-foreground-pointer-over, blend($accent-button-background-pointer-over, $solid-background-fill-color-base))), rgb(blend($accent-button-foreground-pointer-over-dark, blend($accent-button-background-pointer-over-dark, $solid-background-fill-color-base-dark))));
+        background-color: light-dark(rgb(blend($accent-button-background-pointer-over, $solid-background-fill-color-base)), rgb(blend($accent-button-background-pointer-over-dark, $solid-background-fill-color-base-dark)));
       }
 
       &:not(:invalid):active {
-        color: light-dark($accent-button-foreground-pressed, $accent-button-foreground-pressed-dark);
-        background-color: light-dark($accent-button-background-pressed, $accent-button-background-pressed-dark);
-        border: $button-border-theme-thickness solid light-dark($accent-button-border-brush-pressed, $accent-button-border-brush-pressed-dark);
+        color: light-dark(rgb(blend($accent-button-foreground-pressed, blend($accent-button-background-pressed, $solid-background-fill-color-base))), rgb(blend($accent-button-foreground-pressed-dark, blend($accent-button-background-pressed-dark, $solid-background-fill-color-base-dark))));
+        background-color: light-dark(rgb(blend($accent-button-background-pressed, $solid-background-fill-color-base)), rgb(blend($accent-button-background-pressed-dark, $solid-background-fill-color-base-dark)));
+        border: $button-border-theme-thickness solid light-dark(rgb(blend($accent-button-border-brush-pressed, $solid-background-fill-color-base)), rgb(blend($accent-button-border-brush-pressed-dark, $solid-background-fill-color-base-dark)));
       }
 
       &:invalid {
-        color: light-dark($accent-button-foreground-disabled, $accent-button-foreground-disabled-dark);
-        background-color: light-dark($accent-button-background-disabled, $accent-button-background-disabled-dark);
-        border: $button-border-theme-thickness solid light-dark($accent-button-border-brush-disabled, $accent-button-border-brush-disabled-dark);
+        color: light-dark(rgb(blend($accent-button-foreground-disabled, blend($accent-button-background-disabled, $solid-background-fill-color-base))), rgb(blend($accent-button-foreground-disabled-dark, blend($accent-button-background-disabled-dark, $solid-background-fill-color-base-dark))));
+        background-color: light-dark(rgb(blend($accent-button-background-disabled, $solid-background-fill-color-base)), rgb(blend($accent-button-background-disabled-dark, $solid-background-fill-color-base-dark)));
+        border: $button-border-theme-thickness solid light-dark(rgb(blend($accent-button-border-brush-disabled, $solid-background-fill-color-base)), rgb(blend($accent-button-border-brush-disabled-dark, $solid-background-fill-color-base-dark)));
       }
     }
   }
