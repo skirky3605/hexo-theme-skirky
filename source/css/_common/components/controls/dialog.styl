@@ -1,35 +1,61 @@
+$content-dialog-foreground = $text-fill-color-primary
+$content-dialog-background = $solid-background-fill-color-base
+$content-dialog-smoke-fill = $smoke-fill-color-default
+$content-dialog-top-overlay = $layer-fill-color-alt
+$content-dialog-border-brush = $surface-stroke-color-default
+$content-dialog-separator-border = $card-stroke-color-default
+
+$content-dialog-foreground-dark = $text-fill-color-primary-dark
+$content-dialog-background-dark = $solid-background-fill-color-base-dark
+$content-dialog-smoke-fill-dark = $smoke-fill-color-default-dark
+$content-dialog-top-overlay-dark = $layer-fill-color-alt-dark
+$content-dialog-border-brush-dark = $surface-stroke-color-default-dark
+$content-dialog-separator-border-dark = $card-stroke-color-default-dark
+
+$content-dialog-border-width = 1px
+
+$content-dialog-min-width = 320px
+$content-dialog-max-width = 548px
+$content-dialog-min-height = 184px
+$content-dialog-max-height = 756px
+
+$content-dialog-button-spacing = 8px
+$content-dialog-title-margin-bottom = 12px
+$content-dialog-padding = 24px
+$content-dialog-separator-thickness = 1px
+
 dialog {
     &::backdrop {
-        background: $smoke-fill-color-default;
+        background: $content-dialog-smoke-fill;
 
         +dark() {
-            background: $smoke-fill-color-default-dark;
+            background: $content-dialog-smoke-fill-dark;
         }
 
         +supports-light-dark() {
-            background: light-dark($smoke-fill-color-default, $smoke-fill-color-default-dark);
+            background: light-dark($content-dialog-smoke-fill, $content-dialog-smoke-fill-dark);
         }
     }
 
     &:modal {
-        padding: 24px;
+        padding: $content-dialog-padding;
         box-sizing: border-box;
         overflow: auto;
-        color: $text-fill-color-primary;
-        background: $solid-background-fill-color-base;
-        border: 1px solid $surface-stroke-color-default;
+        color: $content-dialog-foreground;
+        background: $content-dialog-background;
+        border: $content-dialog-border-width solid $content-dialog-border-brush;
         border-radius: $overlay-corner-radius;
 
         +dark() {
-            color: $text-fill-color-primary-dark;
-            background: $solid-background-fill-color-base-dark;
-            border: 1px solid $surface-stroke-color-default-dark;
+            color: $content-dialog-foreground-dark;
+            background: $content-dialog-background-dark;
+            border: 1px solid $content-dialog-border-brush-dark;
         }
 
         +supports-light-dark() {
-            color: light-dark($text-fill-color-primary, $text-fill-color-primary-dark);
-            background: light-dark($solid-background-fill-color-base, $solid-background-fill-color-base-dark);
-            border: 1px solid light-dark($surface-stroke-color-default, $surface-stroke-color-default-dark);
+            color: light-dark($content-dialog-foreground, $content-dialog-foreground-dark);
+            background: light-dark($content-dialog-background, $content-dialog-background-dark);
+            border: 1px solid light-dark($content-dialog-border-brush, $content-dialog-border-brush-dark);
         }
     }
 }
