@@ -55,7 +55,7 @@ text-control-border-focused-dark($background, $border-width) {
 $text-control-border-theme-thickness = 1px
 $text-control-border-theme-thickness-focused = 2px
 
-input,
+input.fluent,
 input[type="datetime"],
 input[type="email"],
 input[type="number"],
@@ -118,7 +118,7 @@ textarea {
   }
 }
 
-input,
+input.fluent,
 input[type="datetime"],
 input[type="email"],
 input[type="number"],
@@ -388,6 +388,100 @@ input[type="week"] {
       color: light-dark($button-foreground-disabled, $button-foreground-disabled-dark);
       background: padding-box light-dark($button-background-disabled, $button-background-disabled-dark);
       border: $button-border-theme-thickness solid light-dark($button-border-brush-disabled, $button-border-brush-disabled-dark);
+    }
+  }
+}
+
+input[type="file"] {
+  background: none;
+
+  &::-ms-value {
+    padding: 6px;
+    font-family: $body-font;
+    color: $text-control-foreground;
+    background: $text-control-background;
+    border-radius: $control-corner-radius;
+    border-left: $text-control-border-theme-thickness solid $control-stroke-color-default;
+    border-top: $text-control-border-theme-thickness solid $control-stroke-color-default;
+    border-right: $text-control-border-theme-thickness solid $control-stroke-color-default;
+    border-bottom: $text-control-border-theme-thickness solid $control-strong-stroke-color-default;
+  }
+
+  &:not(:disabled):hover::-ms-value {
+    color: $text-control-foreground-pointer-over;
+    background: $text-control-background-pointer-over;
+  }
+
+  &:not(:disabled):active::-ms-value,
+  &:not(:disabled):focus:not(:active)::-ms-value {
+    outline: none;
+    padding: 6px 6px 5px 6px;
+    color: $text-control-foreground-focused;
+    background: $text-control-background-focused;
+    border-bottom: $text-control-border-theme-thickness-focused solid $system-accent-color-dark1;
+  }
+
+  &:disabled::-ms-value {
+    color: $text-control-foreground-disabled;
+    background: $text-control-background-disabled;
+    border: $text-control-border-theme-thickness solid $text-control-border-brush-disabled;
+  }
+
+  +dark() {
+    &::-ms-value {
+      color: $text-control-foreground-dark;
+      background: $text-control-background-dark;
+      border-left: $text-control-border-theme-thickness solid $control-stroke-color-default-dark;
+      border-top: $text-control-border-theme-thickness solid $control-stroke-color-default-dark;
+      border-right: $text-control-border-theme-thickness solid $control-stroke-color-default-dark;
+      border-bottom: $text-control-border-theme-thickness solid $control-strong-stroke-color-default-dark;
+    }
+
+    &:not(:disabled):hover::-ms-value {
+      color: $text-control-foreground-pointer-over-dark;
+      background: $text-control-background-pointer-over-dark;
+    }
+
+    &:not(:disabled):active::-ms-value,
+    &:not(:disabled):focus:not(:active)::-ms-value {
+      color: $text-control-foreground-focused-dark;
+      background: $text-control-background-focused-dark;
+      border-bottom: $text-control-border-theme-thickness-focused solid $system-accent-color-light2;
+    }
+
+    &:disabled::-ms-value {
+      color: $text-control-foreground-disabled-dark;
+      background: $text-control-background-disabled-dark;
+      border: $text-control-border-theme-thickness solid $text-control-border-brush-disabled-dark;
+    }
+  }
+
+  +supports-light-dark() {
+    &::-ms-value {
+      color: light-dark($text-control-foreground, $text-control-foreground-dark);
+      background: light-dark($text-control-background, $text-control-background-dark);
+      border-left: $text-control-border-theme-thickness solid light-dark($control-stroke-color-default, $control-stroke-color-default-dark);
+      border-top: $text-control-border-theme-thickness solid light-dark($control-stroke-color-default, $control-stroke-color-default-dark);
+      border-right: $text-control-border-theme-thickness solid light-dark($control-stroke-color-default, $control-stroke-color-default-dark);
+      border-bottom: $text-control-border-theme-thickness solid light-dark($control-strong-stroke-color-default, $control-strong-stroke-color-default-dark);
+    }
+
+    &:not(:disabled):hover::-ms-value {
+      color: light-dark($text-control-foreground-pointer-over, $text-control-foreground-pointer-over-dark);
+      background: light-dark($text-control-background-pointer-over, $text-control-background-pointer-over-dark);
+    }
+
+    &:not(:disabled):active::-ms-value,
+    &:not(:disabled):focus:not(:active)::-ms-value {
+      color: light-dark($text-control-foreground-focused, $text-control-foreground-focused-dark);
+      background: light-dark($text-control-background-focused, $text-control-background-focused-dark);
+      border-bottom: $text-control-border-theme-thickness-focused solid light-dark($system-accent-color-dark1, $system-accent-color-light2);
+    }
+
+    &:disabled::-ms-value {
+      color: light-dark($text-control-foreground-disabled, $text-control-foreground-disabled-dark);
+      background: light-dark($text-control-background-disabled, $text-control-background-disabled-dark);
+      border: $text-control-border-theme-thickness solid light-dark($text-control-border-brush-disabled, $text-control-border-brush-disabled-dark);
     }
   }
 }

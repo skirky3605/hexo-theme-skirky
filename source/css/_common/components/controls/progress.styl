@@ -1,0 +1,39 @@
+$progress-bar-foreground = $accent-fill-color-default
+$progress-bar-background = $control-strong-stroke-color-default
+$progress-bar-border = $control-stroke-color-default
+$progress-bar-paused-foreground-color = $system-fill-color-caution
+$progress-bar-error-foreground-color = $system-fill-color-critical
+
+$progress-bar-foreground-dark = $accent-fill-color-default-dark
+$progress-bar-background-dark = $control-strong-stroke-color-default-dark
+$progress-bar-border-dark = $control-stroke-color-default-dark
+$progress-bar-paused-foreground-color-dark = $system-fill-color-caution-dark
+$progress-bar-error-foreground-color-dark = $system-fill-color-critical-dark
+
+$progress-bar-border-theme-thickness = 0
+$progress-bar-min-height = 3px
+$progress-bar-corner-radius = 1.5px
+
+progress {
+    height: $progress-bar-min-height;
+    color: $progress-bar-foreground;
+    border: $progress-bar-border-theme-thickness solid $progress-bar-border;
+    border-radius: $progress-bar-corner-radius;
+    background: $progress-bar-background;
+
+    &::-ms-fill {
+        border: none;
+    }
+
+    +dark() {
+        color: $progress-bar-foreground-dark;
+        border: $progress-bar-border-theme-thickness solid $progress-bar-border-dark;
+        background: $progress-bar-background-dark;
+    }
+
+    +supports-light-dark() {
+        color: light-dark($progress-bar-foreground, $progress-bar-foreground-dark);
+        border: $progress-bar-border-theme-thickness solid light-dark($progress-bar-border, $progress-bar-border-dark);
+        background: light-dark($progress-bar-background, $progress-bar-background-dark);
+    }
+}

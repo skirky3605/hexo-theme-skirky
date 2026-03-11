@@ -15,7 +15,7 @@
     "pace-js": "^1.0.0",
     "postcss": "^8.0.0",
     "postcss-html": "^1.0.0",
-    "postcss-preset-env": "^10.0.0"
+    "postcss-preset-env": "^11.0.0"
   },
   "peerDependencies": {
     "@babel/preset-typescript": "^7.0.0"

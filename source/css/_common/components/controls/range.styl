@@ -1,0 +1,278 @@
+$slider-container-background = $control-fill-color-transparent
+$slider-container-background-pointer-over = $control-fill-color-transparent
+$slider-container-background-pressed = $control-fill-color-transparent
+$slider-container-background-disabled = $control-fill-color-transparent
+$slider-thumb-background = $accent-fill-color-default
+$slider-thumb-background-pointer-over = $accent-fill-color-secondary
+$slider-thumb-background-pressed = $accent-fill-color-tertiary
+$slider-thumb-background-disabled = $accent-fill-color-disabled
+$slider-outer-thumb-background = $control-solid-fill-color-default
+$slider-track-fill = $control-strong-fill-color-default
+$slider-track-fill-pointer-over = $control-strong-fill-color-default
+$slider-track-fill-pressed = $control-strong-fill-color-default
+$slider-track-fill-disabled = $control-strong-fill-color-disabled
+$slider-track-value-fill = $accent-fill-color-default
+$slider-track-value-fill-pointer-over = $accent-fill-color-secondary
+$slider-track-value-fill-pressed = $accent-fill-color-tertiary
+$slider-track-value-fill-disabled = $accent-fill-color-disabled
+$slider-header-foreground = $text-fill-color-primary
+$slider-header-foreground-disabled = $text-fill-color-disabled
+$slider-tick-bar-fill = $control-strong-fill-color-default
+$slider-tick-bar-fill-disabled = $control-strong-fill-color-disabled
+$slider-inline-tick-bar-fill = $control-fill-color-input-active
+
+$slider-container-background-dark = $control-fill-color-transparent-dark
+$slider-container-background-pointer-over-dark = $control-fill-color-transparent-dark
+$slider-container-background-pressed-dark = $control-fill-color-transparent-dark
+$slider-container-background-disabled-dark = $control-fill-color-transparent-dark
+$slider-thumb-background-dark = $accent-fill-color-default-dark
+$slider-thumb-background-pointer-over-dark = $accent-fill-color-secondary-dark
+$slider-thumb-background-pressed-dark = $accent-fill-color-tertiary-dark
+$slider-thumb-background-disabled-dark = $accent-fill-color-disabled-dark
+$slider-outer-thumb-background-dark = $control-solid-fill-color-default-dark
+$slider-track-fill-dark = $control-strong-fill-color-default-dark
+$slider-track-fill-pointer-over-dark = $control-strong-fill-color-default-dark
+$slider-track-fill-pressed-dark = $control-strong-fill-color-default-dark
+$slider-track-fill-disabled-dark = $control-strong-fill-color-disabled-dark
+$slider-track-value-fill-dark = $accent-fill-color-default-dark
+$slider-track-value-fill-pointer-over-dark = $accent-fill-color-secondary-dark
+$slider-track-value-fill-pressed-dark = $accent-fill-color-tertiary-dark
+$slider-track-value-fill-disabled-dark = $accent-fill-color-disabled-dark
+$slider-header-foreground-dark = $text-fill-color-primary-dark
+$slider-header-foreground-disabled-dark = $text-fill-color-disabled-dark
+$slider-tick-bar-fill-dark = $control-strong-fill-color-default-dark
+$slider-tick-bar-fill-disabled-dark = $control-strong-fill-color-disabled-dark
+$slider-inline-tick-bar-fill-dark = $control-fill-color-input-active-dark
+
+$slider-track-theme-height = 4px
+$slider-thumb-corner-radius = 10px
+$slider-thumb-size = 12px
+$slider-thumb-size-pointer-over = 14px
+$slider-thumb-size-pressed = 10px
+
+input[type="range"] {
+  background: $slider-container-background;
+
+  &::-ms-thumb {
+    background: $slider-thumb-background;
+    border: 4px solid $slider-outer-thumb-background;
+    border-radius: $slider-thumb-corner-radius;
+    height: $slider-thumb-size;
+    width: $slider-thumb-size;
+  }
+
+  &::-ms-track {
+    color: transparent;
+    border: none;
+    background: none;
+    height: $slider-track-theme-height;
+  }
+
+  &::-ms-fill-lower {
+    background: $slider-track-value-fill;
+    border-radius: $control-corner-radius;
+  }
+
+  &::-ms-fill-upper {
+    background: $slider-track-fill;
+    border-radius: $control-corner-radius;
+  }
+
+  &:not(:disabled):hover {
+    background: $slider-container-background-pointer-over;
+
+    &::-ms-thumb {
+      background: $slider-thumb-background-pointer-over;
+      border-width: 3px;
+      height: $slider-thumb-size-pointer-over;
+      width: $slider-thumb-size-pointer-over;
+    }
+
+    &::-ms-fill-lower {
+      background: $slider-track-value-fill-pointer-over;
+    }
+
+    &::-ms-fill-upper {
+      background: $slider-track-fill-pointer-over;
+    }
+  }
+
+  &:not(:disabled):active {
+    background: $slider-container-background-pressed;
+
+    &::-ms-thumb {
+      background: $slider-thumb-background-pressed;
+      border-width: 5px;
+      height: $slider-thumb-size-pressed;
+      width: $slider-thumb-size-pressed;
+    }
+
+    &::-ms-fill-lower {
+      background: $slider-track-value-fill-pressed;
+    }
+
+    &::-ms-fill-upper {
+      background: $slider-track-fill-pressed;
+    }
+  }
+
+  &:disabled {
+    background: $slider-container-background-disabled;
+
+    &::-ms-thumb {
+      background: $slider-thumb-background-disabled;
+    }
+
+    &::-ms-fill-lower {
+      background: $slider-track-value-fill-disabled;
+    }
+
+    &::-ms-fill-upper {
+      background: $slider-track-fill-disabled;
+    }
+  }
+
+  +dark() {
+    background: $slider-container-background-dark;
+
+    &::-ms-thumb {
+      background: $slider-thumb-background-dark;
+      border: 4px solid $slider-outer-thumb-background-dark;
+    }
+
+    &::-ms-fill-lower {
+      background: $slider-track-value-fill-dark;
+    }
+
+    &::-ms-fill-upper {
+      background: $slider-track-fill-dark;
+    }
+
+    &:not(:disabled):hover {
+      background: $slider-container-background-pointer-over-dark;
+
+      &::-ms-thumb {
+        background: $slider-thumb-background-pointer-over-dark;
+        border-width: 3px;
+        height: $slider-thumb-size-pointer-over;
+        width: $slider-thumb-size-pointer-over;
+      }
+
+      &::-ms-fill-lower {
+        background: $slider-track-value-fill-pointer-over-dark;
+      }
+
+      &::-ms-fill-upper {
+        background: $slider-track-fill-pointer-over-dark;
+      }
+    }
+
+    &:not(:disabled):active {
+      background: $slider-container-background-pressed-dark;
+
+      &::-ms-thumb {
+        background: $slider-thumb-background-pressed-dark;
+        border-width: 5px;
+        height: $slider-thumb-size-pressed;
+        width: $slider-thumb-size-pressed;
+      }
+
+      &::-ms-fill-lower {
+        background: $slider-track-value-fill-pressed-dark;
+      }
+
+      &::-ms-fill-upper {
+        background: $slider-track-fill-pressed-dark;
+      }
+    }
+
+    &:disabled {
+      background: $slider-container-background-disabled-dark;
+
+      &::-ms-thumb {
+        background: $slider-thumb-background-disabled-dark;
+        border: 4px solid $slider-outer-thumb-background-dark;
+      }
+
+      &::-ms-fill-lower {
+        background: $slider-track-value-fill-disabled-dark;
+      }
+
+      &::-ms-fill-upper {
+        background: $slider-track-fill-disabled-dark;
+      }
+    }
+  }
+
+  +supports-light-dark() {
+    background: light-dark($slider-container-background, $slider-container-background-dark);
+
+    &::-ms-thumb {
+      background: light-dark($slider-thumb-background, $slider-thumb-background-dark);
+      border: 4px solid light-dark($slider-outer-thumb-background, $slider-outer-thumb-background-dark);
+    }
+
+    &::-ms-fill-lower {
+      background: light-dark($slider-track-value-fill, $slider-track-value-fill-dark);
+    }
+
+    &::-ms-fill-upper {
+      background: light-dark($slider-track-fill, $slider-track-fill-dark);
+    }
+
+    &:not(:disabled):hover {
+      background: light-dark($slider-container-background-pointer-over, $slider-container-background-pointer-over-dark);
+
+      &::-ms-thumb {
+        background: light-dark($slider-thumb-background-pointer-over, $slider-thumb-background-pointer-over-dark);
+        border-width: 3px;
+        height: $slider-thumb-size-pointer-over;
+        width: $slider-thumb-size-pointer-over;
+      }
+
+      &::-ms-fill-lower {
+        background: light-dark($slider-track-value-fill-pointer-over, $slider-track-value-fill-pointer-over-dark);
+      }
+
+      &::-ms-fill-upper {
+        background: light-dark($slider-track-fill-pointer-over, $slider-track-fill-pointer-over-dark);
+      }
+    }
+
+    &:not(:disabled):active {
+      background: light-dark($slider-container-background-pressed, $slider-container-background-pressed-dark);
+
+      &::-ms-thumb {
+        background: light-dark($slider-thumb-background-pressed, $slider-thumb-background-pressed-dark);
+        border-width: 5px;
+        height: $slider-thumb-size-pressed;
+        width: $slider-thumb-size-pressed;
+      }
+
+      &::-ms-fill-lower {
+        background: light-dark($slider-track-value-fill-pressed, $slider-track-value-fill-pressed-dark);
+      }
+
+      &::-ms-fill-upper {
+        background: light-dark($slider-track-fill-pressed, $slider-track-fill-pressed-dark);
+      }
+    }
+
+    &:disabled {
+      background: light-dark($slider-container-background-disabled, $slider-container-background-disabled-dark);
+
+      &::-ms-thumb {
+        background: light-dark($slider-thumb-background-disabled, $slider-thumb-background-disabled-dark);
+        border: 4px solid light-dark($slider-outer-thumb-background, $slider-outer-thumb-background-dark);
+      }
+
+      &::-ms-fill-lower {
+        background: light-dark($slider-track-value-fill-disabled, $slider-track-value-fill-disabled-dark);
+      }
+
+      &::-ms-fill-upper {
+        background: light-dark($slider-track-fill-disabled, $slider-track-fill-disabled-dark);
+      }
+    }
+  }
+}

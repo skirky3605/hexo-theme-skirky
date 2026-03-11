@@ -191,6 +191,7 @@
   --body-font: $body-font;
   --code-font-family: $code-font-family;
 
+  accent-color: $accent-fill-color-default;
   color-scheme: light;
 
   +dark() {
@@ -350,6 +351,7 @@
     --highlight-gutter-background: $highlight-gutter-background-dark;
     --highlight-gutter-foreground: $highlight-gutter-foreground-dark;
 
+    accent-color: $accent-fill-color-default-dark;
     color-scheme: dark;
   }
 
@@ -505,6 +507,7 @@
     --circle-elevation-border-brush: light-dark($circle-elevation-border-brush, $circle-elevation-border-brush-dark);
     --accent-control-elevation-border-brush: light-dark($accent-control-elevation-border-brush, $accent-control-elevation-border-brush-dark);
 
+    accent-color: light-dark($accent-fill-color-default, $accent-fill-color-default-dark);
     color-scheme: light dark;
   }
 
