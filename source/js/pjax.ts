@@ -1,35 +1,5 @@
 /// <reference path="boot.ts" />
 
-declare class Pjax {
-  constructor(options?: Partial<Pjax.IOptions>);
-  executeScripts(elements: NodeListOf<HTMLScriptElement>): void;
-  refresh(el: Element): void;
-}
-
-declare namespace Pjax {
-  export interface IOptions {
-    /**
-     * CSS selectors for the elements to replace.
-     */
-    selectors: string[];
-
-    /**
-     * Function that allows you to add behavior for analytics.
-     * By default it tries to track a pageview with Google Analytics (if it exists on the page).
-     * It's called every time a page is switched, even for history navigation.
-     * Set to false to disable this behavior.
-     */
-    analytics: Function | false;
-
-    /**
-     * When set to true, append a timestamp query string segment to the requested URLs in order to skip browser cache.
-     */
-    cacheBust: boolean;
-  }
-}
-
-declare const pjax: Pjax;
-
 if ("replaceState" in history) {
   const pjax = new Pjax({
     selectors: [
@@ -82,7 +52,7 @@ if ("replaceState" in history) {
     const inner = document.querySelector(".sidebar-inner")!;
     if (hasTOC) {
       if (hasList) {
-          inner.classList.add("sidebar-nav-active");
+        inner.classList.add("sidebar-nav-active");
       }
       else {
         if (!/(^|\s)sidebar-nav-active(\s|$)/.test(inner.className)) {
@@ -101,5 +71,5 @@ if ("replaceState" in history) {
     Skirky.utils.activateSidebarPanel(hasTOC ? 0 : 1);
   });
 
-  (window as any).pjax = pjax;
+  window.pjax = pjax;
 }

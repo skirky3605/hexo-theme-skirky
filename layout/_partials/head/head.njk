@@ -52,13 +52,19 @@
 
 {% include 'head-unique.njk' %}
 
-<script src="{{ url_for(theme.js) }}/third-party/pace.js"></script>
+<script src="{{ url_for(theme.js) }}/third-party/pace.js" async></script>
 <script src="{{ url_for(theme.js) }}/config.js"></script>
-<script src="{{ url_for(theme.js) }}/utils.js"></script>
-<script src="{{ url_for(theme.js) }}/settings.js"></script>
+<script src="{{ url_for(theme.js) }}/utils.js" defer></script>
+<script src="{{ url_for(theme.js) }}/settings.js" defer></script>
+<script src="{{ url_for(theme.js) }}/boot.js" defer></script>
+<script src="{{ url_for(theme.js) }}/third-party/pjax.js" defer></script>
+<script src="{{ url_for(theme.js) }}/pjax.js" defer></script>
+<script src="{{ url_for(theme.js) }}/third-party/search.js" defer></script>
+<script src="{{ url_for(theme.js) }}/search.js" defer></script>
+<script src="{{ url_for(theme.js) }}/fallback.js" defer></script>
 
 {% if theme.baidu_analytics %}
-<script src="{{ url_for(theme.js) }}/third-party/analytics/baidu-analytics.js"></script>
+<script src="{{ url_for(theme.js) }}/third-party/analytics/baidu-analytics.js" async></script>
 <script src="https://hm.baidu.com/hm.js?{{ theme.baidu_analytics }}" async></script>
 {% endif %}
 
@@ -71,20 +77,20 @@
 {% if not theme.google_analytics.only_pageview %}
 <script src="https://www.googletagmanager.com/gtag/js?id={{ theme.google_analytics.tracking_id }}" async></script>
 {% endif %}
-<script src="{{ url_for(theme.js) }}/third-party/analytics/google-analytics.js"></script>
+<script src="{{ url_for(theme.js) }}/third-party/analytics/google-analytics.js" async></script>
 {% endif %}
 
 {% if theme.growingio_analytics %}
 <script src="https://assets.growingio.com/2.1/gio.js" async></script>
-<script src="{{ url_for(theme.js) }}/third-party/analytics/growingio.js"></script>
+<script src="{{ url_for(theme.js) }}/third-party/analytics/growingio.js" async></script>
 {% endif %}
 
 {% if theme.matomo.enable %}
-<script src="{{ url_for(theme.js) }}/third-party/analytics/matomo.js"></script>
+<script src="{{ url_for(theme.js) }}/third-party/analytics/matomo.js" async></script>
 {% endif %}
 
 {% if theme.clarity_analytics %}
-<script src="{{ url_for(theme.js) }}/third-party/analytics/clarity.js"></script>
+<script src="{{ url_for(theme.js) }}/third-party/analytics/clarity.js" async></script>
 {% endif %}
 
 {% if theme.plausible.enable %}
@@ -93,5 +99,5 @@
 
 {% if theme.umami.enable %}
 <script src="{{ theme.umami.script_url }}" data-website-id="{{ theme.umami.website_id }}" {% if theme.umami.host_url %}
-  data-host-url="{{ theme.umami.host_url }}" {% endif %} async defer></script>
+  data-host-url="{{ theme.umami.host_url }}" {% endif %} async></script>
 {% endif %}

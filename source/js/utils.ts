@@ -1,32 +1,5 @@
 /// <reference path="config.ts" />
 
-type Theme = "dark" | "light" | "system";
-
-declare const Skirky: {
-  boot: {
-    registerEvents: () => void;
-    refresh: () => void;
-  };
-  utils: {
-    sections: HTMLElement[];
-    updateActiveNav(): void;
-    registerScrollPercent(): void;
-    registerActiveMenuItem(): void;
-    registerSidebarTOC(): void;
-    activateNavByIndex(index: number): void;
-    activateSidebarPanel(index: 0 | 1): void;
-    registerSidebarPanel(): void;
-    applyRandomGradient(): void;
-  };
-  settings: {
-    getValue(key: string): any;
-    setValue(key: string, value: any): void;
-    clear(): void;
-    get theme(): Theme;
-    set theme(value: Theme);
-  };
-}
-
 (() => {
   const onPageLoaded = () => {
     try {
@@ -71,7 +44,7 @@ Skirky.utils = {
         const isShow = Math.round(scrollPercent) >= 5;
         if (backToTop.classList) {
           if (isShow) {
-              backToTop.classList.add("back-to-top-on");
+            backToTop.classList.add("back-to-top-on");
           }
           else {
             backToTop.classList.remove("back-to-top-on");
@@ -103,7 +76,7 @@ Skirky.utils = {
       const isSelect = target.hostname === location.hostname && (isSamePath || isSubPath);
       if (hasList) {
         if (isSelect) {
-            target.classList.add("menu-item-active");
+          target.classList.add("menu-item-active");
         }
         else {
           target.classList.remove("menu-item-active");
@@ -178,7 +151,7 @@ Skirky.utils = {
 
     while (nav.contains(activateEle)) {
       if (hasList) {
-          activateEle.classList.add("active");
+        activateEle.classList.add("active");
       }
       else {
         if (!/(^|\s)active(\s|$)/.test(activateEle.className)) {

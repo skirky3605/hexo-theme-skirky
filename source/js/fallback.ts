@@ -1,17 +1,7 @@
 /// <reference path="search.ts" />
 
-interface IEDocument extends Document {
-  documentMode: number;
-}
-
-interface IEHTMLStyleElement extends HTMLStyleElement {
-  styleSheet: {
-    cssText: string;
-  };
-}
-
 function addStyle(css: string) {
-  const style = document.createElement("style") as IEHTMLStyleElement;
+  const style = document.createElement("style");
   const parentNode = document.head || document.scripts[document.scripts.length - 1].parentNode;
   parentNode.appendChild(style);
   if (style.styleSheet) {
@@ -23,8 +13,8 @@ function addStyle(css: string) {
   }
 }
 
-if (typeof (document as IEDocument).documentMode === "number") {
-  if ((document as IEDocument).documentMode < 7) {
+if (typeof document.documentMode === "number") {
+  if (document.documentMode < 7) {
     addStyle("body .background{position:absolute}a.random-link{color:#000;background:none}.menu-item a .badge{right:auto}.sidebar-container{position:absolute}");
   }
 }

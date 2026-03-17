@@ -1,32 +1,7 @@
-/// <reference path="fallback.ts" />
-
-interface StaticConfig {
-  hostname: string;
-  root: string;
-  hljswrap: boolean;
-  path: string;
-  localsearch: {
-    top_n_per_article: number;
-    unescape: boolean;
-  },
-  serverworker: boolean
-}
-
-interface PageConfig {
-  isHome: boolean;
-  isPost: boolean;
-  lang: string;
-  permalink: string;
-}
-
-interface GlobalConfig extends StaticConfig {
-  page: PageConfig;
-}
-
-declare const CONFIG: GlobalConfig;
+/// <reference path="polyfill.ts" />
 
 (() => {
-  if (!("Skirky" in window)) { (window as any).Skirky = {}; }
+  if (!("Skirky" in window)) { (window as Window).Skirky = {}; }
 
   const className = "html-config";
 
@@ -99,5 +74,5 @@ declare const CONFIG: GlobalConfig;
     document.addEventListener("pjax:success", () => variableConfig = {} as ConfigMap);
   }
 
-  (window as any).CONFIG = CONFIG;
+  window.CONFIG = CONFIG;
 })();

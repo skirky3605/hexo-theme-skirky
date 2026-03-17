@@ -1,12 +1,5 @@
 /// <reference path="settings.ts" />
 
-declare const Pace: {
-  options: {
-    restartOnPushState: boolean;
-  };
-  restart: () => void;
-}
-
 Skirky.boot = {
   registerEvents() {
     if (CONFIG.serverworker) {

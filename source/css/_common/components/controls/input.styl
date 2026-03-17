@@ -56,6 +56,7 @@ $text-control-border-theme-thickness = 1px
 $text-control-border-theme-thickness-focused = 2px
 
 input.fluent,
+input[type="color"],
 input[type="datetime"],
 input[type="email"],
 input[type="number"],
@@ -119,6 +120,7 @@ textarea {
 }
 
 input.fluent,
+input[type="color"],
 input[type="datetime"],
 input[type="email"],
 input[type="number"],
@@ -388,6 +390,26 @@ input[type="week"] {
       color: light-dark($button-foreground-disabled, $button-foreground-disabled-dark);
       background: padding-box light-dark($button-background-disabled, $button-background-disabled-dark);
       border: $button-border-theme-thickness solid light-dark($button-border-brush-disabled, $button-border-brush-disabled-dark);
+    }
+  }
+}
+
+input[type="color"] {
+  &::-webkit-color-swatch-wrapper {
+    height: .875rem;
+    padding: 0;
+  }
+
+  &::-webkit-color-swatch {
+    border: $button-border-theme-thickness solid $card-stroke-color-default;
+    border-radius: 2px;
+
+    +dark() {
+      border: $button-border-theme-thickness solid $card-stroke-color-default-dark;
+    }
+
+    +supports-light-dark() {
+      border: $button-border-theme-thickness solid light-dark($card-stroke-color-default, $card-stroke-color-default-dark);
     }
   }
 }

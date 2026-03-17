@@ -1,3 +1,5 @@
+/// <reference path="types.ts" />
+
 (() => {
   if (!window.globalThis) {
     (window as any).globalThis = window;

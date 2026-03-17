@@ -1,26 +1,5 @@
 /// <reference path="pjax.ts" />
 
-interface ReasultItem {
-  item: string;
-  id: number;
-  hitCount: number;
-  includedCount: number;
-}
-
-declare class LocalSearch {
-  isfetched: boolean;
-  constructor(config?: {
-    path: string;
-    unescape: boolean;
-    top_n_per_article: number;
-  });
-  getResultItems(keywords: string[]): ReasultItem[];
-  fetchData(): void;
-  highlightSearchWords(body: Element): void;
-}
-
-declare const localSearch: LocalSearch;
-
 (() => {
   if (typeof LocalSearch !== "undefined" && typeof fetch !== "undefined") {
     document.addEventListener("DOMContentLoaded", () => {
@@ -116,7 +95,7 @@ declare const localSearch: LocalSearch;
         }
       });
 
-      (window as any).localSearch = localSearch;
+      window.localSearch = localSearch;
     });
   }
 })();
