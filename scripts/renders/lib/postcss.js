@@ -8,7 +8,15 @@ const { minify } = require("html-minifier-terser");
 const browsers = ["IE >= 1", "Firefox >= 1", "Chrome >= 1", "Safari >= 1", "Opera >= 1"];
 const plugins = [
   postcssPresetEnv({ stage: 0, browsers }),
-  cssnano({ preset: "advanced" })
+  cssnano({
+    preset: [
+      "advanced",
+      {
+        zindex: false,
+        discardUnused: { fontFace: false }
+      }
+    ]
+  })
 ];
 
 /**
