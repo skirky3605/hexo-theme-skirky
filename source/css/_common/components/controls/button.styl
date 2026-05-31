@@ -80,6 +80,9 @@ select {
   border-top: $button-border-theme-thickness solid rgb(blend($control-stroke-color-default, $solid-background-fill-color-base));
   border-right: $button-border-theme-thickness solid rgb(blend($control-stroke-color-default, $solid-background-fill-color-base));
   border-bottom: $button-border-theme-thickness solid rgb(blend($control-stroke-color-secondary, $solid-background-fill-color-base));
+  font-family: $content-control-theme-font-family;
+  font-size: $content-control-font-size;
+  line-height: $content-control-line-height;
 
   &:not(:disabled):hover {
     color: rgb(blend($button-foreground-pointer-over, blend($button-background-pointer-over, $solid-background-fill-color-base)));

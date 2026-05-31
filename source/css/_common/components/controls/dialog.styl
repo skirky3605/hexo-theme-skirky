@@ -25,37 +25,40 @@ $content-dialog-padding = 24px
 $content-dialog-separator-thickness = 1px
 
 dialog {
-    &::backdrop {
-        background: $content-dialog-smoke-fill;
+  &::backdrop {
+    background: $content-dialog-smoke-fill;
 
-        +dark() {
-            background: $content-dialog-smoke-fill-dark;
-        }
-
-        +supports-light-dark() {
-            background: light-dark($content-dialog-smoke-fill, $content-dialog-smoke-fill-dark);
-        }
+    +dark() {
+      background: $content-dialog-smoke-fill-dark;
     }
 
-    &:modal {
-        padding: $content-dialog-padding;
-        box-sizing: border-box;
-        overflow: auto;
-        color: $content-dialog-foreground;
-        background: $content-dialog-background;
-        border: $content-dialog-border-width solid $content-dialog-border-brush;
-        border-radius: $overlay-corner-radius;
-
-        +dark() {
-            color: $content-dialog-foreground-dark;
-            background: $content-dialog-background-dark;
-            border: 1px solid $content-dialog-border-brush-dark;
-        }
-
-        +supports-light-dark() {
-            color: light-dark($content-dialog-foreground, $content-dialog-foreground-dark);
-            background: light-dark($content-dialog-background, $content-dialog-background-dark);
-            border: 1px solid light-dark($content-dialog-border-brush, $content-dialog-border-brush-dark);
-        }
+    +supports-light-dark() {
+      background: light-dark($content-dialog-smoke-fill, $content-dialog-smoke-fill-dark);
     }
+  }
+
+  &:modal {
+    padding: $content-dialog-padding;
+    box-sizing: border-box;
+    overflow: auto;
+    color: $content-dialog-foreground;
+    background: $content-dialog-background;
+    border: $content-dialog-border-width solid $content-dialog-border-brush;
+    border-radius: $overlay-corner-radius;
+    font-family: $content-control-theme-font-family;
+    font-size: $content-control-font-size;
+    line-height: $content-control-line-height;
+
+    +dark() {
+      color: $content-dialog-foreground-dark;
+      background: $content-dialog-background-dark;
+      border: 1px solid $content-dialog-border-brush-dark;
+    }
+
+    +supports-light-dark() {
+      color: light-dark($content-dialog-foreground, $content-dialog-foreground-dark);
+      background: light-dark($content-dialog-background, $content-dialog-background-dark);
+      border: 1px solid light-dark($content-dialog-border-brush, $content-dialog-border-brush-dark);
+    }
+  }
 }

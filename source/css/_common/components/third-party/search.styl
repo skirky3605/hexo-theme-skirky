@@ -1,3 +1,16 @@
+mark.search-keyword {
+  padding: 0;
+  color: $accent-text-fill-color-primary;
+
+  +dark() {
+    color: $accent-text-fill-color-primary-dark;
+  }
+
+  +supports-light-dark() {
+    color: light-dark($accent-text-fill-color-primary, $accent-text-fill-color-primary-dark);
+  }
+}
+
 .search-pop-overlay {
   display: flex;
   position: fixed;
@@ -25,6 +38,8 @@
 
   .search-popup {
     margin: auto;
+    display: flex;
+    flex-direction: column;
     padding: 24px;
     min-width: 320px;
     max-width: 548px;
@@ -79,6 +94,9 @@
         float: right;
         padding: 6px 8px;
         fill: currentColor;
+        background: none;
+        border: none;
+        cursor: pointer;
 
         svg {
           margin-bottom: -3px;
@@ -145,7 +163,7 @@
 
       .search-icon {
         position: absolute;
-        top: 6.5px;
+        top: 7.5px;
         right: 10px;
         fill: $text-fill-color-secondary;
         pointer-events: none;
@@ -161,8 +179,106 @@
     }
 
     .search-result-container {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      overflow: inherit;
+      flex-direction: column;
+
+      .search-result {
+        margin-top: 4px;
+      }
+
       .search-result-list {
+        overflow: inherit;
         padding: 0 0 0 18px;
+
+        a {
+          color: $text-fill-color-primary;
+
+          &:hover {
+            color: $text-fill-color-secondary;
+
+            mark.search-keyword {
+              color: $accent-text-fill-color-secondary;
+            }
+          }
+
+          &:active {
+            color: $text-fill-color-tertiary;
+
+            mark.search-keyword {
+              color: $accent-text-fill-color-tertiary;
+            }
+          }
+
+          &:not([href]),
+          &:not([href]):hover {
+            color: $text-fill-color-disabled;
+
+            mark.search-keyword {
+              color: $accent-text-fill-color-disabled;
+            }
+          }
+
+          +dark() {
+            color: $text-fill-color-primary-dark;
+
+            &:hover {
+              color: $text-fill-color-secondary-dark;
+
+              mark.search-keyword {
+                color: $accent-text-fill-color-secondary-dark;
+              }
+            }
+
+            &:active {
+              color: $text-fill-color-tertiary-dark;
+
+              mark.search-keyword {
+                color: $accent-text-fill-color-tertiary-dark;
+              }
+            }
+
+            &:not([href]),
+            &:not([href]):hover {
+              color: $text-fill-color-disabled-dark;
+
+              mark.search-keyword {
+                color: $accent-text-fill-color-disabled-dark;
+              }
+            }
+          }
+
+          +supports-light-dark() {
+            color: light-dark($text-fill-color-primary, $text-fill-color-primary-dark);
+
+            &:hover {
+              color: light-dark($text-fill-color-secondary, $text-fill-color-secondary-dark);
+
+              mark.search-keyword {
+                color: light-dark($accent-text-fill-color-secondary, $accent-text-fill-color-secondary-dark);
+              }
+            }
+
+            &:active {
+              color: light-dark($text-fill-color-tertiary, $text-fill-color-tertiary-dark);
+
+              mark.search-keyword {
+                color: light-dark($accent-text-fill-color-tertiary, $accent-text-fill-color-tertiary-dark);
+              }
+            }
+
+            &:not([href]),
+            &:not([href]):hover {
+              color: light-dark($text-fill-color-disabled, $text-fill-color-disabled-dark);
+
+              mark.search-keyword {
+                color: light-dark($accent-text-fill-color-disabled, $accent-text-fill-color-disabled-dark);
+              }
+            }
+          }
+        }
       }
     }
   }
