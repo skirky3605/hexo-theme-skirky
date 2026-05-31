@@ -2,7 +2,6 @@
 "use strict";
 
 const { htmlTag } = require("hexo-util");
-const { parse } = require("url");
 
 module.exports =
   /**
@@ -12,9 +11,6 @@ module.exports =
    */
   function (path, text, options = {}, decode = false) {
     const { config } = this;
-    const data = parse(path);
-    /** @type {string} */
-    const siteHost = parse(config.url).hostname || config.url;
 
     let exturl = '';
     let tag = 'a';
@@ -32,13 +28,19 @@ module.exports =
       }
     }
 
-    // If it's external link, rewrite attributes.
-    if (data.protocol && data.hostname !== siteHost) {
-      attrs.external = null;
-      // Only for simple link need to rewrite/add attributes.
-      attrs.rel = attrs.rel || "noopener noreferrer";
-      attrs.target = "_blank";
+    try {
+      const data = new URL(path);
+      /** @type {string} */
+      const siteHost = new URL(config.url).hostname || config.url;
+      // If it's external link, rewrite attributes.
+      if (data.protocol && data.hostname !== siteHost) {
+        attrs.external = null;
+        // Only for simple link need to rewrite/add attributes.
+        attrs.rel = attrs.rel || "noopener noreferrer";
+        attrs.target = "_blank";
+      }
     }
+    catch { }
 
     return htmlTag(tag, attrs, decode ? decodeURI(text) : text, false);
   };

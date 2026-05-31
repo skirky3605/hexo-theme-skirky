@@ -1,14 +1,12 @@
 /* global hexo */
 'use strict';
 
-const { parse } = require("url");
-
 module.exports = {
   /** @this {import("@types/hexo")} */
   htmlConfig: function () {
     const { config, theme, url_for } = this;
     const exportConfig = {
-      hostname: parse(config.url).hostname || config.url,
+      hostname: new URL(config.url).hostname || config.url,
       root: config.root,
       hljswrap: config.highlight.wrap,
       path: url_for(config.search.path),
