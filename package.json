@@ -22,7 +22,6 @@
   },
   "devDependencies": {
     "@types/babel__core": "^7.0.0",
-    "@types/hexo": "^3.0.0",
     "@types/html-minifier-terser": "^7.0.0",
     "hexo": ">=5.0.0"
   }

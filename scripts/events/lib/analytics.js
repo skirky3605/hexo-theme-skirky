@@ -108,7 +108,7 @@ const clarity = () => {
 };
 
 module.exports =
-  /** @param {import("@types/hexo")} hexo */ async hexo => {
+  /** @param {import("hexo")} hexo */ async hexo => {
     const theme = hexo.theme.config;
     const results = [];
     if (theme.baidu_analytics) {

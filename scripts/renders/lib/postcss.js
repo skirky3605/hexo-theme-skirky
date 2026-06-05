@@ -22,7 +22,7 @@ const plugins = [
 /**
  * @param {string} str
  * @param {{ path: string }} data
- * @this {import("@types/hexo")}
+ * @this {import("hexo")}
  */
 async function processCSS(str, data) {
   if (!str) { return str; }
@@ -38,7 +38,7 @@ async function processCSS(str, data) {
 }
 
 /**
- * @param {import("@types/hexo")} hexo
+ * @param {import("hexo")} hexo
  * @param {string} str
  */
 async function terser(hexo, str) {
@@ -53,7 +53,7 @@ async function terser(hexo, str) {
 /**
  * @param {string} str
  * @param {{ path: string }} data
- * @this {import("@types/hexo")}
+ * @this {import("hexo")}
  */
 async function processHTMLCSS(str, data) {
   if (!str) { return str; }

@@ -79,7 +79,7 @@ const version = (() => {
 })();
 
 module.exports =
-  /** @param {import("@types/hexo")} hexo */ async hexo => {
+  /** @param {import("hexo")} hexo */ async hexo => {
     if (!hexo.theme.config.service_worker.enable) {
       return;
     }

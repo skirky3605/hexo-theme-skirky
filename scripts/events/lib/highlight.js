@@ -55,7 +55,7 @@ ${dark}
 }`;
 
 module.exports =
-  /** @param {import("@types/hexo")} hexo */ hexo => {
+  /** @param {import("hexo")} hexo */ hexo => {
     const theme = hexo.theme.config;
     hexo.config.highlight.hljs = false;
     const light = highlightTheme(theme.codeblock.theme.light);

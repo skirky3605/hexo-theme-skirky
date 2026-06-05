@@ -2,7 +2,7 @@
 'use strict';
 
 module.exports = {
-  /** @this {import("@types/hexo")} */
+  /** @this {import("hexo")} */
   htmlConfig: function () {
     const { config, theme, url_for } = this;
     const exportConfig = {

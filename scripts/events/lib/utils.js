@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * @param {import("@types/hexo")} hexo
+ * @param {import("hexo")} hexo
  * @param {string} path
  * @param {string} file
  */

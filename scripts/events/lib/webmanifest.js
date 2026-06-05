@@ -1,5 +1,5 @@
 module.exports =
-    /** @param {import("@types/hexo")} hexo */ hexo => {
+    /** @param {import("hexo")} hexo */ hexo => {
     const theme = hexo.theme.config;
     const { enable, ...webmanifest } = theme.webmanifest;
     if (enable) {

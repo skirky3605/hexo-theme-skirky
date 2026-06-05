@@ -3,7 +3,7 @@ const { parse } = require("path");
 const { minify } = require("terser");
 
 /**
- * @param {import("@types/hexo")} hexo
+ * @param {import("hexo")} hexo
  * @param {string} str
  */
 async function terser(hexo, str) {
@@ -14,8 +14,8 @@ async function terser(hexo, str) {
 
 module.exports =
   /**
-   * @param {import("@types/hexo")} hexo
-   * @param {import("@types/hexo").extend.RendererData} data
+   * @param {import("hexo")} hexo
+   * @param {import("hexo/dist/extend/renderer").StoreFunctionData} data
    * @param {"js" | "ts"} type
    */
   async function (hexo, data, type) {
