@@ -12,8 +12,10 @@ Skirky.boot = {
     // 当窗口大小改变时重新生成并应用随机渐变颜色（可选）
     addEventListener("resize", Skirky.utils.applyRandomGradient);
 
-    Pace.options.restartOnPushState = false;
-    document.addEventListener("pjax:send", Pace.restart);
+    if (typeof Pace !== "undefined") {
+      Pace.options.restartOnPushState = false;
+      document.addEventListener("pjax:send", Pace.restart);
+    }
 
     const sidebar = document.querySelectorAll(".sidebar-nav li");
     for (let i = 0; i < sidebar.length; i++) {
