@@ -1,5 +1,6 @@
 const { parse } = require("path");
 const postcss = require("postcss");
+const svgo = require("postcss-svgo");
 const cssnano = require("cssnano");
 const postcssPresetEnv = require("postcss-preset-env");
 const postcssHtml = require("postcss-html");
@@ -8,6 +9,7 @@ const { minify } = require("html-minifier-terser");
 const browsers = ["IE >= 1", "Firefox >= 1", "Chrome >= 1", "Safari >= 1", "Opera >= 1"];
 const plugins = [
   postcssPresetEnv({ stage: 0, browsers }),
+  svgo(),
   cssnano({
     preset: [
       "advanced",

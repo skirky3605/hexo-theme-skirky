@@ -33,7 +33,7 @@ module.exports =
     };
     try {
       const results = await transformAsync(text, options);
-      return await terser(hexo, results.code);
+      return terser(hexo, results.code);
     }
     catch (e) {
       throw new Error(`Path: ${path}\n${e}`);

@@ -22,7 +22,7 @@
         if (!localSearch.isfetched) { return; }
         const searchText = input.value.trim().toLowerCase();
         const keywords = searchText.split(/[-\s]+/);
-        let resultItems: ReasultItem[] = [];
+        let resultItems: ResultItem[] = [];
         if (searchText.length > 0) {
           // Perform local searching
           resultItems = localSearch.getResultItems(keywords);

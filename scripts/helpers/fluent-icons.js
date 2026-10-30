@@ -3,8 +3,23 @@
 const { readFileSync } = require("fs");
 
 /**
- * @typedef {{filled: IconSize, regular: IconSize, light: IconSize, color: IconSize}} IconVariant
- * @typedef {{size10: Object<string, string>, size12: Object<string, string>, size16: Object<string, string>, size20: Object<string, string>, size24: Object<string, string>, size28: Object<string, string>, size32: Object<string, string>, size40: Object<string, string>, size48: Object<string, string>}} IconSize
+ * @typedef {{
+ *   filled: IconSize,
+ *   regular: IconSize,
+ *   light: IconSize,
+ *   color: IconSize
+ * }} IconVariant
+ * @typedef {{
+ *   size10: Object<string, string>,
+ *   size12: Object<string, string>,
+ *   size16: Object<string, string>,
+ *   size20: Object<string, string>,
+ *   size24: Object<string, string>,
+ *   size28: Object<string, string>,
+ *   size32: Object<string, string>,
+ *   size40: Object<string, string>,
+ *   size48: Object<string, string>
+ * }} IconSize
  */
 
 /** @type {IconVariant} */

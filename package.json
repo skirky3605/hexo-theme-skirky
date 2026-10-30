@@ -3,26 +3,26 @@
   "version": "0.0.1",
   "license": "AGPL-3.0",
   "dependencies": {
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^8.0.0",
     "@creativecommons/vocabulary": "^2020.0.0",
     "@fluentui/svg-icons": "^1.0.0",
     "@next-theme/pjax": "^0.6.0",
-    "cssnano": "^8.0.0",
-    "cssnano-preset-advanced": "^8.0.0",
+    "cssnano": "^9.0.0",
     "hexo-generator-searchdb": "^1.0.0",
-    "hexo-related-posts": "^1.0.0",
+    "hexo-related-posts2": "^1.0.0",
     "html-minifier-terser": "^7.0.0",
     "pace-js": "^1.0.0",
     "postcss": "^8.0.0",
-    "postcss-html": "^1.0.0",
-    "postcss-preset-env": "^11.0.0"
+    "postcss-html": "^2.0.0",
+    "postcss-preset-env": "^11.0.0",
+    "postcss-svgo": "^9.0.0"
   },
   "peerDependencies": {
-    "@babel/preset-typescript": "^7.0.0"
+    "@babel/preset-typescript": "^8.0.0"
   },
   "devDependencies": {
     "@types/babel__core": "^7.0.0",
     "@types/html-minifier-terser": "^7.0.0",
-    "hexo": ">=5.0.0"
+    "hexo": ">=7.0.0"
   }
 }

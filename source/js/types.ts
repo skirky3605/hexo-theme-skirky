@@ -86,7 +86,7 @@ declare global {
 
 // search.ts
 declare global {
-  interface ReasultItem {
+  interface ResultItem {
     item: string;
     id: number;
     hitCount: number;
@@ -99,7 +99,7 @@ declare global {
       unescape: boolean;
       top_n_per_article: number;
     });
-    getResultItems(keywords: string[]): ReasultItem[];
+    getResultItems(keywords: string[]): ResultItem[];
     fetchData(): void;
     highlightSearchWords(body: Element): void;
   }
